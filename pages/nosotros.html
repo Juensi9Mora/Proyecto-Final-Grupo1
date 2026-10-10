@@ -1,142 +1,147 @@
 <!DOCTYPE html>
-<html lang="es" data-bs-theme="dark">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Cancha</title>
+    <title>Mi Cancha - Acerca de Nosotros</title>
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/nosotros.css">
 </head>
 
 <body>
 
-    <header class="navbar">
-        <a href="index.html" class="logo" aria-label="">
-            <span><img src="../img/mi_cancha_prototipo_logo.png" alt="" class="logo-marca"></span>
+    <!-- Navbar Principal -->
+    <header class="navbar" id="mainNavbar">
+        <a href="index.html" class="logo" aria-label="Mi Cancha Inicio">
+            <img src="../img/mi_cancha_prototipo_logo.png" alt="Logo Mi Cancha" class="logo-marca">
             <span>Mi Cancha</span>
         </a>
 
+        <!-- Botón Menú Hamburguesa para Celulares -->
+        <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú de navegación">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
         <nav aria-label="Principal">
-            <ul class="menu">
+            <ul class="menu" id="navMenu">
                 <li><a href="index.html">Inicio</a></li>
-                <li><a href="nosotros.html" class="activo">Acerca de Nosotros</a></li>
+                <li><a href="nosotros.html" class="activo">Nosotros</a></li>
                 <li><a href="#">Deportes</a></li>
                 <li><a href="#">Contacto</a></li>
             </ul>
         </nav>
 
-        <a href="#" class="login" aria-label="Iniciar sesión">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                stroke-linejoin="round" aria-hidden="true">
-                <circle cx="12" cy="8" r="4" />
-                <path d="M4 21c0-4 3.6-7 8-7s8 3 8 7" />
-            </svg>
-        </a>
+        <div class="nav-actions">
+            <a href="#" class="login" aria-label="Iniciar sesión">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" aria-hidden="true">
+                    <circle cx="12" cy="8" r="4" />
+                    <path d="M4 21c0-4 3.6-7 8-7s8 3 8 7" />
+                </svg>
+            </a>
+        </div>
     </header>
+
+    <!-- Section / Imagen de cabecera -->
+    <section class="hero-nosotros">
+        <h1 class="hero-titulo">¿Quiénes Somos?</h1>
+    </section>
 
     <main class="contenido">
 
-        <h1>Acerca de nosotros</h1>
-
-        <!-- Sobre el proyecto -->
+        <!-- Misión y Visión -->
         <section id="proyecto" class="seccion">
             <article id="mision">
                 <h2>Misión</h2>
-                <p>Brindar una plataforma web accesible, segura y fácil de utilizar 
-                    que permita a las personas encontrar, consultar y reservar espacios 
-                    deportivos de actividades deportivas y recreativas de manera rápida 
-                    y eficiente, centralizando diferentes opciones y tipos losas en un solo luga</p>
+                <p>Brindar una plataforma web accesible, segura y fácil de utilizar
+                    que permita a las personas encontrar, consultar y reservar espacios
+                    deportivos para actividades recreativas de manera rápida
+                    y eficiente, centralizando diferentes opciones y losas en un solo lugar.</p>
             </article>
 
             <article id="vision">
                 <h2>Visión</h2>
-                <p>Ser una plataforma de referencia para la reserva de espacios para actividades 
-                    deportivas y recreativas, facilitando el acceso a actividades deportivas y 
-                    contribuyendo a una experiencia moderna, organizada y conveniente tanto para 
-                    los usuarios como para los establecimientos deportivos.</p>
+                <p>Ser la plataforma de referencia para la reserva de espacios deportivos,
+                    facilitando el acceso al deporte y contribuyendo a una experiencia moderna,
+                    organizada y conveniente tanto para los usuarios como para los establecimientos.</p>
             </article>
         </section>
 
-        <!-- Que nos hace diferentes -->
+        <!-- Diferenciadores -->
         <section id="diferenciadores" class="seccion">
             <h2>¿Qué nos hace diferentes?</h2>
-            <p>El posicionamiento propuesto para Mi Cancha no es únicamente 
-                ser otra plataforma de reservas. El proyecto plantea una evolución 
-                desde una oferta deportiva fragmentada hacia un catálogo comparable, 
-                del uso ocasional hacia un hábito recurrente y de un solo deporte hacia 
-                una red deportiva latinoamericana. La racha deportiva y los beneficios 
-                asociados a la continuidad constituyen el elemento diferencial más visible 
-                de la propuesta.</p>
+            <p>El posicionamiento propuesto para Mi Cancha no es únicamente
+                ser otra plataforma de reservas. Evolucionamos desde una oferta deportiva fragmentada
+                hacia un catálogo comparable, conectando a deportistas de toda la región.</p>
 
             <div class="tarjetas">
+                <article class="tarjeta">
+                    <h3>Catálogo comparable</h3>
+                    <p>Reunimos en un solo lugar la oferta de canchas para que compares precios, horarios y elijas
+                        fácil.</p>
+                </article>
 
-            <article class="tarjeta">
-        <h3>Catálogo comparable</h3>
-        <p>Reunimos en un solo lugar una oferta deportiva que hoy está fragmentada, para que compares y elijas fácil.</p>
-    </article>
+                <article class="tarjeta">
+                    <h3>Racha deportiva</h3>
+                    <p>Premiamos tu constancia: mientras más juegas de forma recurrente, más beneficios obtienes.</p>
+                </article>
 
-    <article class="tarjeta">
-        <h3>Racha deportiva</h3>
-        <p>Premiamos la constancia: mientras más juegas de forma recurrente, más beneficios obtienes.</p>
-    </article>
-
-    <article class="tarjeta">
-        <h3>Red latinoamericana</h3>
-        <p>Pasamos de un solo deporte a una red deportiva que conecta a Colombia, Perú y más países.</p>
-    </article>
-
-    </div>
+                <article class="tarjeta">
+                    <h3>Red latinoamericana</h3>
+                    <p>Conectamos complejos y deportistas en Colombia, Perú y más países en una sola red.</p>
+                </article>
+            </div>
         </section>
 
-        <!-- Perfiles del equipo -->
+        <!-- Equipo -->
         <section id="equipo" class="seccion">
             <h2>Nuestro equipo</h2>
 
             <div class="tarjetas-equipo">
-
                 <article class="tarjeta-dev">
-                    <img src="../img/person-circle.svg" alt="">
-                    <h3></h3>
-                    <p class="rol"></p>
-                    <p class="bio"></p>
+                    <img src="../img/person-circle.svg" alt="Avatar">
+                    <h3>Yesid</h3>
+                    <p class="rol">Backend Developer</p>
+                    <p class="bio">Especialista en arquitecturas de bases de datos y APIs robustas.</p>
                 </article>
 
                 <article class="tarjeta-dev">
-                    <img src="../img/person-circle.svg" alt="">
-                    <h3></h3>
-                    <p class="rol"></p>
-                    <p class="bio"></p>
+                    <img src="../img/person-circle.svg" alt="Avatar">
+                    <h3>Andres Satoba</h3>
+                    <p class="rol">Frontend &amp; UX</p>
+                    <p class="bio">Enfocados en la experiencia de usuario fluida y diseño moderno.</p>
                 </article>
 
                 <article class="tarjeta-dev">
-                    <img src="../img/person-circle.svg" alt="">
-                    <h3></h3>
-                    <p class="rol"></p>
-                    <p class="bio"></p>
+                    <img src="../img/person-circle.svg" alt="Avatar">
+                    <h3>Juensi Ayala</h3>
+                    <p class="rol">Frontend &amp; UX</p>
+                    <p class="bio">Enfocados en la experiencia de usuario fluida y diseño moderno.</p>
                 </article>
 
                 <article class="tarjeta-dev">
-                    <img src="../img/person-circle.svg" alt="">
-                    <h3></h3>
-                    <p class="rol"></p>
-                    <p class="bio"></p>
+                    <img src="../img/person-circle.svg" alt="Avatar">
+                    <h3>Jennyfer Choque</h3>
+                    <p class="rol">Frontend &amp; UX</p>
+                    <p class="bio">Enfocados en la experiencia de usuario fluida y diseño moderno.</p>
                 </article>
 
                 <article class="tarjeta-dev">
-                    <img src="../img/person-circle.svg" alt="">
-                    <h3></h3>
-                    <p class="rol"></p>
-                    <p class="bio"></p>
+                    <img src="../img/person-circle.svg" alt="Avatar">
+                    <h3>Christopher Ruiz</h3>
+                    <p class="rol">Frontend &amp; UX</p>
+                    <p class="bio">Enfocados en la experiencia de usuario fluida y diseño moderno.</p>
                 </article>
-
             </div>
         </section>
 
-        <!-- Llamada a la accion -->
+        <!-- Llamada a la acción -->
         <section id="reserva" class="seccion">
             <a href="index.html" class="boton-reserva" role="button">
-                Reserva ahora
+                Reserva tu cancha ahora
             </a>
         </section>
 
@@ -144,81 +149,49 @@
 
     <footer class="site-footer">
         <div class="footer-container">
-
-            <!-- Columna 1: Marca -->
             <div class="footer-brand">
-                <a href="/" class="footer-logo" aria-label="Mi Cancha - Inicio">
-                    <!-- Reemplaza esta ruta por la de tu logotipo -->
+                <a href="/" class="footer-logo">
                     <img src="../img/mi_cancha_prototipo_logo.png" alt="Logo de Mi Cancha">
                 </a>
-
                 <p class="footer-description">
                     Tu próximo partido comienza aquí.
                 </p>
             </div>
 
-            <!-- Columna 2: Contacto -->
             <div class="footer-column">
                 <h2>Contacto</h2>
-
                 <address>
-                    <span>Bogota, Colombia - Lima, Perú</span>
-                    <a href="#">+57 315 265 415</a>
-                    <a href="#">+51 986 516 576</a>
-                    <a href="#">
-                        micancha@micancha.col
-                    </a>
+                    <span>Bogotá, Colombia - Lima, Perú</span>
+                    <a href="tel:+57315265415">+57 315 265 415</a>
+                    <a href="tel:+51986516576">+51 986 516 576</a>
+                    <a href="mailto:micancha@micancha.col">micancha@micancha.col</a>
                 </address>
             </div>
 
-            <!-- Columna 3: Registro y socios -->
             <div class="footer-column">
                 <h2>Únete a Mi Cancha</h2>
-
                 <ul>
-                    <li>
-                        <a href="/registro-socio">Regístrate como socio</a>
-                    </li>
-                    <li>
-                        <a href="/beneficios">Beneficios</a>
-                    </li>
-                    <li>
-                        <a href="/portal-socio">Portal de socio</a>
-                    </li>
+                    <li><a href="#">Regístrate como socio</a></li>
+                    <li><a href="#">Beneficios</a></li>
+                    <li><a href="#">Portal de socio</a></li>
                 </ul>
             </div>
 
-            <!-- Columna 4: Información -->
             <div class="footer-column">
                 <h2>Acerca de</h2>
-
                 <ul>
-                    <li><a href="/nosotros">Nosotros</a></li>
-                    <li>
-                        <a href="/preguntas-frecuentes">
-                            Preguntas frecuentes
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/terminos">Términos y condiciones</a>
-                    </li>
-                    <li>
-                        <a href="/privacidad">Política de privacidad</a>
-                    </li>
+                    <li><a href="nosotros.html">Nosotros</a></li>
+                    <li><a href="#">Preguntas frecuentes</a></li>
+                    <li><a href="#">Términos y condiciones</a></li>
+                    <li><a href="#">Política de privacidad</a></li>
                 </ul>
             </div>
-
         </div>
 
-        <!-- Franja inferior -->
         <div class="footer-bottom">
-            <p>
-                &copy; 2026 Mi Cancha.
-                Todos los derechos reservados.
-            </p>
+            <p>&copy; 2026 Mi Cancha. Todos los derechos reservados.</p>
         </div>
     </footer>
-
 
     <script src="../js/nosotros.js"></script>
 </body>
