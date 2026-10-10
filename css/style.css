@@ -8,7 +8,15 @@
   --carbonVerdoso: #26372E; /*Títulos, textos importantes y contraste sobre fondos claros.*/
   --blanco: #ffffff; /*Fondo principal, tarjetas y áreas de contenido.*/
   --grisVerdoso: #64736A; /*Textos secundarios, datos de contacto y descripciones.*/
-  --grisSeparacion: #E5E9E6; /*Bordes, divisores, líneas y separaciones entre secciones.*/
+  --grisSeparacion: #E5E9E6; /*Bordes, divisores, líneas y separaciones entre secciones.*/--fondo: #141c17;
+  --vidrio: rgba(255, 255, 255, 0.06);
+  --borde: rgba(255, 255, 255, 0.15);
+  --magenta: var(--verdeCancha);
+
+  --color-text: var(--blanco);
+  --color-text-secondary: var(--grisSeparacion);
+  --color-primary: var(--verdeCancha);
+  --color-border: rgba(255, 255, 255, 0.15);
 }
  
 * { 
@@ -21,13 +29,14 @@
 html { 
     scroll-behavior: smooth; 
 }
+
  
 body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   font-family: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
-  color: var(--blanco);
+  color: var(--black);
   line-height: 1.6;
   background-attachment: fixed;
 }

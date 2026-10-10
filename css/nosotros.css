@@ -8,46 +8,99 @@
 
 /* ===== Sobre el proyecto ===== */
 
+.contenido {
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.contenido h1 {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.seccion {
+  margin-bottom: 3rem;
+}
+
+.seccion > h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+/* ===== Misión y Visión: 2 tarjetas grandes ===== */
 #proyecto {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
 }
 
-
-/* ===== Que nos hace diferentes ===== */
-
-#diferenciadores .tarjetas {
+#proyecto article {
+  background: var(--vidrio);
+  border: 1px solid var(--borde);
+  border-top: 4px solid var(--verdeCancha);
+  border-radius: 16px;
+  padding: 2rem;
 }
 
-#diferenciadores .tarjeta {
+#proyecto h2 {
+  color: var(--verdeCancha);
+  margin-bottom: 0.8rem;
 }
 
-
-/* ===== Nuestro equipo ===== */
-
-#equipo .tarjetas-equipo {
+/* ===== Qué nos hace diferentes: 3 tarjetas ===== */
+#diferenciadores > p {
+  max-width: 800px;
+  margin: 0 auto 2rem;
+  text-align: center;
+  color: var(--black);
 }
 
-#equipo .tarjeta-dev {
+.tarjetas,
+.tarjetas-equipo {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
 }
 
-/* Animacion al pasar el mouse */
-#equipo .tarjeta-dev:hover {
+.tarjeta,
+.tarjeta-dev {
+  background: var(--vidrio);
+  border: 1px solid var(--borde);
+  border-radius: 16px;
+  padding: 1.5rem;
+  text-align: center;
+  transition: transform 0.2s, border-color 0.2s;
 }
 
+.tarjeta:hover,
+.tarjeta-dev:hover {
+  transform: translateY(-6px);
+  border-color: var(--verdeCancha);
+}
 
-/* ===== Boton Reserva ahora ===== */
+.tarjeta h3 {
+  color: var(--verdeCancha);
+  margin-bottom: 0.5rem;
+}
+
+.tarjeta-dev img { width: 80px; }
+
+/* ===== Botón ===== */
+#reserva { text-align: center; }
 
 .boton-reserva {
+  display: inline-block;
+  padding: 0.8rem 2rem;
+  border-radius: 999px;
+  background: var(--narajaDeportivo);
+  color: var(--blanco);
+  font-weight: 700;
 }
 
+.boton-reserva:hover { opacity: 0.85; }
 
-/* ===================================================
-   Responsive
-   =================================================== */
-
-/* Tablet */
-@media (max-width: 992px) {
-}
-
-/* Movil */
-@media (max-width: 576px) {
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  #proyecto { grid-template-columns: 1fr; }
 }
