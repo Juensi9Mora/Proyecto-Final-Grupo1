@@ -246,3 +246,7 @@ a {
   font-size: 13px;
   line-height: 1.6;
 }
+
+.text-dark{
+  color: black;
+}
