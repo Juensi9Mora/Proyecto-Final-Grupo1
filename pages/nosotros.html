@@ -5,21 +5,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mi Cancha</title>
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/nosotros.css">
 </head>
 
 <body>
 
     <header class="navbar">
         <a href="index.html" class="logo" aria-label="">
-            <span><img src="/img/mi_cancha_prototipo_logo.png" alt="" class="logo-marca"></span>
+            <span><img src="../img/mi_cancha_prototipo_logo.png" alt="" class="logo-marca"></span>
             <span>Mi Cancha</span>
         </a>
 
         <nav aria-label="Principal">
             <ul class="menu">
-                <li><a href="/pages/index.html" class="activo">Inicio</a></li>
-                <li><a href="/pages/nosotros.html" class="activo">Acerca de Nosotros</a></li>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="nosotros.html" class="activo">Acerca de Nosotros</a></li>
                 <li><a href="#">Deportes</a></li>
                 <li><a href="#">Contacto</a></li>
             </ul>
@@ -34,13 +35,98 @@
         </a>
     </header>
 
-    <main>
-        <section class="panel">
-            <h1>Aqui Podemos colocar la parte de Acerca de Nosotros</h1>
-            <p>Disculpen chicos con estos cambios, Trate de crear el Nabvar y el footer, le faltan mejoras, tambien
-                necesito
-                comentarios para hacerle dichas mejoras con lo que vamos </p>
+    <main class="contenido">
+
+        <h1>Acerca de nosotros</h1>
+
+        <!-- Sobre el proyecto -->
+        <section id="proyecto" class="seccion">
+            <article id="mision">
+                <h2>Misión</h2>
+                <p></p>
+            </article>
+
+            <article id="vision">
+                <h2>Visión</h2>
+                <p></p>
+            </article>
         </section>
+
+        <!-- Que nos hace diferentes -->
+        <section id="diferenciadores" class="seccion">
+            <h2>¿Qué nos hace diferentes?</h2>
+
+            <div class="tarjetas">
+
+                <article class="tarjeta">
+                    <h3></h3>
+                    <p></p>
+                </article>
+
+                <article class="tarjeta">
+                    <h3></h3>
+                    <p></p>
+                </article>
+
+                <article class="tarjeta">
+                    <h3></h3>
+                    <p></p>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- Perfiles del equipo -->
+        <section id="equipo" class="seccion">
+            <h2>Nuestro equipo</h2>
+
+            <div class="tarjetas-equipo">
+
+                <article class="tarjeta-dev">
+                    <img src="../img/person-circle.svg" alt="">
+                    <h3></h3>
+                    <p class="rol"></p>
+                    <p class="bio"></p>
+                </article>
+
+                <article class="tarjeta-dev">
+                    <img src="../img/person-circle.svg" alt="">
+                    <h3></h3>
+                    <p class="rol"></p>
+                    <p class="bio"></p>
+                </article>
+
+                <article class="tarjeta-dev">
+                    <img src="../img/person-circle.svg" alt="">
+                    <h3></h3>
+                    <p class="rol"></p>
+                    <p class="bio"></p>
+                </article>
+
+                <article class="tarjeta-dev">
+                    <img src="../img/person-circle.svg" alt="">
+                    <h3></h3>
+                    <p class="rol"></p>
+                    <p class="bio"></p>
+                </article>
+
+                <article class="tarjeta-dev">
+                    <img src="../img/person-circle.svg" alt="">
+                    <h3></h3>
+                    <p class="rol"></p>
+                    <p class="bio"></p>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- Llamada a la accion -->
+        <section id="reserva" class="seccion">
+            <a href="index.html" class="boton-reserva" role="button">
+                Reserva ahora
+            </a>
+        </section>
+
     </main>
 
     <footer class="site-footer">
@@ -50,7 +136,7 @@
             <div class="footer-brand">
                 <a href="/" class="footer-logo" aria-label="Mi Cancha - Inicio">
                     <!-- Reemplaza esta ruta por la de tu logotipo -->
-                    <img src="/img/mi_cancha_prototipo_logo.png" alt="Logo de Mi Cancha">
+                    <img src="../img/mi_cancha_prototipo_logo.png" alt="Logo de Mi Cancha">
                 </a>
 
                 <p class="footer-description">
@@ -121,6 +207,7 @@
     </footer>
 
 
+    <script src="../js/nosotros.js"></script>
 </body>
 
 </html>

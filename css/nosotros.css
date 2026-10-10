@@ -1,0 +1,53 @@
+/* ===================================================
+   Acerca de Nosotros
+   Estilos propios de esta pagina.
+   Los estilos globales (navbar, footer, colores) estan
+   en css/style.css
+   =================================================== */
+
+
+/* ===== Sobre el proyecto ===== */
+
+#proyecto {
+}
+
+
+/* ===== Que nos hace diferentes ===== */
+
+#diferenciadores .tarjetas {
+}
+
+#diferenciadores .tarjeta {
+}
+
+
+/* ===== Nuestro equipo ===== */
+
+#equipo .tarjetas-equipo {
+}
+
+#equipo .tarjeta-dev {
+}
+
+/* Animacion al pasar el mouse */
+#equipo .tarjeta-dev:hover {
+}
+
+
+/* ===== Boton Reserva ahora ===== */
+
+.boton-reserva {
+}
+
+
+/* ===================================================
+   Responsive
+   =================================================== */
+
+/* Tablet */
+@media (max-width: 992px) {
+}
+
+/* Movil */
+@media (max-width: 576px) {
+}
