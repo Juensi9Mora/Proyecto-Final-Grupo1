@@ -1,34 +1,60 @@
 /* ===================================================
-   Acerca de Nosotros
-   Estilos propios de esta pagina.
-   Los estilos globales (navbar, footer, colores) estan
-   en css/style.css
+   Acerca de Nosotros - Estilos responsivos
    =================================================== */
 
-
-/* ===== Sobre el proyecto ===== */
-
-.contenido {
-  max-width: 1000px;
-  margin: 2rem auto;
-  padding: 0 1rem;
+.hero-nosotros {
+  position: relative;
+  width: 100%;
+  height: 50vh;
+  min-height: 320px;
+  background: url('../img/fondoDeport.jpg') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
-.contenido h1 {
-  text-align: center;
-  margin-bottom: 2rem;
+.hero-nosotros::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 1;
+}
+
+.hero-titulo {
+  position: relative;
+  z-index: 2;
+  color: var(--blanco);
+  font-size: clamp(2.2rem, 7vw, 4rem);
+  font-family: cursive, sans-serif;
+  font-weight: 400;
+  padding: 0 1rem;
+  text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.contenido {
+  max-width: 1050px;
+  margin: 3rem auto;
+  padding: 0 1.2rem;
+  color: var(--black);
 }
 
 .seccion {
-  margin-bottom: 3rem;
+  margin-bottom: 3.5rem;
 }
 
 .seccion > h2 {
   text-align: center;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
+  color: var(--carbonVerdoso);
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
 }
 
-/* ===== Misión y Visión: 2 tarjetas grandes ===== */
+/* Misión y Visión */
 #proyecto {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -36,71 +62,128 @@
 }
 
 #proyecto article {
-  background: var(--vidrio);
-  border: 1px solid var(--borde);
+  background: var(--verdeNiebla);
+  border: 1px solid var(--grisSeparacion);
   border-top: 4px solid var(--verdeCancha);
-  border-radius: 16px;
+  border-radius: 14px;
   padding: 2rem;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.03);
 }
 
 #proyecto h2 {
-  color: var(--verdeCancha);
+  color: var(--verdeOsucro);
   margin-bottom: 0.8rem;
 }
 
-/* ===== Qué nos hace diferentes: 3 tarjetas ===== */
+#proyecto p {
+  color: var(--grisVerdoso);
+  font-size: 1rem;
+}
+
+/* Diferenciadores y Equipo */
 #diferenciadores > p {
   max-width: 800px;
   margin: 0 auto 2rem;
   text-align: center;
-  color: var(--black);
+  color: var(--grisVerdoso);
+  font-size: 1.05rem;
 }
 
 .tarjetas,
 .tarjetas-equipo {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 1.5rem;
 }
 
 .tarjeta,
 .tarjeta-dev {
-  background: var(--vidrio);
-  border: 1px solid var(--borde);
-  border-radius: 16px;
-  padding: 1.5rem;
+  background: var(--blanco);
+  border: 1px solid var(--grisSeparacion);
+  border-radius: 14px;
+  padding: 1.8rem 1.5rem;
   text-align: center;
-  transition: transform 0.2s, border-color 0.2s;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.04);
+  transition: transform 0.25s ease, border-color 0.25s ease;
 }
 
 .tarjeta:hover,
 .tarjeta-dev:hover {
-  transform: translateY(-6px);
+  transform: translateY(-4px);
   border-color: var(--verdeCancha);
 }
 
 .tarjeta h3 {
-  color: var(--verdeCancha);
-  margin-bottom: 0.5rem;
+  color: var(--verdeOsucro);
+  margin-bottom: 0.6rem;
+  font-size: 1.2rem;
 }
 
-.tarjeta-dev img { width: 80px; }
+.tarjeta p {
+  color: var(--grisVerdoso);
+  font-size: 0.95rem;
+}
 
-/* ===== Botón ===== */
-#reserva { text-align: center; }
+.tarjeta-dev img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 1rem;
+}
+
+.tarjeta-dev h3 {
+  color: var(--carbonVerdoso);
+  margin-bottom: 0.2rem;
+}
+
+.tarjeta-dev .rol {
+  color: var(--verdeCancha);
+  font-weight: 600;
+  font-size: 0.85rem;
+  margin-bottom: 0.6rem;
+}
+
+.tarjeta-dev .bio {
+  color: var(--grisVerdoso);
+  font-size: 0.9rem;
+}
+
+/* Botón */
+#reserva { 
+  text-align: center; 
+  margin-top: 2.5rem;
+}
 
 .boton-reserva {
   display: inline-block;
-  padding: 0.8rem 2rem;
+  padding: 0.9rem 2.2rem;
   border-radius: 999px;
   background: var(--narajaDeportivo);
   color: var(--blanco);
   font-weight: 700;
+  font-size: 1.05rem;
+  box-shadow: 0 4px 15px rgba(255, 135, 55, 0.3);
+  transition: opacity 0.2s, transform 0.2s;
 }
 
-.boton-reserva:hover { opacity: 0.85; }
+.boton-reserva:hover { 
+  opacity: 0.9; 
+  transform: scale(1.02);
+}
 
-/* ===== Responsive ===== */
+/* Responsive */
 @media (max-width: 768px) {
-  #proyecto { grid-template-columns: 1fr; }
+  #proyecto { 
+    grid-template-columns: 1fr; 
+  }
+  
+  .contenido {
+    margin: 2rem auto;
+  }
+  
+  .hero-nosotros {
+    height: 40vh;
+    min-height: 260px;
+  }
 }
