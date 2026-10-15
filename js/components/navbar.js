@@ -16,7 +16,7 @@ export function renderNavbar(selector = '#navbar-root') {
     <header class="navbar" id="mainNavbar">
       <a href="${ruta('index.html')}" class="logo" aria-label="Mi Cancha Inicio">
         <img src="${ruta('img/mi_cancha_prototipo_logo.png')}" alt="Logo Mi Cancha" class="logo-marca">
-        <span>Mi Cancha</span>
+        <span class="logo-text">Mi Cancha</span>
       </a>
 
       <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú de navegación">

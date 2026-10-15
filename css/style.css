@@ -79,6 +79,10 @@ a {
   border-radius: 8px;
   object-fit: contain;
 }
+
+.logo-text:hover {
+  color: var(--verdeCancha)
+}
  
 .menu { 
     display: flex; 
@@ -101,12 +105,12 @@ a {
 }
  
 .menu a:hover { 
-    color: var(--verdeMenta);  
+    color: var(--verdeCancha);  
 }
  
 .menu a.activo { 
     color: var(--blanco);
-    border-bottom: 2px solid var(--blanco);
+    border-bottom: 2px solid var(--narajaDeportivo);
 }
 
 .nav-actions {
@@ -164,7 +168,7 @@ a {
 .hero-inicio {
   position: relative;
   width: 100%;
-  height: 70vh; /* Un poco más alto para que luzca el video */
+  height:  100vh;/* Un poco más alto para que luzca el video */
   min-height: 450px;
   overflow: hidden;
   display: flex;
