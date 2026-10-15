@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi Cancha - Inicio</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/nosotros.css">
+</head>
+
+<body>
+
+  <!-- Navbar Principal Fijo -->
+  <div id="navbar-root"></div>
+
+  <!-- Section con Video de Fondo exclusivo para Inicio -->
+  <section class="hero-inicio">
+    <video autoplay muted loop playsinline class="hero-video">
+
+      <source src="../video/Video-inicio.mp4" type="video/mp4">
+
+    </video>
+    <div class="hero-overlay"></div>
+    <div class="hero-contenido-inicio">
+      <h1 class="hero-titulo">Tu próximo partido comienza aquí</h1>
+      <p class="hero-subtitulo">Encuentra y reserva canchas deportivas en segundos.</p>
+      <a href="#explorar" class="boton-reserva">Reservar Ahora</a>
+    </div>
+  </section>
+
+  <main class="contenido" id="explorar">
+    <section class="panel"
+      style="background: var(--verdeNiebla); border: 1px solid var(--grisSeparacion); border-radius: 16px; padding: 3rem 2rem; text-align: center; margin-top: 2rem;">
+      <h2 style="color: var(--verdeOsucro); margin-bottom: 1rem; font-size: 2rem;">Bienvenido a Mi Cancha</h2>
+      <p style="color: var(--grisVerdoso); font-size: 1.1rem; max-width: 700px; margin: 0 auto;">
+        Centralizamos todos los espacios deportivos para que puedas encontrar, consultar y reservar canchas de manera
+        rápida y eficiente en un solo lugar.
+      </p>
+    </section>
+  </main>
+
+
+  <div id="footer-root"></div>
+
+
+  <script type="module" src="../js/main.js"></script>
+  <script src="../js/nosotros.js"></script>
+</body>
+
+</html>
