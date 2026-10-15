@@ -1,0 +1,558 @@
+:root {
+  --verdeMarca: #00843D; /*Botones principales, logotipo, iconos y enlaces activos.*/
+  --verdeOsucro: #006B32; /*Navbar, footer oscuro alternativo, estados hover y elementos de énfasis.*/
+  --verdeCancha: #00A650; /*Acciones destacadas, botones secundarios e indicadores deportivos.*/
+  --verdeMenta: #D9F2E3; /*Fondos de estados disponibles, etiquetas y bloques informativos.*/
+  --verdeNiebla: #F1F8F3; /*Fondos alternativos, secciones informativas y tarjetas suaves.*/
+  --narajaDeportivo: #FF8737; /*Llamadas a la acción especiales, promociones y botones como «Ver beneficios».*/
+  --carbonVerdoso: #26372E; /*Títulos, textos importantes y contraste sobre fondos claros.*/
+  --blanco: #ffffff; /*Fondo principal, tarjetas y áreas de contenido.*/
+  --grisVerdoso: #64736A; /*Textos secundarios, datos de contacto y descripciones.*/
+  --grisSeparacion: #E5E9E6; /*Bordes, divisores, líneas y separaciones entre secciones.*/
+}
+ 
+* { 
+    box-sizing: border-box;
+     margin: 0; 
+     padding: 0; 
+     
+}
+ 
+html { 
+    scroll-behavior: smooth; 
+}
+ 
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
+  color: var(--blanco);
+  line-height: 1.6;
+  background-attachment: fixed;
+}
+ 
+a { 
+    color: inherit; 
+    text-decoration: none;
+}
+ 
+/* ===== Navbar ===== */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  padding: 0.9rem clamp(1rem, 4vw, 3rem);
+  background: var(--verdeOsucro);
+}
+ 
+.logo {
+  justify-self: start;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-weight: 700;
+  font-size: 1.3rem;
+  letter-spacing: -0.02em;
+}
+ 
+.logo-marca {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  font-size: 0.95rem;
+  font-weight: 800;
+}
+ 
+.menu { 
+    display: flex; 
+    gap: 0.4rem; 
+    list-style: none; 
+}
+ 
+.menu a {
+  display: block;
+  padding: 0.5rem 1.1rem;
+  color: var(--blanco);
+  font-weight: 500;
+}
+ 
+.menu a:hover { 
+    color: var(--verdeMenta);  
+}
+ 
+.menu a.activo { 
+    color: var(--blanco);  
+}
+ 
+.login {
+  justify-self: end;
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  border: 1px solid var(--borde);
+  background: var(--vidrio);
+  transition: background 0.2s, border-color 0.2s;
+}
+ 
+.login:hover { 
+    background: var(--magenta); 
+    border-color: var(--magenta); 
+}
+ 
+.login svg { 
+    width: 20px; 
+    height: 20px; 
+}
+
+.panel {
+  max-width: 720px;
+  margin: clamp(3rem, 10vh, 6rem) auto 5rem;
+  padding: clamp(1.8rem, 5vw, 3.2rem);
+  border-radius: 24px;
+  background: var(--vidrio);
+  border: 1px solid var(--borde);
+  backdrop-filter: blur(12px);
+  text-align: center;
+}
+
+.panel h1 { 
+    font-size: clamp(1.9rem, 5vw, 2.8rem); 
+    letter-spacing: -0.03em; 
+    margin-bottom: 1.2rem; 
+}
+ 
+.panel p { 
+    color: var(--grisVerdoso); 
+    font-size: 1.08rem; 
+    margin-bottom: 1rem; 
+}
+ 
+.panel p:last-child { 
+    margin-bottom: 0; 
+}
+
+
+/*FOOTER*/
+.site-footer {
+  background-color: var(--carbonVerdoso);
+  color: var(--blanco);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Contenedor principal */
+
+.footer-container {
+  width: min(1200px, 90%);
+  margin: 0 auto;
+  padding: 64px 0 48px;
+
+  display: grid;
+  grid-template-columns: 1.3fr 1.2fr 1.3fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+/* Marca y logotipo */
+
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.footer-logo {
+  display: inline-block;
+  text-decoration: none;
+}
+
+.footer-logo img {
+  display: block;
+  width: 110px;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.footer-description {
+  max-width: 220px;
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* Columnas */
+
+.footer-column h2 {
+  margin: 4px 0 12px;
+  color: var(--color-text);
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.footer-column ul,
+.footer-column address {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 14px;
+  font-style: normal;
+  line-height: 1.5;
+}
+
+/* Enlaces */
+
+.footer-column a {
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  transition: color 180ms ease;
+}
+
+.footer-column a:hover,
+.footer-column a:focus-visible {
+  color: var(--color-primary);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Franja inferior */
+
+.footer-bottom {
+  border-top: 1px solid var(--color-border);
+  padding: 18px 5%;
+  text-align: center;
+}
+
+.footer-bottom p {
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+/* ========================================
+   VARIABLES DE COLOR
+======================================== */
+
+:root {
+    --verdeMarca: #00843D;
+    --verdeOsucro: #006B32;
+    --verdeCancha: #00A650;
+    --verdeMenta: #D9F2E3;
+    --verdeNiebla: #F1F8F3;
+    --naranjaDeportivo: #FF8737;
+    --carbonVerdoso: #26372E;
+    --blanco: #ffffff;
+    --grisVerdoso: #64736A;
+    --grisSeparacion: #E5E9E6;
+}
+
+/* ========================================
+   MAIN Y PRESENTACIÓN
+======================================== */
+
+.contenido-principal {
+    flex: 1;
+    width: 100%;
+    margin-bottom: 10px;
+    background: var(--blanco);
+    color: var(--carbonVerdoso);
+}
+
+.section-contacto {
+    width: 100%;
+    overflow: hidden;
+}
+
+.section-contacto > h1 {
+    padding: 65px 20px 10px;
+    text-align: center;
+    color: var(--carbonVerdoso);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    letter-spacing: -1px;
+}
+
+.bienvenida {
+    display: block;
+    margin: 10px 0;
+    color: var(--verdeMarca);
+    text-align: center;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.section-contacto > h2 {
+    margin: 10px auto;
+    padding: 0 20px;
+    color: var(--carbonVerdoso);
+    text-align: center;
+    font-size: clamp(1.7rem, 3.5vw, 2.5rem);
+    font-weight: 700;
+}
+
+.descripcion {
+    max-width: 700px;
+    margin: 18px auto 42px;
+    padding: 0 20px;
+    color: var(--grisVerdoso);
+    text-align: center;
+    line-height: 1.8;
+}
+
+/* ========================================
+   FORMULARIO Y CANALES
+======================================== */
+
+.section-formulario {
+    display: grid;
+    grid-template-columns: minmax(0, 1.3fr) minmax(280px, 0.8fr);
+    align-items: start;
+    gap: 30px;
+    width: min(1120px, 90%);
+    margin: 0 auto;
+}
+
+.section-formulario form,
+.canales {
+    min-width: 0;
+    padding: clamp(22px, 3vw, 35px);
+    background: var(--blanco);
+    border: 1px solid var(--grisSeparacion);
+    border-radius: 16px;
+    box-shadow: 0 8px 25px rgba(38, 55, 46, 0.06);
+}
+
+.formulario-titulo {
+    display: block;
+    margin-bottom: 25px;
+    color: var(--carbonVerdoso);
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
+.fieldset-formulario {
+    min-width: 0;
+    border: none;
+}
+
+.fieldset-formulario label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--carbonVerdoso);
+    font-size: 0.92rem;
+    font-weight: 600;
+}
+
+.fieldset-formulario input,
+.fieldset-formulario select,
+.fieldset-formulario textarea {
+    width: 100%;
+    min-height: 46px;
+    margin-bottom: 20px;
+    padding: 12px 14px;
+    color: var(--carbonVerdoso);
+    background: #FAFCFA;
+    border: 1px solid #D6E0D8;
+    border-radius: 8px;
+    font: inherit;
+    font-size: 0.94rem;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.fieldset-formulario textarea {
+    min-height: 140px;
+    resize: vertical;
+}
+
+.fieldset-formulario input:focus,
+.fieldset-formulario select:focus,
+.fieldset-formulario textarea:focus {
+    background: var(--blanco);
+    border-color: var(--verdeMarca);
+    box-shadow: 0 0 0 3px rgba(0, 132, 61, 0.12);
+}
+
+.fieldset-formulario button[type="submit"] {
+    width: 100%;
+    padding: 13px 20px;
+    color: var(--blanco);
+    background: var(--verdeMarca);
+    border: 1px solid var(--verdeMarca);
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.fieldset-formulario button[type="submit"]:hover {
+    background: var(--verdeOsucro);
+    border-color: var(--verdeOsucro);
+}
+
+/* ========================================
+   CANALES DE ATENCIÓN
+======================================== */
+
+.canales {
+    background: var(--verdeNiebla);
+}
+
+.titulo-canales {
+    margin-bottom: 10px;
+    color: var(--carbonVerdoso);
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
+.descripcion-canales {
+    margin-bottom: 22px;
+    color: var(--grisVerdoso);
+    line-height: 1.7;
+}
+
+.correo,
+.whatsapp,
+.reloj {
+    margin-top: 15px;
+    padding: 20px;
+    background: var(--blanco);
+    border: 1px solid var(--grisSeparacion);
+    border-radius: 12px;
+    transition: border-color 0.2s, transform 0.2s;
+}
+
+.correo:hover,
+.whatsapp:hover,
+.reloj:hover {
+    border-color: #A7D8B6;
+    transform: translateY(-2px);
+}
+
+.correo > i,
+.whatsapp > i,
+.reloj > i {
+    display: inline-grid;
+    width: 42px;
+    height: 42px;
+    margin-bottom: 12px;
+    place-items: center;
+    color: var(--verdeMarca);
+    background: var(--verdeMenta);
+    border-radius: 10px;
+    font-size: 1.3rem;
+}
+
+.canal-correo {
+    display: block;
+    margin-bottom: 5px;
+    color: var(--carbonVerdoso);
+    font-weight: 700;
+}
+
+.correo h5,
+.whatsapp h5,
+.reloj h5 {
+    margin-bottom: 8px;
+    color: var(--verdeOsucro);
+    font-size: 0.92rem;
+    font-weight: 600;
+    overflow-wrap: anywhere;
+}
+
+.correo p,
+.whatsapp p,
+.reloj p {
+    margin-bottom: 0;
+    color: var(--grisVerdoso);
+    font-size: 0.85rem;
+    line-height: 1.7;
+}
+
+/* ========================================
+   DISEÑO RESPONSIVE
+======================================== */
+
+@media (max-width: 900px) {
+    .section-formulario {
+        grid-template-columns: 1fr;
+        max-width: 680px;
+    }
+
+    .canales {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+    }
+
+    .titulo-canales,
+    .descripcion-canales {
+        grid-column: 1 / -1;
+    }
+
+    .correo,
+    .whatsapp,
+    .reloj {
+        margin-top: 0;
+    }
+
+    .reloj {
+        grid-column: 1 / -1;
+    }
+}
+
+@media (max-width: 576px) {
+    .section-contacto > h1 {
+        padding-top: 45px;
+    }
+
+    .descripcion {
+        margin-bottom: 30px;
+        font-size: 0.94rem;
+    }
+
+    .section-formulario {
+        width: 92%;
+        gap: 22px;
+    }
+
+    .section-formulario form,
+    .canales {
+        padding: 22px;
+    }
+
+    .canales {
+        display: block;
+    }
+
+    .correo,
+    .whatsapp,
+    .reloj {
+        margin-top: 14px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .correo,
+    .whatsapp,
+    .reloj,
+    .btn-contacto,
+    .btn-cta {
+        transition: none;
+    }
+}
