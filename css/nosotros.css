@@ -1,53 +1,189 @@
 /* ===================================================
-   Acerca de Nosotros
-   Estilos propios de esta pagina.
-   Los estilos globales (navbar, footer, colores) estan
-   en css/style.css
+   Acerca de Nosotros - Estilos responsivos
    =================================================== */
 
+.hero-nosotros {
+  position: relative;
+  width: 100%;
+  height: 50vh;
+  min-height: 320px;
+  background: url('../img/fondoDeport.jpg') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
 
-/* ===== Sobre el proyecto ===== */
+.hero-nosotros::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 1;
+}
 
+.hero-titulo {
+  position: relative;
+  z-index: 2;
+  color: var(--blanco);
+  font-size: clamp(2.2rem, 7vw, 4rem);
+  font-family: cursive, sans-serif;
+  font-weight: 400;
+  padding: 0 1rem;
+  text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.contenido {
+  max-width: 1050px;
+  margin: 3rem auto;
+  padding: 0 1.2rem;
+  color: var(--black);
+}
+
+.seccion {
+  margin-bottom: 3.5rem;
+}
+
+.seccion > h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: var(--carbonVerdoso);
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+}
+
+/* Misión y Visión */
 #proyecto {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
 }
 
-
-/* ===== Que nos hace diferentes ===== */
-
-#diferenciadores .tarjetas {
+#proyecto article {
+  background: var(--verdeNiebla);
+  border: 1px solid var(--grisSeparacion);
+  border-top: 4px solid var(--verdeCancha);
+  border-radius: 14px;
+  padding: 2rem;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.03);
 }
 
-#diferenciadores .tarjeta {
+#proyecto h2 {
+  color: var(--verdeOsucro);
+  margin-bottom: 0.8rem;
 }
 
-
-/* ===== Nuestro equipo ===== */
-
-#equipo .tarjetas-equipo {
+#proyecto p {
+  color: var(--grisVerdoso);
+  font-size: 1rem;
 }
 
-#equipo .tarjeta-dev {
+/* Diferenciadores y Equipo */
+#diferenciadores > p {
+  max-width: 800px;
+  margin: 0 auto 2rem;
+  text-align: center;
+  color: var(--grisVerdoso);
+  font-size: 1.05rem;
 }
 
-/* Animacion al pasar el mouse */
-#equipo .tarjeta-dev:hover {
+.tarjetas,
+.tarjetas-equipo {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
 }
 
+.tarjeta,
+.tarjeta-dev {
+  background: var(--blanco);
+  border: 1px solid var(--grisSeparacion);
+  border-radius: 14px;
+  padding: 1.8rem 1.5rem;
+  text-align: center;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.04);
+  transition: transform 0.25s ease, border-color 0.25s ease;
+}
 
-/* ===== Boton Reserva ahora ===== */
+.tarjeta:hover,
+.tarjeta-dev:hover {
+  transform: translateY(-4px);
+  border-color: var(--verdeCancha);
+}
+
+.tarjeta h3 {
+  color: var(--verdeOsucro);
+  margin-bottom: 0.6rem;
+  font-size: 1.2rem;
+}
+
+.tarjeta p {
+  color: var(--grisVerdoso);
+  font-size: 0.95rem;
+}
+
+.tarjeta-dev img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 1rem;
+}
+
+.tarjeta-dev h3 {
+  color: var(--carbonVerdoso);
+  margin-bottom: 0.2rem;
+}
+
+.tarjeta-dev .rol {
+  color: var(--verdeCancha);
+  font-weight: 600;
+  font-size: 0.85rem;
+  margin-bottom: 0.6rem;
+}
+
+.tarjeta-dev .bio {
+  color: var(--grisVerdoso);
+  font-size: 0.9rem;
+}
+
+/* Botón */
+#reserva { 
+  text-align: center; 
+  margin-top: 2.5rem;
+}
 
 .boton-reserva {
+  display: inline-block;
+  padding: 0.9rem 2.2rem;
+  border-radius: 999px;
+  background: var(--narajaDeportivo);
+  color: var(--blanco);
+  font-weight: 700;
+  font-size: 1.05rem;
+  box-shadow: 0 4px 15px rgba(255, 135, 55, 0.3);
+  transition: opacity 0.2s, transform 0.2s;
 }
 
-
-/* ===================================================
-   Responsive
-   =================================================== */
-
-/* Tablet */
-@media (max-width: 992px) {
+.boton-reserva:hover { 
+  opacity: 0.9; 
+  transform: scale(1.02);
 }
 
-/* Movil */
-@media (max-width: 576px) {
+/* Responsive */
+@media (max-width: 768px) {
+  #proyecto { 
+    grid-template-columns: 1fr; 
+  }
+  
+  .contenido {
+    margin: 2rem auto;
+  }
+  
+  .hero-nosotros {
+    height: 40vh;
+    min-height: 260px;
+  }
 }
