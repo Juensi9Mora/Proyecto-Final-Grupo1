@@ -4,40 +4,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Cancha</title>
-    <link rel="stylesheet" href="/css/contacto.css">
+    <title>Mi Cancha - Contacto</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/nosotros.css">
+    <link rel="stylesheet" href="../css/contacto.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 </head>
 
 <body>
 
-    <header class="navbar">
-        <a href="index.html" class="logo" aria-label="">
-            <span><img src="/img/mi_cancha_prototipo_logo.png" alt="" class="logo-marca"></span>
+    <header class="navbar" id="mainNavbar">
+        <a href="../index.html" class="logo" aria-label="">
+            <img src="../img/mi_cancha_prototipo_logo.png" alt="Logo Mi Cancha" class="logo-marca">
             <span>Mi Cancha</span>
         </a>
 
+        <!-- Botón Menú Hamburguesa para Móviles -->
+        <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú de navegación">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
         <nav aria-label="Principal">
-            <ul class="menu">
-                <li><a href="/pages/index.html" class="activo">Inicio</a></li>
-                <li><a href="/pages/nosotros.html" class="activo">Acerca de Nosotros</a></li>
+            <ul class="menu" id="navMenu">
+                <li><a href="../index.html">Inicio</a></li>
+                <li><a href="../pages/nosotros.html">Nosotros</a></li>
                 <li><a href="#">Deportes</a></li>
-                <li><a href="#">Contacto</a></li>
+                <li><a href="../pages/contacto.html" class="activo">Contacto</a></li>
             </ul>
         </nav>
 
-        <a href="#" class="login" aria-label="Iniciar sesión">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                stroke-linejoin="round" aria-hidden="true">
-                <circle cx="12" cy="8" r="4" />
-                <path d="M4 21c0-4 3.6-7 8-7s8 3 8 7" />
-            </svg>
-        </a>
+        <div class="nav-actions">
+            <a href="#" class="login" aria-label="Iniciar sesión">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" aria-hidden="true">
+                    <circle cx="12" cy="8" r="4" />
+                    <path d="M4 21c0-4 3.6-7 8-7s8 3 8 7" />
+                </svg>
+            </a>
+        </div>
     </header>
+
+    <section class="hero-nosotros">
+        <h1 class="hero-titulo">Contactanos</h1>
+    </section>
 
     <main class="contenido-principal">
         <section class="section-contacto">
-            <h1>Contacto</h1>
             <span class="bienvenida">ESTAMOS PARA AYUDARTE</span>
             <h2>Hablemos de tu próxima Jugada</h2>
             <p class="descripcion">¿Tienes preguntas sobre una reserva, necesitas ayuda o quieres registrar tu espacio
@@ -144,6 +158,7 @@
         </div>
     </footer>
 
+    <script src="../js/nosotros.js"></script>
 </body>
 
 </html>
