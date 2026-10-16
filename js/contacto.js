@@ -1,5 +1,4 @@
 const formulario = document.getElementById('formulario');
-const respuesta = document.getElementById('respuesta-formulario');
 
 formulario.addEventListener('submit', (event) => {
     event.preventDefault();
@@ -12,52 +11,47 @@ formulario.addEventListener('submit', (event) => {
     const mensaje = document.getElementById('mensaje').value.trim();
 
     // Validar campos vacíos
-    if (!nombre || !email || !telefono || !asunto || !mensaje) {
-        respuesta.textContent = 'Completa todos los campos.';
+    const campos = { Nombre: nombre, Correo: email, Teléfono: telefono, Asunto: asunto, Mensaje: mensaje };
+    const faltantes = Object.keys(campos).filter(campo => !campos[campo]);
+
+    if (faltantes.length > 0) {
+        Swal.fire({
+            icon: 'warning',
+            title: faltantes.length === 1 ? `Falta el campo: ${faltantes[0]}` : 'Campos incompletos',
+            html: faltantes.join('<br>'),
+            confirmButtonText: 'Entendido'
+        });
         return;
     }
 
-    // Validar nombre
-    if (nombre.length <= 15) {
-        respuesta.textContent = 'El nombre debe tener al menos 3 caracteres.';
+    // Validar los datos
+    let error = '';
+
+    if (nombre.length < 3) error = 'El nombre debe tener al menos 3 caracteres.';
+    else if (!/^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,}(\.[a-zA-Z]{2,})?$/.test(email))
+        error = 'Ingresa un correo electrónico válido.';
+    else if (!/^[0-9]{10}$/.test(telefono))
+        error = 'El teléfono debe tener exactamente 10 dígitos.';
+    else if (mensaje.length < 10)
+        error = 'El mensaje debe tener al menos 10 caracteres.';
+
+    if (error) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Datos no válidos',
+            text: error,
+            confirmButtonText: 'Corregir'
+        });
         return;
     }
 
-    // Validar correo electrónico
-    const patronEmail = /^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,}(\.[a-zA-Z]{2,})?$/;
+    // Mostrar datos y confirmar
+    console.log({ nombre, email, telefono, asunto, mensaje });
 
-    if (!patronEmail.test(email)) {
-        respuesta.textContent = 'Ingresa un correo electrónico válido.';
-        return;
-    }
-
-    // Validar teléfono
-    if (!/^[0-9]{10}$/.test(telefono)) {
-        respuesta.textContent = 'El teléfono debe tener 10 dígitos.';
-        return;
-    }
-
-    // Validar mensaje
-    if (mensaje.length < 10) {
-        respuesta.textContent = 'El mensaje debe tener al menos 10 caracteres.';
-        return;
-    }
-
-    // Organizar los datos
-    const contacto = {
-        nombre,
-        email,
-        telefono,
-        asunto,
-        mensaje
-    };
-
-    // Mostrar los datos en consola
-    console.log(contacto);
-
-    // Mostrar confirmación
-    respuesta.textContent = '¡Formulario validado correctamente!';
-
-    // Limpiar formulario
-    formulario.reset();
+    Swal.fire({
+        icon: 'success',
+        title: '¡Mensaje enviado!',
+        text: `Gracias, ${nombre}. Tus datos se validaron correctamente.`,
+        confirmButtonText: 'Aceptar'
+    }).then(() => formulario.reset());
 });
