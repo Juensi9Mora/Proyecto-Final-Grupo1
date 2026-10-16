@@ -149,6 +149,12 @@
   font-size: 0.9rem;
 }
 
+.article {
+  background: var(--verdeNiebla);
+  border-top: 4px solid var(--verdeCancha);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+}
+
 /* Botón */
 #reserva { 
   text-align: center; 
