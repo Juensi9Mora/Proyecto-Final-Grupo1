@@ -22,7 +22,7 @@ export function renderFooter(selector = '#footer-root') {
       <div class="footer-container">
         <div class="footer-brand">
           <a href="${ruta('index.html')}" class="footer-logo" aria-label="Mi Cancha - Inicio">
-            <img src="${ruta('img/mi_cancha_prototipo_logo.png')}" alt="Logo de Mi Cancha">
+            <img src="${ruta('img/mi_cancha_prototipo_logo.webp')}" alt="Logo de Mi Cancha">
           </a>
           <p class="footer-description">Tu próximo partido comienza aquí.</p>
         </div>

@@ -39,7 +39,7 @@
   width: 100%;
   height: 50vh;
   min-height: 320px;
-  background: url('../img/fondoDeport1.jpg') center/cover no-repeat;
+  background: url('../img/fondoDeport1.webp') center/cover no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
