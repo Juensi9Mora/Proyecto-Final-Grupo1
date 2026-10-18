@@ -17,7 +17,7 @@
     text-align: center;
     background:
         linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-        url('../img/Catalogo5.webp') center/cover no-repeat;
+        url('../img/Fondo5.webp') center/cover no-repeat;
 }
 
 .hero-catalogo h1 {
@@ -25,8 +25,8 @@
     z-index: 2;
     color: var(--blanco);
     font-size: clamp(2rem, 5vw, 3rem);
-    /* ===== no entiendo porque no toma la misma letra y estilo de las otras pestañas ===== */
-    font-style: cursive, sans-serif;
+    /* Se debia reemplazar style por family */
+    font-family: cursive, sans-serif;
     font-weight: 400;
     padding: 0 1rem;
     text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);

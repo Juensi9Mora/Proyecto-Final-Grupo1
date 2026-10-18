@@ -136,7 +136,8 @@ btnSiguiente.addEventListener("click", () => { paginaActual++; mostrarCanchas();
 galeria.addEventListener("click", (evento) => {
     const botonReservar = evento.target.closest(".btn-reservar");
     if (botonReservar) {
-        console.log("Reservar:", botonReservar.dataset.nombre);// Aquí se conectará el flujo de reserva; por ahora solo avisamos en consola (se debe revisar si aplicar a DOM)
+        console.log("Reservar:", botonReservar.dataset.nombre);// Aquí se conectará el flujo de reserva; 
+                                                                //por ahora solo avisamos en consola (se debe revisar si aplicar a DOM)
         return;
     }
 
