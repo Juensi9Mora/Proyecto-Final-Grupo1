@@ -1,29 +1,257 @@
-.catalogo {
-    padding: 30px;
+/* Colores, navbar y footer vienen de style.css (se carga antes que este archivo) */
+
+/* ===== Navbar verde fija ===== */
+.navbar.navbar-solida {
+    background-color: var(--verdeOsucro);
 }
 
-h2 {
+/* ===== Hero ===== */
+/* Con IA se valida los estilos para evitar el uso de Bootstrap */
+.hero-catalogo {
+    height: 40vh;
+    min-height: 320px; padding: 6rem 1rem 2rem;
+    padding: 4rem 1rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background:
+        linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+        url('../img/Fondo5.webp') center/cover no-repeat;
+}
+
+.hero-catalogo h1 {
+    position: relative;
+    z-index: 2;
+    color: var(--blanco);
+    font-size: clamp(2rem, 5vw, 3rem);
+    /* Se debia reemplazar style por family */
+    font-family: cursive, sans-serif;
+    font-weight: 400;
+    padding: 0 1rem;
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.hero-catalogo h1 span {
+    color: var(--narajaDeportivo);
+}
+
+/* ===== Distribución general (reemplaza el grid de Bootstrap) ===== */
+.catalogo {
+    width: min(1200px, 92%);
+    margin: 2.5rem auto 4rem;
+}
+
+.catalogo-intro {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.catalogo-intro h2 {
+    color: var(--carbonVerdoso);
+    font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+}
+
+.catalogo-intro p {
+    color: var(--grisVerdoso);
+}
+
+.catalogo-layout {
+    display: grid;
+    grid-template-columns: 280px 1fr;   /* filtros a la izquierda, tarjetas a la derecha */
+    gap: 2rem;
+    align-items: start;
+}
+
+.lateral {
+    position: sticky;
+    top: 6rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* ===== Botones (reemplazan .btn de Bootstrap) ===== */
+.boton {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border: 2px solid var(--verdeMarca);
+    border-radius: 8px;
+    background: var(--verdeMarca);
+    color: var(--blanco);
+    font: inherit;
+    font-weight: 700;
+    text-align: center;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.boton:hover {
+    background: var(--verdeOsucro);
+    border-color: var(--verdeOsucro);
+    transform: translateY(-2px);
+}
+
+.boton-borde {
+    background: transparent;
+    color: var(--verdeMarca);
+}
+
+.boton-borde:hover {
+    background: var(--verdeMenta);
     color: var(--verdeOsucro);
 }
 
-/* Tarjetas */
+.boton-naranja {
+    background: var(--narajaDeportivo);
+    border-color: var(--narajaDeportivo);
+}
+
+.boton-naranja:hover {
+    background: #E9731F;
+    border-color: #E9731F;
+}
+
+.boton:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.boton-completo {
+    width: 100%;
+}
+
+/* ===== Filtros (tarjeta con formulario) ===== */
+.filtros {
+    background: var(--verdeNiebla);
+    border: 1px solid var(--grisSeparacion);
+    border-top: 4px solid var(--narajaDeportivo);
+    border-radius: 14px;
+    padding: 1.5rem;
+}
+
+.filtros h3 {
+    margin-bottom: 1rem;
+    color: var(--verdeOsucro);
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.filtros label {
+    display: block;
+    margin-bottom: 0.3rem;
+    color: var(--carbonVerdoso);
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.filtros select {
+    width: 100%;
+    margin-bottom: 1rem;
+    padding: 0.6rem 0.7rem;
+    border: 1px solid #D6E0D8;
+    border-radius: 8px;
+    background: var(--blanco);
+    color: var(--carbonVerdoso);
+    font: inherit;
+}
+
+.filtros select:focus {
+    outline: none;
+    border-color: var(--verdeMarca);
+    box-shadow: 0 0 0 3px rgba(0, 132, 61, 0.15);
+}
+
+/* ===== Publicidad con video ===== */
+.promo {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    min-height: 260px;
+    overflow: hidden;
+    border-radius: 14px;
+    color: var(--blanco);
+}
+
+.promo-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Capa oscura para que el texto se lea sobre el video */
+.promo::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(38, 55, 46, 0.95), rgba(38, 55, 46, 0.15));
+}
+
+.promo-texto {
+    position: relative;
+    z-index: 1;
+    padding: 1.2rem;
+}
+
+.promo-texto h3 {
+    font-size: 1.3rem;
+    font-style: italic;
+    text-transform: uppercase;
+}
+
+.promo-texto p {
+    margin-bottom: 0.8rem;
+    font-size: 0.9rem;
+}
+
+/* ===== Galería de tarjetas (reemplaza row-cols de Bootstrap) ===== */
+.resultado {
+    margin-bottom: 1rem;
+    color: var(--grisVerdoso);
+}
+
+.galeria {
+    
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.sin-resultados {
+    grid-column: 1 / -1;
+    text-align: center;
+    color: var(--grisVerdoso);
+}
+
+/* ===== Tarjeta ===== */
 .letter-card {
+    position: relative;
     perspective: 1000px;
-    max-width: 320px;
-    height: 380px;
-    margin: 0 auto;
+    height: 400px;
+    border-radius: 14px;
     cursor: pointer;
+    transition: transform 0.3s ease, opacity 0.3s ease, filter 0.3s ease;
+}
+
+.letter-card:hover {
+    transform: translateY(-8px);       /* al pasar el mouse sube un poco */
 }
 
 .card-inner {
     position: relative;
     width: 100%;
     height: 100%;
-    transition: transform 0.6s;
+    transition: transform 0.6s ease-in-out;
     transform-style: preserve-3d;
 }
 
-/* Hacer Click y funcionar con el JS */
 .letter-card.flipped .card-inner {
     transform: rotateY(180deg);
 }
@@ -31,54 +259,159 @@ h2 {
 .card-front,
 .card-back {
     position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
+    -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
-    border-radius: 12px;
+    border-radius: 14px;
     overflow: hidden;
 }
 
-/* Vista Frontal */
+/* Frente */
 .card-front {
     background: var(--blanco);
     border: 1px solid var(--grisSeparacion);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+}
+
+.card-foto-caja {
+    position: relative;
 }
 
 .card-foto {
+    display: block;
     width: 100%;
-    height: 180px;
+    height: 210px;
     object-fit: cover;
 }
 
+/* Etiqueta naranja inclinada con el deporte */
+.etiqueta {
+    position: absolute;
+    top: 14px;
+    left: -6px;
+    padding: 0.25rem 1rem;
+    background: var(--narajaDeportivo);
+    color: var(--blanco);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transform: skewX(-12deg);
+}
+
 .card-datos {
-    padding: 1rem;
+    padding: 1rem 1.2rem;
     text-align: center;
 }
 
 .card-nombre {
-    font-size: 1.15rem;
     color: var(--carbonVerdoso);
+    font-size: 1.2rem;
+}
+
+.card-ciudad {
+    color: var(--grisVerdoso);
+    font-size: 0.9rem;
 }
 
 .card-precio {
-    font-weight: 700;
+    margin: 0.4rem 0 0.8rem;
     color: var(--verdeOsucro);
+    font-weight: 700;
 }
 
-/* Vista Lateral */
+/* Reverso */
 .card-back {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: var(--verdeCancha);
-    color: var(--black);
+    gap: 0.5rem;
+    padding: 1rem;
+    text-align: center;
+    color: var(--blanco);
+    background: linear-gradient(160deg, var(--verdeMarca), var(--verdeOsucro));
     transform: rotateY(180deg);
 }
 
 .img-balon {
-    width: 250px;
-    height: 250px;
+    width: 150px;
+    height: 150px;
     object-fit: cover;
-    border-radius: 8px;
+    border-radius: 10px;
+    border: 3px solid var(--blanco);
+}
+
+.card-back h3 {
+    font-size: 1.25rem;
+    text-transform: uppercase;
+}
+
+.card-back .detalle {
+    color: var(--verdeMenta);
+    font-size: 0.85rem;
+}
+
+/* ===== Tarjeta seleccionada: sobresale con brillo naranja ===== */
+.letter-card.seleccionada {
+    z-index: 5;
+    transform: scale(1.05);
+    animation: pulso 1.6s ease-in-out infinite;
+}
+
+@keyframes pulso {
+    0%, 100% {
+        box-shadow: 0 0 0 3px var(--narajaDeportivo), 0 25px 45px rgba(0, 132, 61, 0.45);
+    }
+    50% {
+        box-shadow: 0 0 0 7px rgba(255, 135, 55, 0.55), 0 30px 55px rgba(0, 132, 61, 0.6);
+    }
+}
+
+/* Las demás se apagan para resaltar la elegida */
+.galeria.hay-seleccion .letter-card:not(.seleccionada) {
+    opacity: 0.45;
+    filter: grayscale(0.7);
+    transform: scale(0.97);
+}
+
+/* ===== Paginación ===== */
+.paginacion {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 2rem;
+    padding: 1rem;
+    border: 1px dashed var(--grisSeparacion);
+    border-radius: 12px;
+    color: var(--grisVerdoso);
+}
+
+/* ===== Responsive (reemplaza los breakpoints de Bootstrap) ===== */
+@media (max-width: 900px) {
+    .catalogo-layout {
+        grid-template-columns: 1fr;     /* filtros arriba, tarjetas abajo */
+    }
+
+    .lateral {
+        position: static;
+    }
+}
+
+@media (max-width: 600px) {
+    .galeria {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .letter-card.seleccionada {
+        animation: none;
+        box-shadow: 0 0 0 3px var(--narajaDeportivo);
+    }
 }

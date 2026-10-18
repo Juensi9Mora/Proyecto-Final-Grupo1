@@ -15,7 +15,7 @@ export function renderNavbar(selector = '#navbar-root') {
   placeholder.outerHTML = `
     <header class="navbar" id="mainNavbar">
       <a href="${ruta('index.html')}" class="logo" aria-label="Mi Cancha Inicio">
-        <img src="${ruta('img/mi_cancha_prototipo_logo.png')}" alt="Logo Mi Cancha" class="logo-marca">
+        <img src="${ruta('img/mi_cancha_prototipo_logo.webp')}" alt="Logo Mi Cancha" class="logo-marca">
         <span class="logo-text">Mi Cancha</span>
       </a>
 
