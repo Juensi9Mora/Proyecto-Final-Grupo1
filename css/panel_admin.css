@@ -1,0 +1,208 @@
+/* COLORES */
+:root {
+    --verdeMarca: #00843D;
+    --verdeOsucro: #006B32;
+    --verdeMenta: #D9F2E3;
+    --verdeNiebla: #F1F8F3;
+    --carbonVerdoso: #26372E;
+    --blanco: #fff;
+    --grisVerdoso: #64736A;
+    --grisSeparacion: #E5E9E6;
+}
+
+/* CONTENEDOR */
+main.contenedor {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 20px;
+    color: var(--carbonVerdoso);
+    font-family: Arial, sans-serif;
+}
+
+main.contenedor h2 {
+    color: var(--verdeMarca);
+}
+
+[hidden] {
+    display: none !important;
+}
+
+/* FORMULARIOS */
+main.contenedor form,
+#seccion-detalles {
+    display: grid;
+    gap: 12px;
+}
+
+#formulario-inicial,
+#seccion-detalles {
+    padding: 20px;
+    border: 1px solid var(--grisSeparacion);
+    border-radius: 10px;
+    background: var(--blanco);
+}
+
+#seccion-detalles {
+    margin-top: 20px;
+}
+
+main.contenedor label {
+    font-weight: bold;
+}
+
+main.contenedor input,
+main.contenedor select {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px;
+    border: 1px solid var(--grisSeparacion);
+    border-radius: 8px;
+    color: var(--carbonVerdoso);
+}
+
+main.contenedor input:focus,
+main.contenedor select:focus {
+    outline: 2px solid var(--verdeMarca);
+}
+
+main.contenedor input[type="file"] {
+    background: var(--verdeNiebla);
+}
+
+/* IMÁGENES */
+#vista-imagen {
+    max-width: 100%;
+    max-height: 180px;
+    object-fit: cover;
+}
+
+.imagen-cancha {
+    width: 80px;
+    height: 60px;
+    border-radius: 6px;
+    object-fit: cover;
+}
+
+/* BOTONES */
+main.contenedor button {
+    padding: 10px 14px;
+    border: none;
+    border-radius: 7px;
+    background: var(--verdeMarca);
+    color: var(--blanco);
+    font-weight: bold;
+    cursor: pointer;
+}
+
+main.contenedor button:hover:not(:disabled) {
+    background: var(--verdeOsucro);
+}
+
+main.contenedor button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+main.contenedor #cancelar {
+    background: var(--grisSeparacion);
+    color: var(--carbonVerdoso);
+}
+
+/* TABLA */
+#registrar_cancha {
+    margin-top: 20px;
+    overflow-x: auto;
+    border: 1px solid var(--grisSeparacion);
+    border-radius: 8px;
+}
+
+main.contenedor table {
+    width: 100%;
+    border-collapse: collapse;
+    white-space: nowrap;
+}
+
+main.contenedor thead {
+    background: var(--verdeMenta);
+}
+
+main.contenedor th,
+main.contenedor td {
+    padding: 12px;
+    border-bottom: 1px solid var(--grisSeparacion);
+    text-align: left;
+}
+
+main.contenedor th {
+    color: var(--verdeOsucro);
+}
+
+main.contenedor tbody tr:hover {
+    background: var(--verdeNiebla);
+}
+
+main.contenedor td button {
+    margin: 3px;
+    padding: 8px 10px;
+    font-size: 12px;
+}
+
+/* ACTUALIZAR: AMARILLO */
+main.contenedor button[data-accion="editar"] {
+    background: #FFC107;
+    color: var(--carbonVerdoso);
+}
+
+/* ELIMINAR: ROJO */
+main.contenedor button[data-accion="eliminar"] {
+    background: #DC3545;
+    color: var(--blanco);
+}
+
+/* ACTIVAR / DESACTIVAR */
+main.contenedor button[data-accion="estado"] {
+    background: var(--verdeMenta);
+    color: var(--verdeOsucro);
+}
+
+/* MENSAJE VACÍO */
+.vacio {
+    padding: 20px;
+    background: var(--verdeNiebla);
+    color: var(--grisVerdoso);
+    text-align: center;
+}
+
+/* RESPONSIVE: TABLETAS */
+@media (max-width: 768px) {
+    main.contenedor {
+        margin: 20px auto;
+        padding: 15px;
+    }
+
+    main.contenedor table {
+        min-width: 850px;
+    }
+}
+
+/* RESPONSIVE: CELULARES */
+@media (max-width: 480px) {
+    main.contenedor {
+        margin: 10px auto;
+        padding: 10px;
+    }
+
+    #formulario-inicial,
+    #seccion-detalles {
+        padding: 12px;
+    }
+
+    main.contenedor h2 {
+        font-size: 20px;
+    }
+
+    main.contenedor input,
+    main.contenedor select {
+        font-size: 14px;
+    }
+}
