@@ -206,3 +206,17 @@ main.contenedor button[data-accion="estado"] {
         font-size: 14px;
     }
 }
+ /* VALIDACIONES */
+  main.contenedor .is-invalid {
+      border: 2px solid #dc3545;
+  }
+
+  main.contenedor .is-valid {
+      border: 2px solid #198754;
+  }
+
+  .invalid-feedback {
+      color: #dc3545;
+      font-size: 0.875rem;
+      margin-top: 4px;
+  }
