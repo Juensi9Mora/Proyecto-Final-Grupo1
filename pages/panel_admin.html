@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard administrador</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/panel_admin.css">
+</head>
+
+<body>
+
+    <!-- Navbar Principal Fijo -->
+    <div id="navbar-root"></div>
+
+    <main class="contenedor">
+        <h2 class="inicio-registro">Registrar cancha</h2>
+
+        <form action="" id="formulario-inicial">
+            <label for="nombre-inicial">Nombre Cancha</label>
+            <input type="text" id="nombre-inicial" name="nombre-inicial" required>
+            <button>Crear Cancha</button>
+        </form>
+
+        <section id="seccion-detalles" hidden>
+            <h2 id="titulo-detalles">Información de la cancha</h2>
+            <form action="" id="formulario-detalles">
+                <label for="nombre-cancha">Nombre</label>
+                <input type="text" id="nombre-cancha" name="nombre-cancha" required>
+
+                <label for="imagen">Imagen de la cancha</label>
+                <input type="file" id="imagen" name="imagen" accept="image/*" required>
+                <img id="vista-imagen" alt="Vista previa de la cancha" hidden>
+
+                <label for="pais">País</label>
+                <select id="pais" name="pais" required>
+                    <option value="Colombia">Colombia</option>
+                    <option value="Peru">Perú</option>
+                </select>
+
+                <label for="ciudad">Ciudad</label>
+                <select id="ciudad" name="ciudad" required></select>
+
+                <label for="categoria">Categoría</label>
+                <select id="categoria" name="categoria" required>
+                    <option value="Fútbol">Fútbol</option>
+                    <option value="Baloncesto">Baloncesto</option>
+                    <option value="Voleibol">Voleibol</option>
+                    <option value="Tenis">Tenis</option>
+                </select>
+
+                <label for="moneda">Moneda</label>
+                <select id="moneda" name="moneda" required>
+                    <option value="COP">COP</option>
+                    <option value="PEN">PEN</option>
+                </select>
+
+                <label for="valor">Valor por hora</label>
+                <input type="number" id="valor" name="valor" required>
+
+                <button id="guardar">Guardar</button>
+                <button id="cancelar">Cancelar</button>
+            </form>
+        </section>
+
+        <h2>Canchas registradas</h2>
+        <div id="registrar_cancha"></div>
+    </main>
+
+
+
+    <div id="footer-root"></div>
+
+    <script type="module" src="../js/admin/app.js"></script>
+    <script type="module" src="../js/main.js"></script>
+</body>
+
+</html>
