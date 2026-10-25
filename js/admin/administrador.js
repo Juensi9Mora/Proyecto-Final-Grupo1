@@ -23,7 +23,7 @@ export class Administrador {
             filas += `
                 <tr>
                     <td>${i + 1}</td>
-                    <td><img src="${c.imagen}" width="60" alt="Cancha"></td>
+                    <td><img src="${c.imagen}" class="imagen-cancha" alt="Cancha ${c.nombre}"></td>
                     <td>${c.nombre}</td>
                     <td>${c.pais}</td>
                     <td>${c.ciudad}</td>
