@@ -1,6 +1,7 @@
 import { Cancha } from "./cancha.js";
 import { capturarDatos, validarCancha, mostrarErrores, limpiarErrores } from "./validaciones-formulario-admin.js";
 
+const MONEDAS = { Colombia: "COP", Peru: "PEN" };
 let formularioInicial = document.getElementById("formulario-inicial");
 let formulario = document.getElementById("formulario-detalles");
 let seccion = document.getElementById("seccion-detalles");
@@ -23,11 +24,12 @@ function actualizarCiudades() {
 
     if (pais.value === "Colombia") {
         ciudad.innerHTML += '<option>Bogotá</option><option>Medellín</option>';
-        moneda.value = "COP";
     } else if (pais.value === "Peru") {
         ciudad.innerHTML += '<option>Lima</option><option>Arequipa</option>';
-        moneda.value = "PEN";
-    } else moneda.value = "";
+    } 
+
+    moneda.value = MONEDAS[pais.value] || "";
+        
 }
 
 function limpiar() {
@@ -45,7 +47,6 @@ export function cargarCancha(cancha, indice) {
     actualizarCiudades();
     ciudad.value = cancha.ciudad;
     categoria.value = cancha.categoria;
-    moneda.value = cancha.moneda;
     valor.value = cancha.valor;
     imagen.required = false;
     vista.src = cancha.imagen;
@@ -100,7 +101,7 @@ export function iniciarFormularios(administrador) {
         function guardarDatos(foto) {
             let activa = edicion === -1 ? true : administrador.canchas[edicion].activa;
             let cancha = new Cancha(nombre.value.trim(), pais.value, ciudad.value,
-                categoria.value, moneda.value, Number(valor.value), foto, activa);
+                categoria.value, MONEDAS[pais.value], Number(valor.value), foto, activa);
 
             administrador.guardarCancha(cancha, edicion);
             console.log(JSON.stringify(administrador.canchas.map(({ imagen, ...datos }) => datos), null, 2));

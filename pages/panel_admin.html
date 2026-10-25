@@ -14,6 +14,10 @@
     <!-- Navbar Principal Fijo -->
     <div id="navbar-root"></div>
 
+    <section class="hero-nosotros-admin">
+        <h1 class="hero-titulo-admin">Panel administrativo</h1>
+    </section>
+
     <main class="contenedor">
         <h2 class="inicio-registro">Registrar cancha</h2>
 
@@ -35,6 +39,7 @@
 
                 <label for="pais">País</label>
                 <select id="pais" name="pais" required>
+                    <option value="">Selecciona un Pais</option>
                     <option value="Colombia">Colombia</option>
                     <option value="Peru">Perú</option>
                 </select>
@@ -51,7 +56,8 @@
                 </select>
 
                 <label for="moneda">Moneda</label>
-                <select id="moneda" name="moneda" required>
+                <select id="moneda" name="moneda" required disabled>
+                    <option value="">Se asigna según el país</option>
                     <option value="COP">COP</option>
                     <option value="PEN">PEN</option>
                 </select>
@@ -59,12 +65,12 @@
                 <label for="valor">Valor por hora</label>
                 <input type="number" id="valor" name="valor" required>
 
-                <button id="guardar">Guardar</button>
-                <button id="cancelar">Cancelar</button>
+                <button type="submit" id="guardar">Guardar</button>
+                <button type="button" id="cancelar">Cancelar</button>
             </form>
         </section>
 
-        <h2>Canchas registradas</h2>
+        <h2 class="subtituloCanchaRegistrada">Canchas registradas</h2>
         <div id="registrar_cancha"></div>
     </main>
 
