@@ -1,4 +1,5 @@
 import { Cancha } from "./cancha.js";
+import { capturarDatos, validarCancha, mostrarErrores, limpiarErrores } from "./validaciones-formulario-admin.js";
 
 let formularioInicial = document.getElementById("formulario-inicial");
 let formulario = document.getElementById("formulario-detalles");
@@ -34,6 +35,7 @@ function limpiar() {
     vista.hidden = seccion.hidden = true;
     imagen.required = true;
     edicion = -1;
+    limpiarErrores();
 }
 
 export function cargarCancha(cancha, indice) {
@@ -86,12 +88,14 @@ export function iniciarFormularios(administrador) {
 
     formulario.addEventListener("submit", function(evento) {
         evento.preventDefault();
-        let archivo = imagen.files[0];
 
-        if (!archivo && edicion === -1) {
-            alert("Selecciona una imagen.");
-            return;
-        }
+        // validaciones
+        let errores = validarCancha(capturarDatos());
+        if (edicion !== -1) delete errores.imagen;
+        mostrarErrores(errores);
+        if (Object.keys(errores).length > 0) return;
+
+        let archivo = imagen.files[0];
 
         function guardarDatos(foto) {
             let activa = edicion === -1 ? true : administrador.canchas[edicion].activa;
@@ -99,6 +103,7 @@ export function iniciarFormularios(administrador) {
                 categoria.value, moneda.value, Number(valor.value), foto, activa);
 
             administrador.guardarCancha(cancha, edicion);
+            console.log(JSON.stringify(administrador.canchas.map(({ imagen, ...datos }) => datos), null, 2));
             nombreInicial.value = cancha.nombre;
             limpiar();
         }
