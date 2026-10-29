@@ -1,33 +1,33 @@
 // Crear listas por cancha
 const canchas = [
     // Baloncesto Colombia
-    { nombre: "Cancha El Paraiso", ciudad: "Medellín, Colombia", precio: "COP 60.000 / hora", imagen: "../img/Cancha-Baloncesto.webp", balon: "../img/aro.webp", deporte: "Baloncesto" },
+    { nombre: "Cancha El Paraiso", ciudad: "Medellín", pais: "Colombia", precio: "COP 60.000 / hora", imagen: "../img/Cancha-Baloncesto.webp", balon: "../img/aro.webp", deporte: "Baloncesto" },
     // Futbol Colombia
-    { nombre: "Cancha Marbella", ciudad: "Bogotá, Colombia", precio: "COP 90.000 / hora", imagen: "../img/Cancha-Futbol.webp", balon: "../img/Balon-Futbol.webp", deporte: "Fútbol" },
+    { nombre: "Cancha Marbella", ciudad: "Bogotá", pais: "Colombia", precio: "COP 90.000 / hora", imagen: "../img/Cancha-Futbol.webp", balon: "../img/Balon-Futbol.webp", deporte: "Fútbol" },
     // Volleyball Colombia
-    { nombre: "Cancha El Remate", ciudad: "Medellin, Colombia", precio: "COP 70.000 / hora", imagen: "../img/Cancha-Volley.webp", balon: "../img/Balon-Volley.webp", deporte: "Volleyball" },
+    { nombre: "Cancha El Remate", ciudad: "Medellín", pais: "Colombia", precio: "COP 70.000 / hora", imagen: "../img/Cancha-Volley.webp", balon: "../img/Balon-Volley.webp", deporte: "Volleyball" },
     // Tenis Colombia
-    { nombre: "Cancha El Salitre", ciudad: "Bogota, Colombia", precio: "COP 150.000 / hora", imagen: "../img/Cancha-Tenis.webp", balon: "../img/pelota-tenis.webp", deporte: "Tennis" },
+    { nombre: "Cancha El Salitre", ciudad: "Bogotá", pais: "Colombia", precio: "COP 150.000 / hora", imagen: "../img/Cancha-Tenis.webp", balon: "../img/pelota-tenis.webp", deporte: "Tennis" },
     // Futsal Colombia
-    { nombre: "Cancha Arena 7", ciudad: "Bogota, Colombia", precio: "COP 80.000 / hora", imagen: "../img/futsal.webp", balon: "../img/Futsal-1.webp", deporte: "Futsal" },
+    { nombre: "Cancha Arena 7", ciudad: "Bogotá", pais: "Colombia", precio: "COP 80.000 / hora", imagen: "../img/futsal.webp", balon: "../img/Futsal-1.webp", deporte: "Futsal" },
     // NFL Colombia
-    { nombre: "Cancha SanCristobal", ciudad: "Medellin, Colombia", precio: "COP 180.000 / hora", imagen: "../img/Cancha-Americano.webp", balon: "../img/Balon-Americano.webp", deporte: "Futbol Americano" },
+    { nombre: "Cancha SanCristobal", ciudad: "Medellín", pais: "Colombia", precio: "COP 180.000 / hora", imagen: "../img/Cancha-Americano.webp", balon: "../img/Balon-Americano.webp", deporte: "Futbol Americano" },
     // MLB Colombia
-    { nombre: "Cancha Jardines", ciudad: "Bogota, Colombia", precio: "COP 180.000 / hora", imagen: "../img/Cancha-Beisbol.webp", balon: "../img/Pelota-Beisbol.webp", deporte: "Beisbol" },
+    { nombre: "Cancha Jardines", ciudad: "Bogotá", pais: "Colombia", precio: "COP 180.000 / hora", imagen: "../img/Cancha-Beisbol.webp", balon: "../img/Pelota-Beisbol.webp", deporte: "Beisbol" },
     // Volleyball Peru
-    { nombre: "Coliseo Arequipa", ciudad: "Arequipa, Perú", precio: "PEN 80.00 / hora", imagen: "../img/Volley.webp", balon: "../img/VolleyB.webp", deporte: "Voley" },
+    { nombre: "Coliseo Arequipa", ciudad: "Arequipa", pais: "Perú", precio: "PEN 80.00 / hora", imagen: "../img/Volley.webp", balon: "../img/VolleyB.webp", deporte: "Volleyball" },
     // Baloncesto Peru
-    { nombre: "Cancha Elbows", ciudad: "Lima, Perú", precio: "PEN 180.000 / hora", imagen: "../img/Baloncesto.webp", balon: "../img/Balon-Baloncesto.webp", deporte: "Baloncesto" },
+    { nombre: "Cancha Elbows", ciudad: "Lima", pais: "Perú", precio: "PEN 180.000 / hora", imagen: "../img/Baloncesto.webp", balon: "../img/Balon-Baloncesto.webp", deporte: "Baloncesto" },
     // Futbol Peru
-    { nombre: "Cancha DeporGol", ciudad: "Arequipa, Perú", precio: "PEN 90.00 / hora", imagen: "../img/Futbol.webp", balon: "../img/Balon-2.webp", deporte: "Fútbol" },
+    { nombre: "Cancha DeporGol", ciudad: "Arequipa", pais: "Perú", precio: "PEN 90.00 / hora", imagen: "../img/Futbol.webp", balon: "../img/Balon-2.webp", deporte: "Fútbol" },
     // Balonmano Peru
-    { nombre: "Cancha Campo de Marte", ciudad: "Lima, Perú", precio: "PEN 100.00 / hora", imagen: "../img/Cancha-Balon-mano.webp", balon: "../img/Balon-Mano.webp", deporte: "Balón mano" },
+    { nombre: "Cancha Campo de Marte", ciudad: "Lima", pais: "Perú", precio: "PEN 100.00 / hora", imagen: "../img/Cancha-Balon-mano.webp", balon: "../img/Balon-Mano.webp", deporte: "Balón mano" },
     // Tenis Perú
-    { nombre: "Cancha TenniSport", ciudad: "Lima, Perú", precio: "PEN 200.00 / hora", imagen: "../img/Tenis.webp", balon: "../img/TenisP.webp", deporte: "Tennis" },
+    { nombre: "Cancha TenniSport", ciudad: "Lima", pais: "Perú", precio: "PEN 200.00 / hora", imagen: "../img/Tenis.webp", balon: "../img/TenisP.webp", deporte: "Tennis" },
     // MLB Perú
-    { nombre: "Cancha RedDiamond ", ciudad: "Arequipa, Perú", precio: "PEN 180.00 / hora", imagen: "../img/Beisbol.webp", balon: "../img/BeisbolC.webp", deporte: "Beisbol" },
+    { nombre: "Cancha RedDiamond ", ciudad: "Arequipa", pais: "Perú", precio: "PEN 180.00 / hora", imagen: "../img/Beisbol.webp", balon: "../img/BeisbolC.webp", deporte: "Beisbol" },
     // NFL Peru
-    { nombre: "El Centinela", ciudad: "Lima, Perú", precio: "PEN 190.00 / hora", imagen: "../img/NFL.webp", balon: "../img/NFLC.webp", deporte: "Futbol Americano" },
+    { nombre: "El Centinela", ciudad: "Lima", pais: "Perú", precio: "PEN 190.00 / hora", imagen: "../img/NFL.webp", balon: "../img/NFLC.webp", deporte: "Futbol Americano" },
 
 ];
 
@@ -116,6 +116,19 @@ function mostrarCanchas() {
     btnSiguiente.disabled = paginaActual === totalPaginas;
 }
 
+// Llena el filtro de deportes con los que existen en la lista de canchas
+// (Set quita los repetidos, así cada deporte aparece una sola vez)
+function llenarFiltroDeportes() {
+    const deportes = [...new Set(canchas.map(cancha => cancha.deporte))].sort();
+
+    deportes.forEach(deporte => {
+        const opcion = document.createElement("option");
+        opcion.value = deporte;
+        opcion.textContent = deporte;
+        filtroDeporte.appendChild(opcion);
+    });
+}
+
 //Se investiga versatilidad de tarjetas y eventos al aplicar click
 
 // Al cambiar un filtro volvemos a la página 1
@@ -158,4 +171,5 @@ galeria.addEventListener("click", (evento) => {
     }
 });
 
+llenarFiltroDeportes();
 mostrarCanchas();

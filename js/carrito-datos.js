@@ -48,7 +48,7 @@ function agregarAlCarrito(cancha) {
         const { moneda, valor } = convertirPrecio(cancha.precio);
         carrito.push({
             nombre: cancha.nombre,
-            ciudad: cancha.ciudad,
+            ciudad: `${cancha.ciudad}, ${cancha.pais}`,
             deporte: cancha.deporte,
             imagen: cancha.imagen,
             moneda,
