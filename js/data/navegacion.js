@@ -3,6 +3,7 @@ export const menuPrincipal = [
   { id: 'nosotros',         texto: 'Nosotros',  href: 'pages/nosotros.html' },
   { id: 'catalogo-canchas', texto: 'Deportes',  href: 'pages/catalogo-canchas.html' },
   { id: 'contacto',         texto: 'Contacto',  href: 'pages/contacto.html' },
+  { id: 'carrito',          texto: 'Reservas',  href: 'pages/carrito.html' },
   { id: 'panel_admin',      texto: 'panel_admin',  href: 'pages/panel_admin.html' }
 ];
 

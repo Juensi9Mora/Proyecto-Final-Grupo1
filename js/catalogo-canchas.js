@@ -136,8 +136,9 @@ btnSiguiente.addEventListener("click", () => { paginaActual++; mostrarCanchas();
 galeria.addEventListener("click", (evento) => {
     const botonReservar = evento.target.closest(".btn-reservar");
     if (botonReservar) {
-        console.log("Reservar:", botonReservar.dataset.nombre);// Aquí se conectará el flujo de reserva; 
-                                                                //por ahora solo avisamos en consola (se debe revisar si aplicar a DOM)
+        // Se busca la cancha por su nombre y se guarda en el carrito (carrito-datos.js)
+        const cancha = canchas.find(c => c.nombre === botonReservar.dataset.nombre);
+        if (cancha) agregarAlCarrito(cancha);
         return;
     }
 

@@ -377,3 +377,34 @@ a {
     padding: 1rem 4%;
   }
 }
+/* ===== Mensajes de alerta (carrito de reservas) ===== */
+.mensajes {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 2000;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-width: min(360px, calc(100% - 2rem));
+}
+
+.mensaje {
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  border-left: 5px solid;
+  background: var(--blanco);
+  color: var(--carbonVerdoso);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+  font-weight: 600;
+  animation: mensaje-entrar 0.25s ease-out;
+}
+
+.mensaje-exito { border-color: var(--verdeCancha); }
+.mensaje-alerta { border-color: var(--narajaDeportivo); }
+.mensaje-error { border-color: #C0392B; }
+
+@keyframes mensaje-entrar {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi Cancha - Mis Reservas</title>
+
+  <!-- Estilos de Mi Cancha (se reutilizan botones y hero del catálogo) -->
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/nosotros.css">
+  <link rel="stylesheet" href="../css/catalogo-canchas.css">
+  <link rel="stylesheet" href="../css/carrito.css">
+</head>
+
+<body>
+
+  <!-- Navbar (misma que las demás páginas) -->
+  <div id="navbar-root"></div>
+
+  <section class="hero-catalogo">
+    <h1>Mis <span>reservas</span></h1>
+  </section>
+
+  <main class="catalogo">
+
+    <section class="catalogo-intro">
+      <h2>Revisa tus canchas antes de jugar</h2>
+      <p>Ajusta las horas de cada cancha o elimina las que ya no necesites.</p>
+    </section>
+
+    <div class="carrito-layout">
+
+      <!-- Lista de canchas seleccionadas (la crea carrito.js) -->
+      <section class="carrito-lista" id="lista-carrito" aria-live="polite"></section>
+
+      <!-- Resumen con totales por moneda -->
+      <aside class="carrito-resumen">
+        <h3>Resumen</h3>
+        <p class="total-linea"><span>Horas reservadas</span><strong id="resumen-horas">0</strong></p>
+        <div id="resumen-totales"></div>
+
+        <a href="catalogo-canchas.html" class="boton boton-borde boton-completo">Seguir explorando</a>
+        <button type="button" id="btn-vaciar" class="boton boton-naranja boton-completo">Vaciar reservas</button>
+      </aside>
+
+    </div>
+  </main>
+
+  <div id="footer-root"></div>
+
+  <script type="module" src="../js/main.js"></script>
+  <script src="../js/carrito-datos.js"></script>
+  <script src="../js/carrito.js"></script>
+</body>
+
+</html>
