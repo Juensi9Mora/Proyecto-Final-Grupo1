@@ -47,12 +47,48 @@ const btnLimpiar = document.getElementById("btn-limpiar");
 const filtroDeporte = document.getElementById("filtro-deporte");
 const filtroPais = document.getElementById("filtro-pais");
 
+// Obtener las canchas registradas desde el panel administrativo
+function obtenerCanchasAdmin() {
+    return JSON.parse(localStorage.getItem("canchasMiCancha")) || [];
+}
+
+// Unir las canchas originales con las del administrador
+function obtenerTodasLasCanchas() {
+
+    // Agregar país a las canchas originales sin modificar el array
+    let canchasOriginales = canchas.map(cancha => ({
+        ...cancha,
+        pais: cancha.ciudad.includes("Perú") ? "Perú" : "Colombia"
+    }));
+
+    // Obtener registros del administrador
+    let canchasAdmin = obtenerCanchasAdmin();
+
+    // Preparar las canchas del administrador para el catálogo
+    let canchasRegistradas = canchasAdmin
+        .filter(cancha => cancha.activa)
+        .map(cancha => ({
+            nombre: cancha.nombre,
+            ciudad: `${cancha.ciudad}, ${cancha.pais === "Peru" ? "Perú" : cancha.pais}`,
+            pais: cancha.pais === "Peru" ? "Perú" : cancha.pais,
+            precio: `${cancha.moneda} ${Number(cancha.valor).toLocaleString("es-CO")} / hora`,
+            imagen: cancha.imagen,
+            balon: "../img/Balon-2.webp",
+            deporte: cancha.categoria,
+            detalle: `Cancha deportiva ubicada en ${cancha.ciudad}`
+        }));
+
+    return [...canchasRegistradas, ...canchasOriginales];
+}
+
 // para filtrar se investiga como dejar solo las canchas que cumplen los filtros elegidos
 function filtrarCanchas() {
     const deporte = filtroDeporte.value;
     const pais = filtroPais.value;
 
-    return canchas.filter(cancha =>
+    let todasLasCanchas = obtenerTodasLasCanchas();
+
+    return todasLasCanchas.filter(cancha =>
         (deporte === "" || cancha.deporte === deporte) &&
         (pais === "" || cancha.pais === pais)
     );
@@ -71,7 +107,7 @@ function crearTarjeta(cancha) {
                     </div>
                     <div class="card-datos">
                         <h2 class="card-nombre">${cancha.nombre}</h2>
-                        <p class="card-ciudad">${cancha.ciudad}, ${cancha.pais}</p>
+                        <p class="card-ciudad">${cancha.ciudad}</p>
                         <p class="card-precio">${cancha.precio}</p>
                         <button class="boton btn-reservar" data-nombre="${cancha.nombre}">Reservar</button>
                     </div>
@@ -137,7 +173,7 @@ galeria.addEventListener("click", (evento) => {
     const botonReservar = evento.target.closest(".btn-reservar");
     if (botonReservar) {
         console.log("Reservar:", botonReservar.dataset.nombre);// Aquí se conectará el flujo de reserva; 
-                                                                //por ahora solo avisamos en consola (se debe revisar si aplicar a DOM)
+        //por ahora solo avisamos en consola (se debe revisar si aplicar a DOM)
         return;
     }
 
@@ -155,6 +191,15 @@ galeria.addEventListener("click", (evento) => {
         tarjeta.classList.add("seleccionada", "flipped");
         galeria.classList.add("hay-seleccion");
     }
+});
+
+window.addEventListener("storage", (evento) => {
+
+    if (evento.key === "canchasMiCancha") {
+        paginaActual = 1;
+        mostrarCanchas();
+    }
+
 });
 
 mostrarCanchas();
