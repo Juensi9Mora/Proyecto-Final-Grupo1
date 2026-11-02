@@ -6,7 +6,7 @@ let administrador = new Administrador(listado);
 
 iniciarFormularios(administrador);
 
-listado.addEventListener("click", function(evento) {
+listado.addEventListener("click", (evento) => {
     let boton = evento.target.closest("button");
     if (!boton) return;
 

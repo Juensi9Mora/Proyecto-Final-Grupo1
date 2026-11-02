@@ -34,7 +34,10 @@ function actualizarCiudades() {
 
 function limpiar() {
     formulario.reset();
-    vista.hidden = seccion.hidden = true;
+
+    vista.hidden = true;
+    vista.removeAttribute("src");
+    seccion.hidden = true;
     imagen.required = true;
     edicion = -1;
     limpiarErrores();
