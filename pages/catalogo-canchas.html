@@ -5,11 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mi Cancha - Catálogo de Canchas</title>
-
-  <!-- Bootstrap CDN Cambiar a css -->
-  <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous"> -->
-  <!-- Estilos de Mi Cancha -->
+  <link rel="shortcut icon" href="../img/mi_cancha_prototipo_logo.webp" type="image/x-icon">
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/nosotros.css">
   <link rel="stylesheet" href="../css/catalogo-canchas.css">
@@ -20,25 +16,25 @@
   <!-- Navbar (misma que las demás páginas) -->
   <div id="navbar-root"></div>
 
- <section class="hero-catalogo">
+  <section class="hero-catalogo">
     <h1>Elige tu <span>cancha</span></h1>
   </section>
- 
+
   <main class="catalogo">
- 
+
     <section class="catalogo-intro">
       <h2>Tu cancha aquí: explora, reserva y diviértete</h2>
       <p>Explora y selecciona la mejor experiencia deportiva en Colombia y Perú.</p>
     </section>
- 
+
     <div class="catalogo-layout">
- 
+
       <!-- Columna izquierda para filtros y publicidad (agregar video corto se debe escoger entre video 1 y 2) -->
       <aside class="lateral">
         <!-- Se realizo un form para los filtros como se dibujo en figma -->
         <form class="filtros" id="filtros">
           <h3>Filtros</h3>
- 
+
           <label for="filtro-deporte">Deporte</label>
           <select id="filtro-deporte">
             <option value="">Todos</option>
@@ -47,19 +43,19 @@
             <option value="Voleibol">Voleibol</option>
             <option value="Tenis">Tenis</option>
           </select>
- 
+
           <label for="filtro-pais">País</label>
           <select id="filtro-pais">
             <option value="">Todos</option>
             <option value="Colombia">Colombia</option>
             <option value="Perú">Perú</option>
           </select>
- 
+
           <button type="button" id="btn-limpiar" class="boton boton-borde boton-completo">Limpiar filtros</button>
         </form>
- 
+
         <!-- Publicidad con video -->
-         <div class="promo">
+        <div class="promo">
           <video class="promo-video" autoplay muted loop playsinline preload="auto" poster="../img/Catalogo3.webp">
             <source src="../video/Video2.webm" type="video/webm">
           </video>
@@ -69,22 +65,22 @@
             <a href="nosotros.html" class="boton boton-naranja">Ver beneficios</a>
           </div>
         </div>
- 
+
       </aside>
- 
+
       <!-- Columna derecha: tarjetas (Revisar JS las crea catalogo-canchas.js) y paginación -->
       <section class="contenido-canchas">
         <p class="resultado" id="resultado-texto"></p>
- 
+
         <div class="galeria" id="galeria-canchas"></div>
- 
+
         <nav class="paginacion" aria-label="Paginación del catálogo">
           <button type="button" id="btn-anterior" class="boton boton-borde">Anterior</button>
           <span id="pagina-info"></span>
           <button type="button" id="btn-siguiente" class="boton">Siguiente página</button>
         </nav>
       </section>
- 
+
     </div>
   </main>
 

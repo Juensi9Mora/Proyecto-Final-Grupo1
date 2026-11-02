@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Cancha - Reservas</title>
+    <link rel="shortcut icon" href="../img/mi_cancha_prototipo_logo.webp" type="image/x-icon">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/reservas.css">
+</head>
+
+<body>
+
+    <div id="navbar-root"></div>
+
+    <section class="hero-reservas">
+        <h1 class="hero-titulo-reservas">Reserva tu cancha</h1>
+    </section>
+
+    <!-- Mensajes para el usuario (los pinta alertas.js) -->
+    <div id="alertas" class="alertas" popover="manual" role="status" aria-live="polite"></div>
+
+    <main class="reservas">
+        <div class="reservas-layout">
+
+            <div class="reservas-pasos">
+
+                <!-- 1. Dónde y qué jugar (se llena con las canchas del panel) -->
+                <section class="paso">
+                    <h2>1. ¿Dónde y qué vas a jugar?</h2>
+                    <div class="filtros">
+                        <div class="campo">
+                            <label for="sede">Sede</label>
+                            <select id="sede"></select>
+                        </div>
+                        <div class="campo">
+                            <label for="deporte">Deporte</label>
+                            <select id="deporte"></select>
+                        </div>
+                        <div class="campo">
+                            <label for="cancha">Cancha</label>
+                            <select id="cancha"></select>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 2. Día -->
+                <section class="paso">
+                    <div class="paso-cabecera">
+                        <h2>2. Elige el día</h2>
+                        <p class="mes" id="mes"></p>
+                    </div>
+                    <div class="dias" id="dias" role="radiogroup" aria-label="Día de la reserva"></div>
+                </section>
+
+                <!-- 3. Horas -->
+                <section class="paso">
+                    <div class="paso-cabecera">
+                        <h2>3. Elige tus horas</h2>
+                        <ul class="leyenda" aria-label="Leyenda">
+                            <li><i class="punto libre"></i>Libre</li>
+                            <li><i class="punto ocupado"></i>Ocupada</li>
+                            <li><i class="punto elegido"></i>Tu elección</li>
+                        </ul>
+                    </div>
+                    <p class="ayuda">Toca varias horas seguidas para jugar más tiempo. Máximo 3 horas.</p>
+                    <div id="horas"></div>
+                    <button type="button" id="agregar" class="boton-secundario boton-agregar">Agregar a mi
+                        reserva</button>
+                </section>
+
+                <!-- 4. Lista de lo seleccionado -->
+                <section class="paso">
+                    <h2>4. Tu reserva</h2>
+                    <div id="lista-reserva" class="lista-reserva"></div>
+                </section>
+
+                <details class="condiciones">
+                    <summary>Condiciones de reserva</summary>
+                    <ul>
+                        <li><b>Cancelaciones:</b> no hay reembolsos por reservas canceladas.</li>
+                        <li><b>Reprogramación:</b> escribe con 24 horas de anticipación.</li>
+                        <li><b>Anticipación:</b> puedes reservar hasta con una semana de antelación.</li>
+                        <li><b>Horario:</b> de 6:00 a.m. a 10:00 p.m., máximo 3 horas seguidas.</li>
+                    </ul>
+                </details>
+            </div>
+
+            <!-- Resumen: tarjeta lateral en escritorio, barra inferior en móvil -->
+            <aside class="resumen" aria-label="Resumen de tu reserva">
+                <h2>Resumen</h2>
+                <dl>
+                    <div>
+                        <dt>Horarios</dt>
+                        <dd id="resumen-items">0</dd>
+                    </div>
+                    <div>
+                        <dt>Horas</dt>
+                        <dd id="resumen-horas">0</dd>
+                    </div>
+                </dl>
+                <div class="total">
+                    <span id="total-etiqueta">Total por 0 horas</span>
+                    <strong id="total">-</strong>
+                </div>
+                <button type="button" id="reservar" class="boton-confirmar" disabled>Reservar ahora</button>
+            </aside>
+
+        </div>
+    </main>
+
+    <!-- Modal 1: usuario sin sesión -->
+    <div id="modal-acceso" class="modal" popover aria-labelledby="titulo-acceso">
+        <button type="button" class="modal-cerrar" popovertarget="modal-acceso" popovertargetaction="hide"
+            aria-label="Cerrar">&times;</button>
+        <h2 id="titulo-acceso">Entra para reservar</h2>
+        <p class="modal-texto">Necesitas una cuenta para confirmar. Tu selección se guarda mientras inicias sesión.</p>
+        <div class="mini-resumen"></div>
+        <a class="boton-confirmar" href="login.html">Iniciar sesión</a>
+        <a class="boton-secundario" href="register.html">Crear cuenta</a>
+    </div>
+
+    <!-- Modal 2: usuario con sesión -->
+    <div id="modal-datos" class="modal" popover aria-labelledby="titulo-datos">
+        <button type="button" class="modal-cerrar" popovertarget="modal-datos" popovertargetaction="hide"
+            aria-label="Cerrar">&times;</button>
+        <h2 id="titulo-datos">Confirma tu reserva</h2>
+        <div class="mini-resumen"></div>
+        <form class="modal-form" id="form-datos" novalidate>
+            <label for="m-nombre">Nombre completo</label>
+            <input type="text" id="m-nombre" readonly>
+
+            <label for="m-telefono">Teléfono</label>
+            <input type="tel" id="m-telefono" placeholder="+57 300 000 0000">
+
+            <label for="m-jugadores">Número de jugadores</label>
+            <input type="number" id="m-jugadores" min="1" max="22" value="10">
+
+            <label for="m-pago">Cómo vas a pagar</label>
+            <select id="m-pago">
+                <option>Pagar en la cancha</option>
+                <option>Transferencia</option>
+                <option>Tarjeta</option>
+            </select>
+
+            <label for="m-notas">Notas (opcional)</label>
+            <textarea id="m-notas" rows="2" placeholder="Ej: llevaremos balón propio"></textarea>
+
+            <button type="submit" class="boton-confirmar">Confirmar reserva</button>
+            <button type="button" class="boton-secundario" popovertarget="modal-datos"
+                popovertargetaction="hide">Volver</button>
+        </form>
+    </div>
+
+    <div id="footer-root"></div>
+
+    <script type="module" src="../js/reservas/app.js"></script>
+    <script type="module" src="../js/main.js"></script>
+</body>
+
+</html>

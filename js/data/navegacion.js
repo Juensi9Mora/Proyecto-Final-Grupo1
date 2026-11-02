@@ -3,7 +3,8 @@ export const menuPrincipal = [
   { id: 'nosotros',         texto: 'Nosotros',  href: 'pages/nosotros.html' },
   { id: 'catalogo-canchas', texto: 'Deportes',  href: 'pages/catalogo-canchas.html' },
   { id: 'contacto',         texto: 'Contacto',  href: 'pages/contacto.html' },
-  { id: 'panel_admin',      texto: 'panel_admin',  href: 'pages/panel_admin.html' }
+  { id: 'panel_admin',      texto: 'Panel_admin',  href: 'pages/panel_admin.html' },
+  { id: 'reservas',      texto: 'Reservas',  href: 'pages/reservas.html' }
 ];
 
 export const footerColumnas = [
