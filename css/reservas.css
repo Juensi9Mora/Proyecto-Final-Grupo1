@@ -1,0 +1,709 @@
+/* ===== Hero ===== */
+.hero-reservas {
+    width: 100%;
+    height: 50vh;
+    min-height: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+        url('../img/fondoDeport1.webp') center/cover no-repeat;
+}
+
+.hero-titulo-reservas {
+    color: var(--blanco);
+    font-family: cursive, sans-serif;
+    font-weight: 400;
+    font-size: clamp(2rem, 7vw, 3.5rem);
+    padding: 0 1rem;
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* ===== Estructura ===== */
+.reservas {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 1.5rem 1rem 7rem; /* espacio para la barra inferior en móvil */
+    color: var(--carbonVerdoso);
+}
+
+.reservas-layout {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.reservas-pasos {
+    display: grid;
+    gap: 1.25rem;
+    min-width: 0;
+}
+
+.paso {
+    padding: 1.1rem;
+    background: var(--blanco);
+    border: 1px solid var(--grisSeparacion);
+    border-radius: 14px;
+}
+
+.paso h2 {
+    font-size: 1.1rem;
+    color: var(--verdeOsucro);
+}
+
+.paso-cabecera {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.4rem 1rem;
+    margin-bottom: 0.9rem;
+}
+
+.mes {
+    font-size: 0.85rem;
+    color: var(--grisVerdoso);
+}
+
+/* ===== Filtros ===== */
+.filtros {
+    display: grid;
+    gap: 0.8rem;
+    margin-top: 0.9rem;
+}
+
+.campo label {
+    display: block;
+    margin-bottom: 0.3rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.campo select {
+    width: 100%;
+    min-height: 46px;
+    padding: 0 0.8rem;
+    font: inherit;
+    font-size: 16px;
+    color: var(--carbonVerdoso);
+    background: var(--verdeNiebla);
+    border: 1px solid var(--grisSeparacion);
+    border-radius: 10px;
+}
+
+/* ===== Días: tira con scroll horizontal ===== */
+.dias {
+    display: flex;
+    gap: 0.5rem;
+    overflow-x: auto;
+    padding-bottom: 0.4rem;
+    scroll-snap-type: x proximity;
+}
+
+.dia {
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+}
+
+.dia input,
+.hora input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.dia span {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 58px;
+    height: 68px;
+    font-size: 1.25rem;
+    font-weight: 700;
+    border: 1px solid var(--grisSeparacion);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s;
+}
+
+.dia b {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--grisVerdoso);
+}
+
+.dia span:hover {
+    border-color: var(--verdeCancha);
+}
+
+.dia input:checked + span {
+    background: var(--verdeMarca);
+    border-color: var(--verdeMarca);
+    color: var(--blanco);
+}
+
+.dia input:checked + span b {
+    color: var(--verdeMenta);
+}
+
+/* ===== Horas ===== */
+.leyenda {
+    display: flex;
+    gap: 0.9rem;
+    list-style: none;
+    font-size: 0.78rem;
+    color: var(--grisVerdoso);
+}
+
+.leyenda li {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+.punto {
+    width: 12px;
+    height: 12px;
+    border-radius: 4px;
+    border: 1px solid var(--grisSeparacion);
+}
+
+.punto.libre { background: var(--verdeNiebla); border-color: var(--verdeCancha); }
+.punto.ocupado { background: var(--grisSeparacion); }
+.punto.elegido { background: var(--narajaDeportivo); border-color: var(--narajaDeportivo); }
+
+.franja {
+    margin: 1rem 0 0.5rem;
+    font-size: 0.9rem;
+    color: var(--grisVerdoso);
+}
+
+.horas {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+}
+
+.hora span {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 56px;
+    padding: 0.4rem 0.8rem;
+    font-weight: 700;
+    background: var(--verdeNiebla);
+    border: 1px solid var(--verdeCancha);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.15s, transform 0.15s;
+}
+
+.hora small {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--grisVerdoso);
+}
+
+.hora span:hover {
+    background: var(--verdeMenta);
+}
+
+.hora input:checked + span {
+    background: var(--narajaDeportivo);
+    border-color: var(--narajaDeportivo);
+    color: var(--blanco);
+}
+
+.hora input:checked + span small {
+    color: var(--blanco);
+}
+
+.hora input:disabled + span {
+    background: var(--grisSeparacion);
+    border-color: var(--grisSeparacion);
+    color: var(--grisVerdoso);
+    cursor: not-allowed;
+}
+
+.hora input:disabled + span small {
+    text-decoration: line-through;
+}
+
+/* Foco visible con teclado */
+.dia input:focus-visible + span,
+.hora input:focus-visible + span {
+    outline: 3px solid var(--carbonVerdoso);
+    outline-offset: 2px;
+}
+
+/* ===== Condiciones ===== */
+.condiciones {
+    padding: 1rem 1.1rem;
+    background: var(--verdeNiebla);
+    border: 1px solid var(--grisSeparacion);
+    border-radius: 14px;
+    font-size: 0.9rem;
+}
+
+.condiciones summary {
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.condiciones ul {
+    margin-top: 0.7rem;
+    padding-left: 1.1rem;
+    display: grid;
+    gap: 0.4rem;
+}
+
+/* ===== Resumen: barra inferior en móvil ===== */
+.resumen {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 900;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.8rem 1rem;
+    background: var(--blanco);
+    border-top: 1px solid var(--grisSeparacion);
+    box-shadow: 0 -6px 20px rgba(38, 55, 46, 0.12);
+}
+
+.resumen h2,
+.resumen dl {
+    display: none; /* el detalle solo se muestra en escritorio */
+}
+
+.total {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.8rem;
+    color: var(--grisVerdoso);
+}
+
+.total strong {
+    font-size: 1.15rem;
+    color: var(--carbonVerdoso);
+}
+
+.boton-confirmar {
+    min-height: 48px;
+    padding: 0 1.4rem;
+    font: inherit;
+    font-weight: 700;
+    color: var(--blanco);
+    background: var(--verdeMarca);
+    border: none;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.boton-confirmar:hover {
+    background: var(--verdeOsucro);
+}
+
+/* ===== Tabletas ===== */
+@media (min-width: 600px) {
+    .filtros {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .horas {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* ===== Escritorio: resumen como tarjeta lateral fija ===== */
+@media (min-width: 960px) {
+    .reservas {
+        padding-bottom: 3rem;
+    }
+
+    .reservas-layout {
+        grid-template-columns: minmax(0, 1fr) 320px;
+        align-items: start;
+    }
+
+    .dias {
+        overflow: visible;
+    }
+
+    .dia span {
+        width: 70px;
+    }
+
+    .resumen {
+        position: sticky;
+        top: 90px;
+        display: block;
+        padding: 1.4rem;
+        border: 1px solid var(--grisSeparacion);
+        border-radius: 14px;
+        box-shadow: 0 8px 25px rgba(38, 55, 46, 0.08);
+    }
+
+    .resumen h2,
+    .resumen dl {
+        display: block;
+    }
+
+    .resumen h2 {
+        margin-bottom: 0.8rem;
+        font-size: 1.15rem;
+        color: var(--verdeOsucro);
+    }
+
+    .resumen dl > div {
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+        padding: 0.55rem 0;
+        border-bottom: 1px solid var(--grisSeparacion);
+        font-size: 0.9rem;
+    }
+
+    .resumen dt {
+        color: var(--grisVerdoso);
+    }
+
+    .resumen dd {
+        font-weight: 600;
+        text-align: right;
+    }
+
+    .total {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: baseline;
+        margin: 1rem 0;
+        font-size: 0.95rem;
+    }
+
+    .total strong {
+        font-size: 1.4rem;
+    }
+
+    .boton-confirmar {
+        width: 100%;
+        border-radius: 10px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .dia span,
+    .hora span,
+    .boton-confirmar {
+        transition: none;
+    }
+}
+
+/* ===== La barra inferior no debe tapar el footer ===== */
+@media (max-width: 959px) {
+    .site-footer {
+        padding-bottom: 4.5rem;
+    }
+}
+
+/* ===== Celulares ===== */
+@media (max-width: 480px) {
+    .hero-reservas {
+        height: 26vh;
+        min-height: 180px;
+    }
+
+    .reservas {
+        padding: 1rem 0.75rem 6.5rem;
+    }
+
+    .reservas-pasos {
+        gap: 0.9rem;
+    }
+
+    .paso {
+        padding: 0.9rem;
+        border-radius: 12px;
+    }
+
+    .paso h2 {
+        font-size: 1rem;
+    }
+
+    /* La leyenda pasa debajo del título y puede ocupar varias líneas */
+    .paso-cabecera {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    .leyenda {
+        flex-wrap: wrap;
+        gap: 0.4rem 0.8rem;
+        font-size: 0.75rem;
+    }
+
+    .filtros {
+        gap: 0.65rem;
+    }
+
+    /* Días: un poco más compactos para ver ~6 a la vez */
+    .dias {
+        gap: 0.4rem;
+        margin: 0 -0.2rem;
+        padding: 0 0.2rem 0.4rem;
+    }
+
+    .dia span {
+        width: 52px;
+        height: 62px;
+        font-size: 1.1rem;
+        border-radius: 10px;
+    }
+
+    .dia b {
+        font-size: 0.7rem;
+    }
+
+    /* Horas: 2 columnas con área táctil cómoda */
+    .horas {
+        gap: 0.45rem;
+    }
+
+    .hora span {
+        min-height: 54px;
+        padding: 0.35rem 0.65rem;
+        font-size: 0.95rem;
+    }
+
+    .hora small {
+        font-size: 0.72rem;
+    }
+
+    .condiciones {
+        padding: 0.9rem;
+        font-size: 0.85rem;
+    }
+
+    /* Barra inferior: respeta la zona segura del celular y el botón crece */
+    .resumen {
+        gap: 0.75rem;
+        padding: 0.7rem 0.9rem calc(0.7rem + env(safe-area-inset-bottom, 0px));
+    }
+
+    .total strong {
+        font-size: 1.05rem;
+    }
+
+    .boton-confirmar {
+        flex: 1;
+        max-width: 220px;
+        padding: 0 1rem;
+        font-size: 0.95rem;
+    }
+}
+
+/* ===== Varias horas ===== */
+.ayuda {
+    margin-bottom: 0.2rem;
+    font-size: 0.85rem;
+    color: var(--grisVerdoso);
+}
+
+.vista-previa {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.7rem 1rem;
+    border: 1px dashed var(--grisVerdoso);
+    border-radius: 10px;
+    font-size: 0.8rem;
+    color: var(--grisVerdoso);
+}
+
+.vista-previa button {
+    padding: 0.35rem 0.8rem;
+    font: inherit;
+    color: var(--verdeOsucro);
+    background: var(--verdeMenta);
+    border: none;
+    border-radius: 999px;
+    cursor: pointer;
+}
+
+/* ===== Modales (popover nativo) ===== */
+.modal {
+    position: fixed;
+    inset: auto 0 0 0;          /* móvil: hoja que sube desde abajo */
+    width: 100%;
+    max-height: 92vh;
+    margin: 0;
+    padding: 1.4rem 1.2rem calc(1.4rem + env(safe-area-inset-bottom, 0px));
+    overflow-y: auto;
+    color: var(--carbonVerdoso);
+    background: var(--blanco);
+    border: none;
+    border-radius: 18px 18px 0 0;
+}
+
+.modal:popover-open {
+    display: grid;
+    gap: 0.8rem;
+    animation: sube 0.25s ease;
+}
+
+.modal::backdrop {
+    background: rgba(20, 30, 24, 0.55);
+}
+
+@keyframes sube {
+    from { transform: translateY(40px); opacity: 0; }
+    to   { transform: none; opacity: 1; }
+}
+
+.modal h2 {
+    padding-right: 2rem;
+    font-size: 1.25rem;
+    color: var(--verdeOsucro);
+}
+
+.modal-texto {
+    font-size: 0.92rem;
+    color: var(--grisVerdoso);
+}
+
+.modal-cerrar {
+    position: absolute;
+    top: 0.7rem;
+    right: 0.8rem;
+    width: 38px;
+    height: 38px;
+    font-size: 1.6rem;
+    line-height: 1;
+    color: var(--grisVerdoso);
+    background: none;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.modal-cerrar:hover {
+    background: var(--verdeNiebla);
+}
+
+.mini-resumen {
+    display: grid;
+    gap: 0.15rem;
+    padding: 0.8rem 1rem;
+    background: var(--verdeNiebla);
+    border-left: 4px solid var(--narajaDeportivo);
+    border-radius: 8px;
+    font-size: 0.88rem;
+}
+
+.mini-resumen strong {
+    font-size: 1.05rem;
+}
+
+.modal .boton-confirmar,
+.boton-secundario {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: none;
+    flex: none;
+    min-height: 48px;
+    font: inherit;
+    font-weight: 700;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.boton-secundario {
+    color: var(--verdeOsucro);
+    background: var(--blanco);
+    border: 2px solid var(--verdeMarca);
+}
+
+.boton-secundario:hover {
+    background: var(--verdeNiebla);
+}
+
+.modal-form {
+    display: grid;
+    gap: 0.5rem;
+}
+
+.modal-form label {
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.modal-form input:not([type="checkbox"]),
+.modal-form select,
+.modal-form textarea {
+    width: 100%;
+    min-height: 46px;
+    padding: 0.6rem 0.8rem;
+    margin-bottom: 0.3rem;
+    font: inherit;
+    font-size: 16px;
+    color: var(--carbonVerdoso);
+    background: var(--verdeNiebla);
+    border: 1px solid var(--grisSeparacion);
+    border-radius: 10px;
+}
+
+.modal-form input[readonly] {
+    color: var(--grisVerdoso);
+    background: var(--grisSeparacion);
+}
+
+.modal-form .aceptar {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0.3rem 0 0.5rem;
+    font-weight: 500;
+}
+
+.modal-form .aceptar input {
+    width: 20px;
+    height: 20px;
+    accent-color: var(--verdeMarca);
+}
+
+/* Escritorio y tableta: modal centrado */
+@media (min-width: 600px) {
+    .modal {
+        inset: 0;
+        width: min(460px, 92vw);
+        height: fit-content;
+        margin: auto;
+        padding: 1.6rem;
+        border-radius: 16px;
+    }
+
+    .modal:popover-open {
+        animation-name: aparece;
+    }
+
+    @keyframes aparece {
+        from { transform: scale(0.96); opacity: 0; }
+        to   { transform: none; opacity: 1; }
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .modal:popover-open {
+        animation: none;
+    }
+}

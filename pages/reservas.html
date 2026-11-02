@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Cancha - Reservas</title>
+    <link rel="shortcut icon" href="../img/mi_cancha_prototipo_logo.webp" type="image/x-icon">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/reservas.css">
+</head>
+
+<body>
+
+    <!-- Navbar Principal Fijo -->
+    <div id="navbar-root"></div>
+
+
+    <section class="hero-reservas">
+        <h1 class="hero-titulo-reservas">Reserva tu cancha</h1>
+    </section>
+
+    <main class="reservas">
+        <form class="reservas-layout" id="formulario-reserva" onsubmit="return false">
+
+            <div class="reservas-pasos">
+
+                <!-- 1. Qué quieres jugar -->
+                <section class="paso">
+                    <h2>1. ¿Dónde y qué vas a jugar?</h2>
+                    <div class="filtros">
+                        <div class="campo">
+                            <label for="sede">Sede</label>
+                            <select id="sede">
+                                <option>Complejo Norte - Bogotá</option>
+                                <option>Club Central - Medellín</option>
+                                <option>Losa Sinchi Roca - Lima</option>
+                            </select>
+                        </div>
+                        <div class="campo">
+                            <label for="deporte">Deporte</label>
+                            <select id="deporte">
+                                <option>Fútbol</option>
+                                <option>Baloncesto</option>
+                                <option>Voleibol</option>
+                                <option>Tenis</option>
+                            </select>
+                        </div>
+                        <div class="campo">
+                            <label for="cancha">Cancha</label>
+                            <select id="cancha">
+                                <option>Cancha 1 - Fútbol 7</option>
+                                <option>Cancha 2 - Fútbol 5</option>
+                            </select>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 2. Día -->
+                <section class="paso">
+                    <div class="paso-cabecera">
+                        <h2>2. Elige el día</h2>
+                        <p class="mes">Octubre - Noviembre 2026</p>
+                    </div>
+                    <div class="dias" role="radiogroup" aria-label="Día de la reserva">
+                        <label class="dia"><input type="radio" name="dia" value="2026-10-29"
+                                checked><span><b>Jue</b>29</span></label>
+                        <label class="dia"><input type="radio" name="dia"
+                                value="2026-10-30"><span><b>Vie</b>30</span></label>
+                        <label class="dia"><input type="radio" name="dia"
+                                value="2026-10-31"><span><b>Sáb</b>31</span></label>
+                        <label class="dia"><input type="radio" name="dia"
+                                value="2026-11-01"><span><b>Dom</b>1</span></label>
+                        <label class="dia"><input type="radio" name="dia"
+                                value="2026-11-02"><span><b>Lun</b>2</span></label>
+                        <label class="dia"><input type="radio" name="dia"
+                                value="2026-11-03"><span><b>Mar</b>3</span></label>
+                        <label class="dia"><input type="radio" name="dia"
+                                value="2026-11-04"><span><b>Mié</b>4</span></label>
+                        <label class="dia"><input type="radio" name="dia"
+                                value="2026-11-05"><span><b>Jue</b>5</span></label>
+                        <label class="dia"><input type="radio" name="dia"
+                                value="2026-11-06"><span><b>Vie</b>6</span></label>
+                    </div>
+                </section>
+
+                <!-- 3. Hora -->
+                <section class="paso">
+                    <div class="paso-cabecera">
+                        <h2>3. Elige tus horas</h2>
+                        <ul class="leyenda" aria-label="Leyenda">
+                            <li><i class="punto libre"></i>Libre</li>
+                            <li><i class="punto ocupado"></i>Ocupada</li>
+                            <li><i class="punto elegido"></i>Tu elección</li>
+                        </ul>
+                    </div>
+
+                    <p class="ayuda">Toca varias horas seguidas para jugar más tiempo. Máximo 3 horas.</p>
+
+                    <h3 class="franja">Mañana</h3>
+                    <div class="horas">
+                        <label class="hora"><input type="checkbox" name="hora" value="06:00"><span>6:00 a.m.<small>$
+                                    60.000</small></span></label>
+                        <label class="hora"><input type="checkbox" name="hora" value="07:00" disabled><span>7:00
+                                a.m.<small>Ocupada</small></span></label>
+                        <label class="hora"><input type="checkbox" name="hora" value="08:00" disabled><span>8:00
+                                a.m.<small>Ocupada</small></span></label>
+                        <label class="hora"><input type="checkbox" name="hora" value="09:00"><span>9:00 a.m.<small>$
+                                    60.000</small></span></label>
+                        <label class="hora"><input type="checkbox" name="hora" value="10:00"><span>10:00 a.m.<small>$
+                                    60.000</small></span></label>
+                    </div>
+
+                    <h3 class="franja">Tarde</h3>
+                    <div class="horas">
+                        <label class="hora"><input type="checkbox" name="hora" value="14:00"><span>2:00 p.m.<small>$
+                                    70.000</small></span></label>
+                        <label class="hora"><input type="checkbox" name="hora" value="15:00" disabled><span>3:00
+                                p.m.<small>Ocupada</small></span></label>
+                        <label class="hora"><input type="checkbox" name="hora" value="16:00"><span>4:00 p.m.<small>$
+                                    70.000</small></span></label>
+                        <label class="hora"><input type="checkbox" name="hora" value="17:00"><span>5:00 p.m.<small>$
+                                    70.000</small></span></label>
+                    </div>
+
+                    <h3 class="franja">Noche</h3>
+                    <div class="horas">
+                        <label class="hora"><input type="checkbox" name="hora" value="18:00"><span>6:00 p.m.<small>$
+                                    90.000</small></span></label>
+                        <label class="hora"><input type="checkbox" name="hora" value="19:00" disabled><span>7:00
+                                p.m.<small>Ocupada</small></span></label>
+                        <label class="hora"><input type="checkbox" name="hora" value="20:00" checked><span>8:00
+                                p.m.<small>$ 90.000</small></span></label>
+                        <label class="hora"><input type="checkbox" name="hora" value="21:00" checked><span>9:00
+                                p.m.<small>$ 90.000</small></span></label>
+                    </div>
+                </section>
+
+                <!-- Condiciones -->
+                <details class="condiciones">
+                    <summary>Condiciones de reserva</summary>
+                    <ul>
+                        <li><b>Cancelaciones:</b> no hay reembolsos por reservas canceladas.</li>
+                        <li><b>Reprogramación:</b> escribe con 24 horas de anticipación.</li>
+                        <li><b>Anticipación:</b> puedes reservar hasta con un mes de antelación.</li>
+                        <li><b>Jugadores:</b> Fútbol 7 admite máximo 14 personas.</li>
+                    </ul>
+                </details>
+
+                <!-- Solo para ver el diseño: se elimina cuando el JS decida qué modal abrir -->
+                <div class="vista-previa">
+                    <span>Vista previa del modal:</span>
+                    <button type="button" popovertarget="modal-acceso">Sin sesión</button>
+                    <button type="button" popovertarget="modal-datos">Con sesión</button>
+                </div>
+            </div>
+
+            <!-- Resumen: tarjeta lateral en escritorio, barra inferior en móvil -->
+            <aside class="resumen" aria-label="Resumen de tu reserva">
+                <h2>Tu reserva</h2>
+                <dl>
+                    <div>
+                        <dt>Sede</dt>
+                        <dd>Complejo Norte - Bogotá</dd>
+                    </div>
+                    <div>
+                        <dt>Cancha</dt>
+                        <dd>Cancha 1 - Fútbol 7</dd>
+                    </div>
+                    <div>
+                        <dt>Día</dt>
+                        <dd>Jue 29 de octubre</dd>
+                    </div>
+                    <div>
+                        <dt>Horario</dt>
+                        <dd>8:00 p.m. a 10:00 p.m.</dd>
+                    </div>
+                    <div>
+                        <dt>Duración</dt>
+                        <dd>2 horas</dd>
+                    </div>
+                </dl>
+                <div class="total">
+                    <span>Total por 2 horas</span>
+                    <strong>COP 180.000</strong>
+                </div>
+                <button type="button" class="boton-confirmar" popovertarget="modal-acceso">Reservar ahora</button>
+            </aside>
+
+        </form>
+    </main>
+
+    <!-- Modal 1: usuario sin sesión -->
+    <div id="modal-acceso" class="modal" popover aria-labelledby="titulo-acceso">
+        <button type="button" class="modal-cerrar" popovertarget="modal-acceso" popovertargetaction="hide"
+            aria-label="Cerrar">&times;</button>
+        <h2 id="titulo-acceso">Entra para reservar</h2>
+        <p class="modal-texto">Necesitas una cuenta para confirmar. Tu selección se guarda mientras inicias sesión.</p>
+        <div class="mini-resumen">
+            <b>Cancha 1 - Fútbol 7</b>
+            <span>Jue 29 de octubre, 8:00 p.m. a 10:00 p.m.</span>
+            <strong>COP 180.000</strong>
+        </div>
+        <a class="boton-confirmar" href="login.html">Iniciar sesión</a>
+        <a class="boton-secundario" href="register.html">Crear cuenta</a>
+    </div>
+
+    <!-- Modal 2: usuario con sesión -->
+    <div id="modal-datos" class="modal" popover aria-labelledby="titulo-datos">
+        <button type="button" class="modal-cerrar" popovertarget="modal-datos" popovertargetaction="hide"
+            aria-label="Cerrar">&times;</button>
+        <h2 id="titulo-datos">Confirma tu reserva</h2>
+        <div class="mini-resumen">
+            <b>Cancha 1 - Fútbol 7</b>
+            <span>Jue 29 de octubre, 8:00 p.m. a 10:00 p.m.</span>
+            <strong>COP 180.000</strong>
+        </div>
+        <form class="modal-form" onsubmit="return false">
+            <label for="m-nombre">Nombre completo</label>
+            <input type="text" id="m-nombre" value="Carlos Pérez" readonly>
+
+            <label for="m-telefono">Teléfono</label>
+            <input type="tel" id="m-telefono" placeholder="+57 300 000 0000" required>
+
+            <label for="m-jugadores">Número de jugadores</label>
+            <input type="number" id="m-jugadores" min="1" max="14" value="10" required>
+
+            <label for="m-pago">Cómo vas a pagar</label>
+            <select id="m-pago">
+                <option>Pagar en la cancha</option>
+                <option>Transferencia</option>
+                <option>Tarjeta</option>
+            </select>
+
+            <label for="m-notas">Notas (opcional)</label>
+            <textarea id="m-notas" rows="2" placeholder="Ej: llevaremos balón propio"></textarea>
+
+            <label class="aceptar"><input type="checkbox" required> Acepto las condiciones de reserva</label>
+
+            <button type="submit" class="boton-confirmar">Confirmar reserva</button>
+            <button type="button" class="boton-secundario" popovertarget="modal-datos"
+                popovertargetaction="hide">Volver</button>
+        </form>
+    </div>
+
+    <div id="footer-root"></div>
+
+    <script type="module" src="../js/main.js"></script>
+</body>
+
+</html>
