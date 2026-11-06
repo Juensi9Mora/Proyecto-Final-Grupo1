@@ -15,7 +15,7 @@ const canchas = [
     // MLB Colombia
     { nombre: "Cancha Jardines", ciudad: "Bogota, Colombia", precio: "COP 180.000 / hora", imagen: "../img/Cancha-Beisbol.webp", balon: "../img/Pelota-Beisbol.webp", deporte: "Beisbol" },
     // Volleyball Peru
-    { nombre: "Coliseo Arequipa", ciudad: "Arequipa, Perú", precio: "PEN 80.00 / hora", imagen: "../img/Volley.webp", balon: "../img/VolleyB.webp", deporte: "Voley" },
+    { nombre: "Coliseo Arequipa", ciudad: "Arequipa, Perú", precio: "PEN 80.00 / hora", imagen: "../img/Cancha-Volley.webp", balon: "../img/VolleyB.webp", deporte: "Voley" },
     // Baloncesto Peru
     { nombre: "Cancha Elbows", ciudad: "Lima, Perú", precio: "PEN 180.000 / hora", imagen: "../img/Baloncesto.webp", balon: "../img/Balon-Baloncesto.webp", deporte: "Baloncesto" },
     // Futbol Peru
