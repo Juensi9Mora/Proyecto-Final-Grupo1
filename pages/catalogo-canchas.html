@@ -38,11 +38,14 @@
           <label for="filtro-deporte">Deporte</label>
           <select id="filtro-deporte">
             <option value="">Todos</option>
-            <option value="Fútbol">Fútbol</option>
-            <option value="Baloncesto">Baloncesto</option>
-            <option value="Voleibol">Voleibol</option>
-            <option value="Tenis">Tenis</option>
           </select>
+
+          <div id="contenedor-filtro-subcategoria" hidden>
+            <label for="filtro-subcategoria">Subcategoría</label>
+            <select id="filtro-subcategoria" disabled>
+              <option value="">Todas las modalidades</option>
+            </select>
+          </div>
 
           <label for="filtro-pais">País</label>
           <select id="filtro-pais">
@@ -56,7 +59,7 @@
 
         <!-- Publicidad con video -->
         <div class="promo">
-          <video class="promo-video" autoplay muted loop playsinline preload="auto" poster="../img/Catalogo3.webp">
+          <video class="promo-video" autoplay muted loop playsinline preload="auto" poster="">
             <source src="../video/Video2.webm" type="video/webm">
           </video>
           <div class="promo-texto">

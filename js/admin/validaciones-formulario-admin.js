@@ -5,10 +5,12 @@ export function capturarDatos() {
   return {
     nombre: document.getElementById("nombre-cancha").value.trim(),
     categoria: document.getElementById("categoria").value,
+    subcategoria: document.getElementById("subcategoria").value,
     pais: document.getElementById("pais").value,
     ciudad: document.getElementById("ciudad").value,
     valor: Number(document.getElementById("valor").value),
     imagen: document.getElementById("imagen").files[0],
+    balon: document.getElementById("balon").files[0]
   };
 }
 
@@ -21,6 +23,9 @@ export function validarCancha(cancha) {
   }
   if (cancha.categoria === "") {
     errores.categoria = "Selecciona un deporte.";
+  }
+  if (cancha.categoria === "Fútbol" && cancha.subcategoria === "") {
+    errores.subcategoria = "Selecciona una subcategoría de fútbol.";
   }
   if (cancha.pais === "") {
     errores.pais = "Selecciona un país.";
@@ -36,11 +41,14 @@ export function validarCancha(cancha) {
   } else if (!cancha.imagen.type.startsWith("image/")) {
     errores.imagen = "El archivo debe ser una imagen (.jpg, .png, .webp).";
   }
+  if (cancha.balon && !cancha.balon.type.startsWith("image/")) {
+    errores.balon = "El archivo debe ser una imagen válida.";
+  }
   return errores;
 }
 // muestra los errores debajo de cada campo
 export function mostrarErrores(errores) {
-  formulario.querySelectorAll("input, select").forEach((campo) => {
+  formulario.querySelectorAll("input, select, textarea").forEach((campo) => {
     campo.classList.remove("is-invalid", "is-valid");
     const aviso = campo.nextElementSibling;
     if (aviso && aviso.classList.contains("invalid-feedback")) aviso.remove();
@@ -51,7 +59,7 @@ export function mostrarErrores(errores) {
         "afterend",
         `<div class="invalid-feedback">${errores[campo.id]}</div>`,
       );
-    } else {
+    } else if (campo.required || campo.value !== "") {
       campo.classList.add("is-valid");
     }
   });
