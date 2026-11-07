@@ -25,7 +25,7 @@
         <form action="" id="formulario-inicial">
             <label for="nombre-inicial">Nombre Cancha</label>
             <input type="text" id="nombre-inicial" name="nombre-inicial" required>
-            <button>Crear Cancha</button>
+            <button type="submit">Crear Cancha</button>
         </form>
 
         <section id="seccion-detalles" hidden>
@@ -38,6 +38,14 @@
                 <input type="file" id="imagen" name="imagen" accept="image/*" required>
                 <img id="vista-imagen" alt="Vista previa de la cancha" hidden>
 
+                <label for="balon">Imagen del deporte (reverso de la tarjeta)</label>
+                <input type="file" id="balon" name="balon" accept="image/*">
+                <img id="vista-balon" alt="Vista previa de la imagen del deporte" hidden>
+
+                <label for="detalle">Descripción (reverso de la tarjeta)</label>
+                <textarea id="detalle" name="detalle" rows="3" maxlength="250"
+                    placeholder="Describe la cancha y sus características"></textarea>
+
                 <label for="pais">País</label>
                 <select id="pais" name="pais" required>
                     <option value="">Selecciona un Pais</option>
@@ -46,15 +54,25 @@
                 </select>
 
                 <label for="ciudad">Ciudad</label>
-                <select id="ciudad" name="ciudad" required></select>
+                <select id="ciudad" name="ciudad" required>
+                    <option value="">Selecciona una ciudad</option>
+                </select>
 
                 <label for="categoria">Categoría</label>
                 <select id="categoria" name="categoria" required>
-                    <option value="Fútbol">Fútbol</option>
-                    <option value="Baloncesto">Baloncesto</option>
-                    <option value="Voleibol">Voleibol</option>
-                    <option value="Tenis">Tenis</option>
+                    <option value="">Selecciona una categoría</option>
                 </select>
+
+                <div id="contenedor-subcategoria" hidden>
+                    <label for="subcategoria">Subcategoría</label>
+                    <select id="subcategoria" name="subcategoria" disabled>
+                        <option value="">Selecciona una subcategoría</option>
+                        <option value="Fútbol 5">Fútbol 5</option>
+                        <option value="Fútbol 7">Fútbol 7</option>
+                        <option value="Fútbol 8">Fútbol 8</option>
+                        <option value="Fútbol 11">Fútbol 11</option>
+                    </select>
+                </div>
 
                 <label for="moneda">Moneda</label>
                 <select id="moneda" name="moneda" required disabled>

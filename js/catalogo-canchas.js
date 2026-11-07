@@ -1,34 +1,41 @@
 // Crear listas por cancha
 const canchas = [
     // Baloncesto Colombia
-    { nombre: "Cancha El Paraiso", ciudad: "Medellín, Colombia", precio: "COP 60.000 / hora", imagen: "../img/Cancha-Baloncesto.webp", balon: "../img/aro.webp", deporte: "Baloncesto" },
+    { nombre: "Cancha El Paraiso", ciudad: "Medellín", pais: "Colombia", precio: "COP 60.000 / hora", imagen: "../img/Cancha-Baloncesto.webp", balon: "../img/aro.webp", deporte: "Baloncesto" },
     // Futbol Colombia
-    { nombre: "Cancha Marbella", ciudad: "Bogotá, Colombia", precio: "COP 90.000 / hora", imagen: "../img/Cancha-Futbol.webp", balon: "../img/Balon-Futbol.webp", deporte: "Fútbol" },
+    { nombre: "Cancha Marbella", ciudad: "Bogotá", pais: "Colombia", precio: "COP 90.000 / hora", imagen: "../img/Cancha-Futbol.webp", balon: "../img/Balon-Futbol.webp", deporte: "Fútbol" },
     // Volleyball Colombia
-    { nombre: "Cancha El Remate", ciudad: "Medellin, Colombia", precio: "COP 70.000 / hora", imagen: "../img/Cancha-Volley.webp", balon: "../img/Balon-Volley.webp", deporte: "Volleyball" },
+    { nombre: "Cancha El Remate", ciudad: "Medellin", pais: "Colombia", precio: "COP 70.000 / hora", imagen: "../img/Cancha-Volley.webp", balon: "../img/Balon-Volley.webp", deporte: "Volleyball" },
     // Tenis Colombia
-    { nombre: "Cancha El Salitre", ciudad: "Bogota, Colombia", precio: "COP 150.000 / hora", imagen: "../img/Cancha-Tenis.webp", balon: "../img/pelota-tenis.webp", deporte: "Tennis" },
+    { nombre: "Cancha El Salitre", ciudad: "Bogotá", pais: "Colombia", precio: "COP 150.000 / hora", imagen: "../img/Cancha-Tenis.webp", balon: "../img/pelota-tenis.webp", deporte: "Tennis" },
     // Futsal Colombia
-    { nombre: "Cancha Arena 7", ciudad: "Bogota, Colombia", precio: "COP 80.000 / hora", imagen: "../img/futsal.webp", balon: "../img/Futsal-1.webp", deporte: "Futsal" },
+    { nombre: "Cancha Arena 7", ciudad: "Bogotá", pais: "Colombia", precio: "COP 80.000 / hora", imagen: "../img/futsal.webp", balon: "../img/Futsal-1.webp", deporte: "Futsal" },
     // NFL Colombia
-    { nombre: "Cancha SanCristobal", ciudad: "Medellin, Colombia", precio: "COP 180.000 / hora", imagen: "../img/Cancha-Americano.webp", balon: "../img/Balon-Americano.webp", deporte: "Futbol Americano" },
+    { nombre: "Cancha SanCristobal", ciudad: "Medellin", pais: "Colombia", precio: "COP 180.000 / hora", imagen: "../img/Cancha-Americano.webp", balon: "../img/Balon-Americano.webp", deporte: "Futbol Americano" },
     // MLB Colombia
-    { nombre: "Cancha Jardines", ciudad: "Bogota, Colombia", precio: "COP 180.000 / hora", imagen: "../img/Cancha-Beisbol.webp", balon: "../img/Pelota-Beisbol.webp", deporte: "Beisbol" },
+    { nombre: "Cancha Jardines", ciudad: "Bogotá", pais: "Colombia", precio: "COP 180.000 / hora", imagen: "../img/Cancha-Beisbol.webp", balon: "../img/Pelota-Beisbol.webp", deporte: "Beisbol" },
     // Volleyball Peru
-    { nombre: "Coliseo Arequipa", ciudad: "Arequipa, Perú", precio: "PEN 80.00 / hora", imagen: "../img/Cancha-Volley.webp", balon: "../img/VolleyB.webp", deporte: "Voley" },
+    { nombre: "Coliseo Arequipa", ciudad: "Arequipa", pais: "Perú", precio: "PEN 80.00 / hora", imagen: "../img/Cancha-Volley.webp", balon: "../img/VolleyB.webp", deporte: "Voley" },
     // Baloncesto Peru
-    { nombre: "Cancha Elbows", ciudad: "Lima, Perú", precio: "PEN 180.000 / hora", imagen: "../img/Baloncesto.webp", balon: "../img/Balon-Baloncesto.webp", deporte: "Baloncesto" },
+    { nombre: "Cancha Elbows", ciudad: "Lima", pais: "Perú", precio: "PEN 180.000 / hora", imagen: "../img/Baloncesto.webp", balon: "../img/Balon-Baloncesto.webp", deporte: "Baloncesto" },
     // Futbol Peru
-    { nombre: "Cancha DeporGol", ciudad: "Arequipa, Perú", precio: "PEN 90.00 / hora", imagen: "../img/Futbol.webp", balon: "../img/Balon-2.webp", deporte: "Fútbol" },
+    { nombre: "Cancha DeporGol", ciudad: "Arequipa", pais: "Perú", precio: "PEN 90.00 / hora", imagen: "../img/Futbol.webp", balon: "../img/Balon-2.webp", deporte: "Fútbol" },
     // Balonmano Peru
-    { nombre: "Cancha Campo de Marte", ciudad: "Lima, Perú", precio: "PEN 100.00 / hora", imagen: "../img/Cancha-Balon-mano.webp", balon: "../img/Balon-Mano.webp", deporte: "Balón mano" },
+    { nombre: "Cancha Campo de Marte", ciudad: "Lima", pais: "Perú", precio: "PEN 100.00 / hora", imagen: "../img/Cancha-Balon-mano.webp", balon: "../img/Balon-Mano.webp", deporte: "Balón mano" },
     // Tenis Perú
-    { nombre: "Cancha TenniSport", ciudad: "Lima, Perú", precio: "PEN 200.00 / hora", imagen: "../img/Tenis.webp", balon: "../img/TenisP.webp", deporte: "Tennis" },
+    { nombre: "Cancha TenniSport", ciudad: "Lima", pais: "Perú", precio: "PEN 200.00 / hora", imagen: "../img/Tenis.webp", balon: "../img/TenisP.webp", deporte: "Tennis" },
     // MLB Perú
-    { nombre: "Cancha RedDiamond ", ciudad: "Arequipa, Perú", precio: "PEN 180.00 / hora", imagen: "../img/Beisbol.webp", balon: "../img/BeisbolC.webp", deporte: "Beisbol" },
+    { nombre: "Cancha RedDiamond ", ciudad: "Arequipa", pais: "Perú", precio: "PEN 180.00 / hora", imagen: "../img/Beisbol.webp", balon: "../img/BeisbolC.webp", deporte: "Beisbol" },
     // NFL Peru
-    { nombre: "El Centinela", ciudad: "Lima, Perú", precio: "PEN 190.00 / hora", imagen: "../img/NFL.webp", balon: "../img/NFLC.webp", deporte: "Futbol Americano" },
+    { nombre: "El Centinela", ciudad: "Lima", pais: "Perú", precio: "PEN 190.00 / hora", imagen: "../img/NFL.webp", balon: "../img/NFLC.webp", deporte: "Futbol Americano" },
+];
 
+// Subcategorías disponibles para Fútbol
+const categoriasFutbol = [
+    "Fútbol 5",
+    "Fútbol 7",
+    "Fútbol 8",
+    "Fútbol 11"
 ];
 
 // Se visualizo 4 tarjetas por página (2 x 2, como en el boceto de figma)
@@ -47,7 +54,63 @@ const btnLimpiar = document.getElementById("btn-limpiar");
 const filtroDeporte = document.getElementById("filtro-deporte");
 const filtroPais = document.getElementById("filtro-pais");
 
-// Obtener las canchas registradas desde el panel administrativo
+const contenedorFiltroSubcategoria = document.getElementById("contenedor-filtro-subcategoria");
+const filtroSubcategoria = document.getElementById("filtro-subcategoria");
+
+function cargarFiltroDeportes() {
+    let deportes = [];
+
+    // 1. Extraer deportes del array base
+    canchas.forEach(cancha => {
+        if (cancha.deporte && !deportes.includes(cancha.deporte)) {
+            deportes.push(cancha.deporte);
+        }
+    });
+
+    // 2. Extraer deportes del localStorage (panel admin)
+    JSON.parse(localStorage.getItem("canchasMiCancha") || "[]").forEach(cancha => {
+        const deporteAdmin = cancha.categoria || cancha.deporte;
+        if (cancha.activa && deporteAdmin && !deportes.includes(deporteAdmin)) {
+            deportes.push(deporteAdmin);
+        }
+    });
+
+    // 3. Ordenar alfabéticamente
+    deportes.sort((a, b) => a.localeCompare(b, "es"));
+
+    // 4. Pintar opciones en el select
+    filtroDeporte.innerHTML = '<option value="">Todos</option>';
+    deportes.forEach(deporte => {
+        filtroDeporte.insertAdjacentHTML(
+            "beforeend",
+            `<option value="${deporte}">${deporte}</option>`
+        );
+    });
+}
+
+function actualizarFiltroSubcategorias() {
+    filtroSubcategoria.innerHTML ='<option value="">Todas las modalidades</option>';
+
+    if (filtroDeporte.value === "Fútbol") {
+        contenedorFiltroSubcategoria.hidden = false;
+        filtroSubcategoria.disabled = false;
+
+        categoriasFutbol.forEach((subcategoria) => {
+
+            filtroSubcategoria.insertAdjacentHTML(
+                "beforeend",
+                `<option value="${subcategoria}">${subcategoria}</option>`
+            );
+
+        });
+
+    } else {
+        contenedorFiltroSubcategoria.hidden = true;
+        filtroSubcategoria.disabled = true;
+        filtroSubcategoria.value = "";
+    }
+}
+
 function obtenerCanchasAdmin() {
     return JSON.parse(localStorage.getItem("canchasMiCancha")) || [];
 }
@@ -58,7 +121,9 @@ function obtenerTodasLasCanchas() {
     // Agregar país a las canchas originales sin modificar el array
     let canchasOriginales = canchas.map(cancha => ({
         ...cancha,
-        pais: cancha.ciudad.includes("Perú") ? "Perú" : "Colombia"
+        pais: cancha.ciudad.includes("Perú") ? "Perú" : "Colombia",
+        subcategoria: cancha.subcategoria || "",
+        detalle: cancha.detalle || `Cancha deportiva para practicar ${cancha.deporte} en ${cancha.ciudad}`
     }));
 
     // Obtener registros del administrador
@@ -68,15 +133,16 @@ function obtenerTodasLasCanchas() {
     let canchasRegistradas = canchasAdmin
         .filter(cancha => cancha.activa)
         .map(cancha => ({
-            nombre: cancha.nombre,
-            ciudad: `${cancha.ciudad}, ${cancha.pais === "Peru" ? "Perú" : cancha.pais}`,
-            pais: cancha.pais === "Peru" ? "Perú" : cancha.pais,
-            precio: `${cancha.moneda} ${Number(cancha.valor).toLocaleString("es-CO")} / hora`,
-            imagen: cancha.imagen,
-            balon: "../img/Balon-2.webp",
-            deporte: cancha.categoria,
-            detalle: `Cancha deportiva ubicada en ${cancha.ciudad}`
-        }));
+        nombre: cancha.nombre,
+        ciudad: `${cancha.ciudad}, ${cancha.pais === "Peru" ? "Perú" : cancha.pais}`,
+        pais: cancha.pais === "Peru" ? "Perú" : cancha.pais,
+        precio: `${cancha.moneda} ${Number(cancha.valor).toLocaleString("es-CO")} / hora`,
+        imagen: cancha.imagen,
+        balon: cancha.balon || "../img/Balon-2.webp",
+        deporte: cancha.categoria,
+        subcategoria: cancha.subcategoria || "",
+        detalle: (cancha.detalle && cancha.detalle !== "undefined") ? cancha.detalle : `Cancha deportiva ubicada en ${cancha.ciudad}`
+    }));
 
     return [...canchasRegistradas, ...canchasOriginales];
 }
@@ -84,18 +150,25 @@ function obtenerTodasLasCanchas() {
 // para filtrar se investiga como dejar solo las canchas que cumplen los filtros elegidos
 function filtrarCanchas() {
     const deporte = filtroDeporte.value;
+    const subcategoria = filtroSubcategoria.value;
     const pais = filtroPais.value;
 
     let todasLasCanchas = obtenerTodasLasCanchas();
 
     return todasLasCanchas.filter(cancha =>
         (deporte === "" || cancha.deporte === deporte) &&
+        (subcategoria === "" || cancha.subcategoria === subcategoria) &&
         (pais === "" || cancha.pais === pais)
     );
 }
 
 // Se crea cada tarjeta con HTML yJS
 function crearTarjeta(cancha) {
+
+    let categoriaCompleta = cancha.deporte;
+    if (cancha.deporte === "Fútbol" && cancha.subcategoria) {
+        categoriaCompleta += ` - ${cancha.subcategoria}`;
+    }
     return `
         <div class="letter-card">
             <div class="card-inner">
@@ -103,7 +176,7 @@ function crearTarjeta(cancha) {
                 <div class="card-front">
                     <div class="card-foto-caja">
                         <img src="${cancha.imagen}" alt="Cancha de ${cancha.deporte}" class="card-foto">
-                        <span class="etiqueta">${cancha.deporte}</span>
+                        <span class="etiqueta">${categoriaCompleta}</span>
                     </div>
                     <div class="card-datos">
                         <h2 class="card-nombre">${cancha.nombre}</h2>
@@ -155,16 +228,18 @@ function mostrarCanchas() {
 //Se investiga versatilidad de tarjetas y eventos al aplicar click
 
 // Al cambiar un filtro volvemos a la página 1
-filtroDeporte.addEventListener("change", () => { paginaActual = 1; mostrarCanchas(); });
+filtroDeporte.addEventListener("change", () => { actualizarFiltroSubcategorias(); paginaActual = 1; mostrarCanchas(); });
+filtroSubcategoria.addEventListener("change", () => { paginaActual = 1; mostrarCanchas(); });
 filtroPais.addEventListener("change", () => { paginaActual = 1; mostrarCanchas(); });
 
 btnLimpiar.addEventListener("click", () => {
     document.getElementById("filtros").reset();
+    actualizarFiltroSubcategorias();
     paginaActual = 1;
     mostrarCanchas();
 });
 
-btnAnterior.addEventListener("click", () => { paginaActual--; mostrarCanchas(); });
+btnAnterior.addEventListener("click", () => { if (paginaActual > 1) { paginaActual--; mostrarCanchas(); }});
 btnSiguiente.addEventListener("click", () => { paginaActual++; mostrarCanchas(); });
 
 // Se selecciona (sobresale y gira) pero si se da otro clic la deselecciona.
@@ -197,9 +272,13 @@ window.addEventListener("storage", (evento) => {
 
     if (evento.key === "canchasMiCancha") {
         paginaActual = 1;
+        cargarFiltroDeportes();
+        actualizarFiltroSubcategorias();
         mostrarCanchas();
     }
 
 });
 
+cargarFiltroDeportes();
+actualizarFiltroSubcategorias();
 mostrarCanchas();
