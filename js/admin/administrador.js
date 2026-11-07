@@ -20,6 +20,13 @@ export class Administrador {
 
         // Recorrer las canchas con forEach.
         this.canchas.forEach((c, i) => {
+
+            let categoriaCompleta = c.categoria;
+
+            if (c.categoria === "Fútbol" && c.subcategoria) {
+                categoriaCompleta += ` - ${c.subcategoria}`;
+            }
+
             filas += `
                 <tr>
                     <td>${i + 1}</td>
@@ -28,6 +35,7 @@ export class Administrador {
                     <td>${c.pais}</td>
                     <td>${c.ciudad}</td>
                     <td>${c.categoria}</td>
+                    <td>${c.detalle || "Sin descripción"}</td>
                     <td>${c.moneda} ${Number(c.valor).toLocaleString("es-CO")}</td>
                     <td>
                         <button type="button" data-accion="estado" data-id="${i}">${c.activa ? "Desactivar" : "Activar"}</button>
@@ -47,6 +55,7 @@ export class Administrador {
                         <th>País</th>
                         <th>Ciudad</th>
                         <th>Categoría</th>
+                        <th>Descripción</th>
                         <th>Precio/hora</th>
                         <th>Acciones</th>
                     </tr>
