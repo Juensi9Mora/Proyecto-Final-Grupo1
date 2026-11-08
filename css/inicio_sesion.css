@@ -1,0 +1,263 @@
+﻿.navbar {
+    background-color: var(--verdeOsucro);
+}
+
+/* ===== Manchas de color de fondo ===== */
+body::before,
+body::after {
+    content: '';
+    position: fixed;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    z-index: -1;
+    filter: blur(150px);
+    opacity: 0.5;
+}
+
+body::before {
+    background-color: var(--grisVerdoso);
+    left: 0;
+    bottom: 0;
+    transform: translateX(-50%);
+}
+
+body::after {
+    background-color: var(--verdeMarca);
+    right: 0;
+    top: 0;
+    transform: translateX(50%);
+}
+
+/* ===== Distribución general ===== */
+.contenedor-autenticacion {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 7rem 1rem 3rem;   
+    overflow: hidden;
+}
+
+.tarjeta-login {
+    position: relative;
+    isolation: isolate;
+    width: 100%;
+    max-width: 450px;
+}
+
+/* ===== Círculos decorativos ===== */
+.circulo {
+    position: absolute;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--verdeCancha), var(--verdeOsucro));
+    z-index: -1;
+}
+
+.circulo-1 {
+    width: 120px;
+    height: 120px;
+    left: 0;
+    top: 10%;
+    transform: translateX(-50%);
+}
+
+.circulo-2 {
+    width: 80px;
+    height: 80px;
+    right: 0;
+    bottom: 10%;
+    transform: translate(20%, 20%);
+}
+
+.circulo-3 {
+    width: 50px;
+    height: 50px;
+    right: 10%;
+    top: 10%;
+    background: linear-gradient(135deg, var(--narajaDeportivo), #E9731F);
+}
+
+/* ===== Tarjeta del formulario (efecto vidrio) =====
+   Compartida por inicio_sesion.html, user.html y restablece_contrasena.html */
+.formulario {
+    padding: 40px 50px;
+    border: 1px solid var(--grisSeparacion);
+    border-top: 4px solid var(--verdeCancha);
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.65);
+    backdrop-filter: blur(14px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+}
+
+/* ===== Encabezado ===== */
+.encabezado-formulario {
+    text-align: center;
+}
+
+.etiqueta-formulario {
+    display: inline-block;
+    margin-bottom: 0.5rem;
+    color: var(--narajaDeportivo);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+}
+
+.encabezado-formulario h2 {
+    font-size: clamp(1.7rem, 5vw, 2.1rem);
+    line-height: 1.2;
+    background: linear-gradient(to right, var(--carbonVerdoso), var(--verdeMarca));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.encabezado-formulario p {
+    margin-top: 0.5rem;
+    color: var(--grisVerdoso);
+    font-size: 0.95rem;
+}
+
+/* ===== Campos ===== */
+.fieldset {
+    margin: 25px 0 20px;
+    padding: 0;
+    border: none;
+    min-width: 0;
+}
+
+.fieldset label {
+    display: block;
+    margin-top: 1.2rem;
+    color: var(--carbonVerdoso);
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.fieldset label:first-of-type {
+    margin-top: 0;
+}
+
+.fieldset input {
+    display: block;
+    width: 100%;
+    height: 45px;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--grisVerdoso);
+    color: var(--carbonVerdoso);
+    font: inherit;
+    font-size: 1rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.fieldset input::placeholder {
+    color: var(--grisVerdoso);
+    opacity: 0.8;
+}
+
+.fieldset input:focus {
+    outline: none;
+    border-bottom-color: var(--verdeMarca);
+    box-shadow: 0 2px 0 0 var(--verdeMarca);
+}
+
+/* ===== Enlaces ===== */
+.olvido {
+    margin-top: 0.6rem;
+    text-align: right;
+    font-size: 0.9rem;
+}
+
+.olvido a,
+.enlaces-formulario a {
+    color: var(--verdeMarca);
+    font-weight: 700;
+}
+
+.olvido a:hover,
+.enlaces-formulario a:hover {
+    color: var(--verdeOsucro);
+    text-decoration: underline;
+}
+
+.enlaces-formulario {
+    margin-top: 25px;
+    text-align: center;
+    color: var(--grisVerdoso);
+}
+
+/* ===== Botón ===== */
+.fieldset button[type="submit"] {
+    display: block;
+    width: 100%;
+    height: 45px;
+    margin-top: 1.5rem;
+    border: none;
+    border-radius: 999px;
+    background: linear-gradient(to right, var(--verdeMarca), var(--verdeCancha));
+    color: var(--blanco);
+    font: inherit;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.fieldset button[type="submit"]:hover {
+    background: linear-gradient(to right, var(--verdeOsucro), var(--verdeMarca));
+    transform: translateY(-2px);
+}
+
+.fieldset button[type="submit"]:focus-visible {
+    outline: 3px solid var(--verdeMenta);
+    outline-offset: 2px;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 480px) {
+    .formulario {
+        padding: 2rem 1.5rem;
+    }
+}
+
+/* ===== Mensajes de error y éxito ===== */
+.mensaje {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+.mensaje:empty {
+    display: none;
+}
+
+.mensaje-error {
+    color: #B3261E;
+}
+
+.mensaje-ok {
+    color: var(--verdeOsucro);
+}
+
+/* ===== Validación de campos (usadas por validaciones-registro.js) ===== */
+.fieldset input.is-invalid {
+    border-bottom-color: #B3261E;
+}
+
+.fieldset input.is-invalid:focus {
+    box-shadow: 0 2px 0 0 #B3261E;
+}
+
+.fieldset input.is-valid {
+    border-bottom-color: var(--verdeCancha);
+}
+
+.invalid-feedback {
+    margin-top: 0.3rem;
+    color: #B3261E;
+    font-size: 0.85rem;
+    font-weight: 600;
+}

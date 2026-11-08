@@ -1,34 +1,78 @@
+// se reemplaza con el url de la imagen
+// aqui f_auto elige el mejor formato, q_auto ajusta la calidad
+// y w_ reduce el ancho al tamaño que realmente se ve en pantalla.
+const CLOUDINARY = "https://res.cloudinary.com/hg1j7l69/image/upload";
+const ANCHO_FOTO = 600;   // foto de la tarjeta
+const ANCHO_BALON = 300;  // imagen del reverso
+
+function img(id, ancho) {
+    return `${CLOUDINARY}/f_auto,q_auto,w_${ancho}/${id}`;
+}
+
 // Crear listas por cancha
 const canchas = [
     // Baloncesto Colombia
-    { nombre: "Cancha El Paraiso", ciudad: "Medellín", pais: "Colombia", precio: "COP 60.000 / hora", imagen: "../img/Cancha-Baloncesto.webp", balon: "../img/aro.webp", deporte: "Baloncesto" },
+    { nombre: "Cancha El Paraiso", ciudad: "Medellín", pais: "Colombia", precio: "COP 60.000 / hora", imagen: img("Cancha-Baloncesto", ANCHO_FOTO), balon: img("aro", ANCHO_BALON), deporte: "Baloncesto" },
     // Futbol Colombia
-    { nombre: "Cancha Marbella", ciudad: "Bogotá", pais: "Colombia", precio: "COP 90.000 / hora", imagen: "../img/Cancha-Futbol.webp", balon: "../img/Balon-Futbol.webp", deporte: "Fútbol" },
+    { nombre: "Cancha Marbella", ciudad: "Bogotá", pais: "Colombia", precio: "COP 90.000 / hora", imagen: img("Cancha-Futbol", ANCHO_FOTO), balon: img("Balon-Futbol", ANCHO_BALON), deporte: "Fútbol" },
     // Volleyball Colombia
-    { nombre: "Cancha El Remate", ciudad: "Medellin", pais: "Colombia", precio: "COP 70.000 / hora", imagen: "../img/Cancha-Volley.webp", balon: "../img/Balon-Volley.webp", deporte: "Volleyball" },
+    { nombre: "Cancha El Remate", ciudad: "Medellin", pais: "Colombia", precio: "COP 70.000 / hora", imagen: img("Cancha-Volley", ANCHO_FOTO), balon: img("Balon-Volley", ANCHO_BALON), deporte: "Volleyball" },
     // Tenis Colombia
-    { nombre: "Cancha El Salitre", ciudad: "Bogotá", pais: "Colombia", precio: "COP 150.000 / hora", imagen: "../img/Cancha-Tenis.webp", balon: "../img/pelota-tenis.webp", deporte: "Tennis" },
+    { nombre: "Cancha El Salitre", ciudad: "Bogotá", pais: "Colombia", precio: "COP 150.000 / hora", imagen: img("Cancha-Tenis", ANCHO_FOTO), balon: img("pelota-tenis", ANCHO_BALON), deporte: "Tennis" },
     // Futsal Colombia
-    { nombre: "Cancha Arena 7", ciudad: "Bogotá", pais: "Colombia", precio: "COP 80.000 / hora", imagen: "../img/futsal.webp", balon: "../img/Futsal-1.webp", deporte: "Futsal" },
+    { nombre: "Cancha Arena 7", ciudad: "Bogotá", pais: "Colombia", precio: "COP 80.000 / hora", imagen: img("futsal", ANCHO_FOTO), balon: img("Futsal1", ANCHO_BALON), deporte: "Futsal" },
     // NFL Colombia
-    { nombre: "Cancha SanCristobal", ciudad: "Medellin", pais: "Colombia", precio: "COP 180.000 / hora", imagen: "../img/Cancha-Americano.webp", balon: "../img/Balon-Americano.webp", deporte: "Futbol Americano" },
+    { nombre: "Cancha SanCristobal", ciudad: "Medellin", pais: "Colombia", precio: "COP 180.000 / hora", imagen: img("Cancha-Americano", ANCHO_FOTO), balon: img("Balon-Americano", ANCHO_BALON), deporte: "Futbol Americano" },
     // MLB Colombia
-    { nombre: "Cancha Jardines", ciudad: "Bogotá", pais: "Colombia", precio: "COP 180.000 / hora", imagen: "../img/Cancha-Beisbol.webp", balon: "../img/Pelota-Beisbol.webp", deporte: "Beisbol" },
+    { nombre: "Cancha Jardines", ciudad: "Bogotá", pais: "Colombia", precio: "COP 180.000 / hora", imagen: img("Cancha-Beisbol", ANCHO_FOTO), balon: img("Pelota-Beisbol", ANCHO_BALON), deporte: "Beisbol" },
     // Volleyball Peru
-    { nombre: "Coliseo Arequipa", ciudad: "Arequipa", pais: "Perú", precio: "PEN 80.00 / hora", imagen: "../img/Cancha-Volley.webp", balon: "../img/VolleyB.webp", deporte: "Voley" },
+    { nombre: "Coliseo Arequipa", ciudad: "Arequipa", pais: "Perú", precio: "PEN 80.00 / hora", imagen: img("Cancha-Volley", ANCHO_FOTO), balon: img("VolleyB", ANCHO_BALON), deporte: "Voley" },
     // Baloncesto Peru
-    { nombre: "Cancha Elbows", ciudad: "Lima", pais: "Perú", precio: "PEN 180.000 / hora", imagen: "../img/Baloncesto.webp", balon: "../img/Balon-Baloncesto.webp", deporte: "Baloncesto" },
+    { nombre: "Cancha Elbows", ciudad: "Lima", pais: "Perú", precio: "PEN 180.000 / hora", imagen: img("Baloncesto", ANCHO_FOTO), balon: img("Balon-Baloncesto", ANCHO_BALON), deporte: "Baloncesto" },
     // Futbol Peru
-    { nombre: "Cancha DeporGol", ciudad: "Arequipa", pais: "Perú", precio: "PEN 90.00 / hora", imagen: "../img/Futbol.webp", balon: "../img/Balon-2.webp", deporte: "Fútbol" },
+    { nombre: "Cancha DeporGol", ciudad: "Arequipa", pais: "Perú", precio: "PEN 90.00 / hora", imagen: img("Futbol", ANCHO_FOTO), balon: img("Balon-2", ANCHO_BALON), deporte: "Fútbol" },
     // Balonmano Peru
-    { nombre: "Cancha Campo de Marte", ciudad: "Lima", pais: "Perú", precio: "PEN 100.00 / hora", imagen: "../img/Cancha-Balon-mano.webp", balon: "../img/Balon-Mano.webp", deporte: "Balón mano" },
+    { nombre: "Cancha Campo de Marte", ciudad: "Lima", pais: "Perú", precio: "PEN 100.00 / hora", imagen: img("Cancha-Balon-mano", ANCHO_FOTO), balon: img("Balon-Mano", ANCHO_BALON), deporte: "Balón mano" },
     // Tenis Perú
-    { nombre: "Cancha TenniSport", ciudad: "Lima", pais: "Perú", precio: "PEN 200.00 / hora", imagen: "../img/Tenis.webp", balon: "../img/TenisP.webp", deporte: "Tennis" },
+    { nombre: "Cancha TenniSport", ciudad: "Lima", pais: "Perú", precio: "PEN 200.00 / hora", imagen: img("Tenis", ANCHO_FOTO), balon: img("TenisP", ANCHO_BALON), deporte: "Tennis" },
     // MLB Perú
-    { nombre: "Cancha RedDiamond ", ciudad: "Arequipa", pais: "Perú", precio: "PEN 180.00 / hora", imagen: "../img/Beisbol.webp", balon: "../img/BeisbolC.webp", deporte: "Beisbol" },
+    { nombre: "Cancha RedDiamond ", ciudad: "Arequipa", pais: "Perú", precio: "PEN 180.00 / hora", imagen: img("Beisbol", ANCHO_FOTO), balon: img("beisbolC", ANCHO_BALON), deporte: "Beisbol" },
     // NFL Peru
-    { nombre: "El Centinela", ciudad: "Lima", pais: "Perú", precio: "PEN 190.00 / hora", imagen: "../img/NFL.webp", balon: "../img/NFLC.webp", deporte: "Futbol Americano" },
+    { nombre: "El Centinela", ciudad: "Lima", pais: "Perú", precio: "PEN 190.00 / hora", imagen: img("NFL", ANCHO_FOTO), balon: img("NFLC", ANCHO_BALON), deporte: "Futbol Americano" },
 ];
+
+//pendiente aplicar loading="lazy" dado que sea mejor que la opcion anterior respectivo a la seguridad de la pagina
+// Crear listas por cancha
+// const canchas = [
+//     // Baloncesto Colombia
+//     { nombre: "Cancha El Paraiso", ciudad: "Medellín", pais: "Colombia", precio: "COP 60.000 / hora", imagen: "../img/Cancha-Baloncesto.webp", balon: "../img/aro.webp", deporte: "Baloncesto" },
+//     // Futbol Colombia
+//     { nombre: "Cancha Marbella", ciudad: "Bogotá", pais: "Colombia", precio: "COP 90.000 / hora", imagen: "../img/Cancha-Futbol.webp", balon: "../img/Balon-Futbol.webp", deporte: "Fútbol" },
+//     // Volleyball Colombia
+//     { nombre: "Cancha El Remate", ciudad: "Medellin", pais: "Colombia", precio: "COP 70.000 / hora", imagen: "../img/Cancha-Volley.webp", balon: "../img/Balon-Volley.webp", deporte: "Volleyball" },
+//     // Tenis Colombia
+//     { nombre: "Cancha El Salitre", ciudad: "Bogotá", pais: "Colombia", precio: "COP 150.000 / hora", imagen: "../img/Cancha-Tenis.webp", balon: "../img/pelota-tenis.webp", deporte: "Tennis" },
+//     // Futsal Colombia
+//     { nombre: "Cancha Arena 7", ciudad: "Bogotá", pais: "Colombia", precio: "COP 80.000 / hora", imagen: "../img/futsal.webp", balon: "../img/Futsal-1.webp", deporte: "Futsal" },
+//     // NFL Colombia
+//     { nombre: "Cancha SanCristobal", ciudad: "Medellin", pais: "Colombia", precio: "COP 180.000 / hora", imagen: "../img/Cancha-Americano.webp", balon: "../img/Balon-Americano.webp", deporte: "Futbol Americano" },
+//     // MLB Colombia
+//     { nombre: "Cancha Jardines", ciudad: "Bogotá", pais: "Colombia", precio: "COP 180.000 / hora", imagen: "../img/Cancha-Beisbol.webp", balon: "../img/Pelota-Beisbol.webp", deporte: "Beisbol" },
+//     // Volleyball Peru
+//     { nombre: "Coliseo Arequipa", ciudad: "Arequipa", pais: "Perú", precio: "PEN 80.00 / hora", imagen: "../img/Cancha-Volley.webp", balon: "../img/VolleyB.webp", deporte: "Voley" },
+//     // Baloncesto Peru
+//     { nombre: "Cancha Elbows", ciudad: "Lima", pais: "Perú", precio: "PEN 180.000 / hora", imagen: "../img/Baloncesto.webp", balon: "../img/Balon-Baloncesto.webp", deporte: "Baloncesto" },
+//     // Futbol Peru
+//     { nombre: "Cancha DeporGol", ciudad: "Arequipa", pais: "Perú", precio: "PEN 90.00 / hora", imagen: "../img/Futbol.webp", balon: "../img/Balon-2.webp", deporte: "Fútbol" },
+//     // Balonmano Peru
+//     { nombre: "Cancha Campo de Marte", ciudad: "Lima", pais: "Perú", precio: "PEN 100.00 / hora", imagen: "../img/Cancha-Balon-mano.webp", balon: "../img/Balon-Mano.webp", deporte: "Balón mano" },
+//     // Tenis Perú
+//     { nombre: "Cancha TenniSport", ciudad: "Lima", pais: "Perú", precio: "PEN 200.00 / hora", imagen: "../img/Tenis.webp", balon: "../img/TenisP.webp", deporte: "Tennis" },
+//     // MLB Perú
+//     { nombre: "Cancha RedDiamond ", ciudad: "Arequipa", pais: "Perú", precio: "PEN 180.00 / hora", imagen: "../img/Beisbol.webp", balon: "../img/BeisbolC.webp", deporte: "Beisbol" },
+//     // NFL Peru
+//     { nombre: "El Centinela", ciudad: "Lima", pais: "Perú", precio: "PEN 190.00 / hora", imagen: "../img/NFL.webp", balon: "../img/NFLC.webp", deporte: "Futbol Americano" },
+// ];
 
 // Subcategorías disponibles para Fútbol
 const categoriasFutbol = [
