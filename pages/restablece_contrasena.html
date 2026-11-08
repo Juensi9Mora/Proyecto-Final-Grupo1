@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Cancha - Restablecer Contraseña</title>
+    <link rel="shortcut icon" href="../img/mi_cancha_prototipo_logo.webp" type="image/x-icon">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/inicio_sesion.css">
+</head>
+
+<body>
+
+    <div id="navbar-root"></div>
+
+    <main class="contenedor-autenticacion">
+        <div class="tarjeta-login">
+
+            <div class="circulo circulo-1" aria-hidden="true"></div>
+            <div class="circulo circulo-2" aria-hidden="true"></div>
+            <div class="circulo circulo-3" aria-hidden="true"></div>
+            
+        <!-- FORMULARIO DE RESTABLECER CONTRASEÑA -->
+        <section class="formulario" id="seccion-restablecer">
+            <form id="formulario-restablecer">
+                <div class="encabezado-formulario">
+                    <span class="etiqueta-formulario">RECUPERA TU ACCESO</span>
+                    <h2>Restablecer contraseña</h2>
+                    <p>Ingresa tu correo electrónico para recuperar tu cuenta.</p>
+                </div>
+
+                <fieldset class="fieldset">
+                    <label for="correo-restablecer">Correo electrónico</label>
+                    <input type="email" id="correo-restablecer" placeholder="Ingresa tu correo">
+                    <p class="mensaje" id="mensaje-restablecer" role="alert"></p>
+                    <button type="submit">Restablecer contraseña</button>
+                </fieldset>
+
+                <div class="enlaces-formulario">
+                    <p><a href="inicio_sesion.html" id="volver-login">Volver al inicio de sesión</a></p>
+
+                    <p>¿No tienes una cuenta?<a href="registro.html" id="volver-registro"> Registrarse</a></p>
+                </div>
+            </form>
+        </section>
+    </main>
+
+        <div id="footer-root"></div>
+        
+    <script type="module" src="../js/main.js"></script>
+    <script type="module" src="../js/usuarios/restablecer-contrasena.js"></script>
+</body>
+</html>

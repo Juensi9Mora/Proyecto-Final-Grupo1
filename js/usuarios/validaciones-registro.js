@@ -1,4 +1,5 @@
 const formulario = document.getElementById("formulario-registro");
+const mensajeRegistro = document.getElementById("mensaje-registro");
 
 // captura los datos del formulario de registro
 function capturarDatos() {
@@ -56,24 +57,31 @@ function mostrarErrores(errores) {
     });
 }
 
-formulario.addEventListener("submit", (evento) => {
-    evento.preventDefault();
+    // se quita colores despues de la validacion despues de limpiar el formulario (modificado)
+    formulario.addEventListener("submit", (evento) => {
+        evento.preventDefault(),
+        mensajeRegistro.textContent = "";
 
-    const datos = capturarDatos();
-    const errores = validarRegistro(datos);
-    mostrarErrores(errores);
+        const datos = capturarDatos();
+        const errores = validarRegistro(datos);
+        mostrarErrores(errores);
 
-    if (Object.keys(errores).length > 0) return;
+            if (Object.keys(errores).length > 0) return;
 
-    const usuario = {
-        nombre: datos.nombre,
-        telefono: datos.telefono,
-        correo: datos.correo,
-        contrasena: datos.contrasena,
-    };
+        const usuario = {
+            nombre: datos.nombre,
+            telefono: datos.telefono,
+            correo: datos.correo,
+            contrasena: datos.contrasena,
+        };
 
-    const { contrasena, ...usuarioSinClave } = usuario;
-    console.log(JSON.stringify(usuarioSinClave, null, 2));
+        const { contrasena, ...usuarioSinClave } = usuario;
+        console.log(JSON.stringify(usuarioSinClave, null, 2));
+        
+        //queda guardado de manera real el usuario en el backend (revisar cambio)
 
-    formulario.reset();
-});
+        formulario.reset();
+        limpiarEstado();
+        mensajeRegistro.textContent = "Registro completado. Ya puedes iniciar sesion.";
+        mensajeRegistro.className = "mensaje mensaje-ok";
+    });
