@@ -1,3 +1,5 @@
+import { crearId } from "./services/canchasService.js";
+
 // se reemplaza con el url de la imagen
 // aqui f_auto elige el mejor formato, q_auto ajusta la calidad
 // y w_ reduce el ancho al tamaño que realmente se ve en pantalla.
@@ -224,9 +226,10 @@ function crearTarjeta(cancha) {
                     </div>
                     <div class="card-datos">
                         <h2 class="card-nombre">${cancha.nombre}</h2>
+                        <p class="card-pais">${cancha.pais}</p>
                         <p class="card-ciudad">${cancha.ciudad}</p>
                         <p class="card-precio">${cancha.precio}</p>
-                        <button class="boton btn-reservar" data-nombre="${cancha.nombre}">Reservar</button>
+                        <button class="boton btn-reservar" data-id="${cancha.id}">Reservar</button>
                     </div>
                 </div>
 
@@ -235,7 +238,7 @@ function crearTarjeta(cancha) {
                     <h3>${cancha.nombre}</h3>
                     <p class="detalle">${cancha.detalle}</p>
                     <p>${cancha.precio}</p>
-                    <button class="boton boton-naranja btn-reservar" data-nombre="${cancha.nombre}">Reservar ahora</button>
+                    <button class="boton boton-naranja btn-reservar" data-id="${cancha.id}">Reservar ahora</button>
                 </div>
 
             </div>
@@ -291,8 +294,9 @@ btnSiguiente.addEventListener("click", () => { paginaActual++; mostrarCanchas();
 galeria.addEventListener("click", (evento) => {
     const botonReservar = evento.target.closest(".btn-reservar");
     if (botonReservar) {
-        console.log("Reservar:", botonReservar.dataset.nombre);// Aquí se conectará el flujo de reserva; 
-        //por ahora solo avisamos en consola (se debe revisar si aplicar a DOM)
+        const idCancha = encodeURIComponent(botonReservar.dataset.id);
+            // Aqui se redirecciona a la page reservas
+            window.location.href = `reservas.html?cancha=${idCancha}`;
         return;
     }
 
