@@ -1,7 +1,7 @@
 export const menuPrincipal = [
   { id: 'index',            texto: 'Inicio',    href: 'index.html' },
   { id: 'nosotros',         texto: 'Nosotros',  href: 'pages/nosotros.html' },
-  { id: 'catalogo-canchas', texto: 'Deportes',  href: 'pages/catalogo-canchas.html' },
+  { id: 'catalogo-canchas', texto: 'Canchas',  href: 'pages/catalogo-canchas.html' },
   { id: 'contacto',         texto: 'Contacto',  href: 'pages/contacto.html' },
   { id: 'panel_admin',      texto: 'Administracion',  href: 'pages/panel_admin.html' },
   { id: 'reservas',      texto: 'Reservas',  href: 'pages/reservas.html' }
