@@ -184,6 +184,7 @@ function crearTarjeta(cancha) {
                     </div>
                     <div class="card-datos">
                         <h2 class="card-nombre">${cancha.nombre}</h2>
+                        <p class="card-pais">${cancha.pais}</p>
                         <p class="card-ciudad">${cancha.ciudad}</p>
                         <p class="card-precio">${cancha.precio}</p>
                         <button class="boton btn-reservar" data-id="${crearId(cancha.nombre, cancha.ciudad.split(",")[0])}" data-nombre="${cancha.nombre}">Reservar</button>
