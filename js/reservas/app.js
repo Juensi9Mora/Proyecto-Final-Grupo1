@@ -7,7 +7,7 @@ import {
 } from "./almacen.js";
 import { obtenerCanchas } from "../services/canchasService.js";
 
-const ids = ["sede", "deporte", "cancha", "dias", "mes", "horas", "agregar", "lista-reserva",
+const ids = ["cancha-elegida", "sede", "deporte", "cancha", "dias", "mes", "horas", "agregar", "lista-reserva",
     "resumen-items", "resumen-horas", "total-etiqueta", "total", "reservar",
     "modal-acceso", "modal-datos", "form-datos", "m-nombre", "m-telefono", "m-jugadores", "m-pago", "m-notas"];
 const el = Object.fromEntries(ids.map((id) => [id, document.getElementById(id)]));
@@ -17,6 +17,31 @@ let fechaSel = fechaISO(new Date());
 
 const canchasActivas = () => obtenerCanchas();
 const canchaActual = () => canchasActivas().find((c) => c.id === el.cancha.value);
+const nombreDeporte = (c) => (c.subcategoria ? `${c.categoria} - ${c.subcategoria}` : c.categoria);
+
+/* ---------- Tarjeta de la cancha elegida (catálogo o selects) ---------- */
+function pintarCanchaElegida() {
+    const c = canchaActual();
+    const caja = el["cancha-elegida"];
+    if (!c) {
+        caja.hidden = true;
+        caja.innerHTML = "";
+        return;
+    }
+    caja.hidden = false;
+    caja.innerHTML = `
+        ${c.imagen
+            ? `<img class="cancha-foto" src="${c.imagen}" alt="Cancha ${esc(c.nombre)}">`
+            : '<div class="cancha-foto" aria-hidden="true"></div>'}
+        <div class="cancha-datos">
+            <span class="cancha-etiqueta">${esc(nombreDeporte(c))}</span>
+            <h2>${esc(c.nombre)}</h2>
+            <p class="cancha-sede">${esc(c.sede)}</p>
+            <p class="cancha-detalle">${esc(c.detalle)}</p>
+            <p class="cancha-tarifa"><strong>${dinero(c.moneda, c.valor)}</strong> por hora</p>
+            <a href="catalogo-canchas.html" class="cancha-cambiar">Cambiar de cancha</a>
+        </div>`;
+}
 
 /* ---------- Filtros: sede -> deporte -> cancha ---------- */
 function llenarSelect(select, opciones, actual) {
@@ -41,6 +66,7 @@ function actualizarFiltros() {
         texto: `${c.nombre} - ${dinero(c.moneda, c.valor)}/hora`
     })), el.cancha.value);
 
+    pintarCanchaElegida();
     pintarHoras();
 }
 
@@ -105,7 +131,7 @@ function pintarReserva() {
             const imagen = c?.imagen
                 ? `<img src="${c.imagen}" alt="${esc(i.nombre)}">`
                 : '<div class="sin-imagen" aria-hidden="true"></div>';
-            const descripcion = c ? `${c.categoria} en ${c.sede}` : "Esta cancha ya no está disponible";
+            const descripcion = c ? `${nombreDeporte(c)} en ${c.sede}` : "Esta cancha ya no está disponible";
             return `
                 <article class="item" data-id="${i.id}">
                     ${imagen}
@@ -260,14 +286,23 @@ window.addEventListener("storage", () => {
 /* Llega desde el catálogo con ?cancha=<id>: deja esa cancha preseleccionada */
 function seleccionarDesdeCatalogo() {
     const id = new URLSearchParams(window.location.search).get("cancha");
-    const c = id && canchasActivas().find((x) => x.id === id);
-    if (!c) return;
+    if (!id) return;
+
+    const c = canchasActivas().find((x) => x.id === id);
+    if (!c) {
+        return mostrarAlerta("Esa cancha ya no está disponible. Elige otra en el catálogo.", "advertencia");
+    }
+
     el.sede.value = c.sede;
     actualizarFiltros();
     el.deporte.value = c.categoria;
     actualizarFiltros();
     el.cancha.value = c.id;
     actualizarFiltros();
+
+    mostrarAlerta(`Elegiste ${c.nombre}. Ahora escoge el día y las horas.`, "exito");
+    // salta directo a la cancha, sin pasar por el encabezado
+    el["cancha-elegida"].scrollIntoView({ behavior: "instant", block: "start" });
 }
 
 /* ---------- Inicio ---------- */
