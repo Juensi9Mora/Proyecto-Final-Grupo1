@@ -10,28 +10,121 @@
   --grisVerdoso: #64736A;
   --grisSeparacion: #E5E9E6;
   --black: #1a1a1a;
+
+  /* Escala tipográfica unificada */
+  --font-principal: "Poppins", system-ui, -apple-system, sans-serif;
+  --text-hero: clamp(2rem, 5vw, 3.2rem);
+  --text-h2: clamp(1.5rem, 3.2vw, 2.1rem);
+  --text-h3: clamp(1.15rem, 2vw, 1.35rem);
+  --text-body: 1rem;
+  --text-small: 0.875rem;
+
+  /* Espaciado y contenedores estándar */
+  --container-max: 1140px;
+  --container-width: min(1140px, 92%);
+  --section-gap: clamp(2.5rem, 5vw, 3.5rem);
+  --hero-height: 45vh;
+  --hero-min-height: 300px;
 }
- 
+
 * { 
     box-sizing: border-box;
     margin: 0; 
     padding: 0; 
 }
- 
-html { 
-    scroll-behavior: smooth; 
-}
 
-body {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  font-family: "Poppins", system-ui, sans-serif;
-  color: var(--black);
-  background-color: var(--blanco);
+/* ===== Sistema Unificado de Páginas Internas (Alta especificidad) ===== */
+
+/* 1. Forzar tipografía nativa y herencia en formularios en todas las vistas */
+html body {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: var(--text-body);
   line-height: 1.6;
 }
- 
+
+body button,
+body input,
+body select,
+body textarea {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+/* 2. Estandarizar altura y espacio superior de los banners (Hero) */
+body .hero-catalogo,
+body .hero-nosotros,
+body .hero-nosotros-contacto,
+body .hero-nosotros-admin,
+body .hero-titulo-admin,
+body .hero-reservas{
+  position: relative;
+  width: 100%;
+  height: 45vh;
+  min-height: 320px;
+  padding-top: 72px; /* Compensa exactamente la barra de navegación fija */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+/* 3. Estandarizar TODOS los títulos principales (H1) */
+body .hero-catalogo h1,
+body .hero-titulo h1,
+body .hero-nosotros-admin h1,
+body .hero-titulo-admin,
+body .hero-titulo-reservas,
+body .hero-nosotros-contacto h1,
+body .welcome h1 {
+  position: relative;
+  z-index: 2;
+  margin: 0;
+  padding: 0 1rem;
+  font-family: inherit;
+  font-size: var(--text-hero);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  text-transform: none;
+}
+
+/* Estandarizar subtítulos de sección (H2) */
+body .catalogo-intro h2,
+body .seccion > h2,
+body .section-contacto > h2,
+body main.contenedor h2,
+body .section-heading h2 {
+  font-size: var(--text-h2);
+  font-weight: 700;
+  line-height: 1.25;
+  margin-bottom: 1rem;
+}
+
+/* Estandarizar el ancho y los márgenes exteriores del contenido principal */
+body .catalogo,
+body .contenido,
+body main.contenedor,
+body .reservas,
+body .section-formulario,
+body .page-shell {
+  width: var(--container-width);
+  max-width: var(--container-max);
+  margin: var(--section-gap) auto;
+}
+
+
+/* Estandarizar los banners (Hero) de las páginas internas */
+.hero-catalogo,
+.hero-nosotros,
+.hero-nosotros-contacto,
+.hero-nosotros-admin,
+.hero-reservas {
+  height: var(--hero-height) !important;
+  min-height: var(--hero-min-height) !important;
+  padding-top: 72px; /* Compensa la altura de la navbar fija */
+}
+
 a { 
     color: inherit; 
     text-decoration: none;
@@ -63,7 +156,6 @@ a {
   /*backdrop-filter: blur(8px);*/
 } 
 
-
 .logo {
   display: flex;
   align-items: center;
@@ -73,7 +165,7 @@ a {
   color: var(--blanco);
   text-shadow: 0 2px 4px rgba(0,0,0,0.4);
 }
- 
+
 .logo-marca {
   width: 38px;
   height: 38px;
@@ -84,14 +176,14 @@ a {
 .logo-text:hover {
   color: var(--verdeCancha)
 }
- 
+
 .menu { 
     display: flex; 
     gap: 0.5rem; 
     list-style: none; 
     align-items: center;
 }
- 
+
 .menu a {
   display: block;
   padding: 0.5rem 0.9rem;
@@ -104,11 +196,11 @@ a {
   text-shadow: 0 1px 3px rgba(0,0,0,0.5);
   transition: color 0.2s, background 0.2s;
 }
- 
+
 .menu a:hover { 
     color: var(--verdeCancha);  
 }
- 
+
 .menu a.activo { 
     color: var(--blanco);
     border-bottom: 2px solid var(--narajaDeportivo);
@@ -119,7 +211,7 @@ a {
   align-items: center;
   gap: 1rem;
 }
- 
+
 .login {
   width: 40px;
   height: 40px;
@@ -131,12 +223,12 @@ a {
   color: var(--blanco);
   transition: background 0.2s, border-color 0.2s;
 }
- 
+
 .login:hover { 
     background: var(--verdeCancha); 
     border-color: var(--verdeCancha); 
 }
- 
+
 .login svg { 
     width: 18px; 
     height: 18px; 
@@ -225,6 +317,90 @@ a {
   font-family: cursive, sans-serif;
 }
 
+/* ===== Sistema Unificado de Páginas Internas ===== */
+.hero-catalogo,
+.hero-nosotros,
+.hero-nosotros-contacto,
+.hero-nosotros-admin,
+.hero-reservas {
+  height: var(--hero-height);
+  min-height: var(--hero-min-height);
+  padding-top: 72px;
+}
+
+.hero-catalogo h1,
+.hero-titulo,
+.hero-titulo-admin,
+.hero-titulo-reservas,
+.hero-nosotros-contacto h1 {
+  font-family: var(--font-principal);
+  font-size: var(--text-hero);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  text-transform: none;
+}
+
+.catalogo-intro h2,
+.seccion > h2,
+.section-contacto > h2,
+main.contenedor h2 {
+  font-size: var(--text-h2);
+  font-weight: 700;
+  line-height: 1.25;
+  margin-bottom: 1rem;
+}
+
+.catalogo,
+.contenido,
+main.contenedor,
+.reservas,
+.section-formulario,
+.page-shell {
+  width: var(--container-width);
+  max-width: var(--container-max);
+  margin: var(--section-gap) auto;
+}
+
+/* ===== Animación de entrada unificada (style.css) ===== */
+@keyframes aparecerTexto {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 1. Títulos principales de los banners (Hero) */
+body .hero-catalogo h1,
+body .hero-titulo-admin,
+body .hero-titulo-reservas {
+  animation: aparecerTexto 0.9s ease-out both;
+}
+
+/* 2. Contenedores principales (entran un instante después para dar fluidez) */
+body .catalogo,
+body main.contenedor,
+body .reservas {
+  animation: aparecerTexto 0.9s ease-out 0.15s both;
+}
+
+/* 3. Accesibilidad: desactivar animación si el usuario prefiere reducir movimiento */
+@media (prefers-reduced-motion: reduce) {
+  body .hero-catalogo h1,
+  body .hero-titulo-admin,
+  body .hero-titulo-reservas,
+  body .catalogo,
+  body main.contenedor,
+  body .reservas {
+    animation: none;
+  }
+}
+
+
 @media (max-width: 768px) {
   .hero-inicio {
     height: 50vh;
@@ -309,7 +485,6 @@ a {
   font-size: 12px;
 }
 
-/* Media Queries para Dispositivos Móviles y Tablets */
 /* Media Queries para Dispositivos Móviles y Tablets */
 @media (max-width: 900px) {
   .menu-toggle {
