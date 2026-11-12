@@ -8,12 +8,12 @@
     justify-content: center;
     text-align: center;
     background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-        url('../img/fondoDeport1.webp') center/cover no-repeat;
+        url('../img/fondoDeport.webp') center/cover no-repeat;
 }
 
 .hero-titulo-reservas {
     color: var(--blanco);
-    font-family: "Poppins", cursive, sans-serif;
+    font-family: cursive, sans-serif;
     font-weight: 400;
     font-size: clamp(2rem, 7vw, 3.5rem);
     padding: 0 1rem;
@@ -29,14 +29,24 @@
     color: var(--carbonVerdoso);
 }
 
+/* minmax(0, 1fr): la columna nunca crece más que la pantalla, aunque dentro haya
+   filas que no caben (como la tira de días). Con "auto" la página se ensanchaba. */
 .reservas-layout {
     display: grid;
+    grid-template-columns: minmax(0, 1fr);
     gap: 1.5rem;
 }
 
 .reservas-pasos {
     display: grid;
+    grid-template-columns: minmax(0, 1fr);
     gap: 1.25rem;
+    min-width: 0;
+}
+
+.paso,
+.cancha-elegida,
+.condiciones {
     min-width: 0;
 }
 
@@ -95,6 +105,7 @@
 /* ===== Días: tira con scroll horizontal ===== */
 .dias {
     display: flex;
+    max-width: 100%;
     gap: 0.5rem;
     overflow-x: auto;
     padding-bottom: 0.4rem;
@@ -102,8 +113,13 @@
 }
 
 .dia {
+    position: relative;   /* el radio oculto queda dentro de su tarjeta y no ensancha la página */
     flex: 0 0 auto;
     scroll-snap-align: start;
+}
+
+.hora {
+    position: relative;
 }
 
 .dia input,
@@ -415,7 +431,7 @@
 /* ===== Celulares ===== */
 @media (max-width: 480px) {
     .hero-reservas {
-        height: 26vh;
+        height: 50vh;
         min-height: 180px;
     }
 
@@ -882,5 +898,83 @@
         grid-column: auto;
         flex-direction: column;
         align-items: flex-end;
+    }
+}
+
+/* ===== Cancha elegida (llega desde el catálogo) ===== */
+.cancha-elegida {
+    scroll-margin-top: 90px;
+    overflow: hidden;
+    background: var(--blanco);
+    border: 1px solid var(--grisSeparacion);
+    border-radius: 14px;
+    box-shadow: 0 8px 25px rgba(38, 55, 46, 0.08);
+}
+
+.cancha-elegida[hidden] {
+    display: none;
+}
+
+.cancha-foto {
+    display: block;
+    width: 100%;
+    height: 170px;
+    object-fit: cover;
+    background: var(--verdeMenta);
+}
+
+.cancha-datos {
+    display: grid;
+    gap: 0.4rem;
+    padding: 1rem 1.1rem 1.2rem;
+}
+
+.cancha-etiqueta {
+    justify-self: start;
+    padding: 0.2rem 0.7rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--blanco);
+    background: var(--narajaDeportivo);
+    border-radius: 999px;
+}
+
+.cancha-datos h2 {
+    font-size: 1.2rem;
+    color: var(--verdeOsucro);
+}
+
+.cancha-sede {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--grisVerdoso);
+}
+
+.cancha-detalle {
+    font-size: 0.9rem;
+    color: var(--carbonVerdoso);
+}
+
+.cancha-cambiar {
+    justify-self: start;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--verdeMarca);
+    text-decoration: underline;
+}
+
+@media (min-width: 600px) {
+    .cancha-elegida {
+        display: grid;
+        grid-template-columns: 240px 1fr;
+    }
+
+    .cancha-foto {
+        height: 100%;
+        min-height: 210px;
+    }
+
+    .cancha-datos h2 {
+        font-size: 1.35rem;
     }
 }
