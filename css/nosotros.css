@@ -1,29 +1,20 @@
-/* ===================================================
-   Acerca de Nosotros - Estilos responsivos
-   =================================================== */
+/* ====================
+    Acerca de Nosotros 
+   ==================== */
 
+/* Hero con efecto de entrada */
 .hero-nosotros {
   position: relative;
   width: 100%;
   height: 50vh;
   min-height: 320px;
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-  url('../img/fondoDeport.webp') center/cover no-repeat;
+  background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.65)),
+    url('../img/fondoDeport.webp') center/cover no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-}
-
-.hero-nosotros::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 1;
+  overflow: hidden;
 }
 
 .hero-titulo {
@@ -31,21 +22,24 @@
   z-index: 2;
   color: var(--blanco);
   font-size: clamp(2.2rem, 7vw, 4rem);
-  font-family: "Poppins", cursive, sans-serif;
-  font-weight: 400;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
   padding: 0 1rem;
-  text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  text-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  animation: fadeUp 0.8s ease-out forwards;
 }
 
+/* Contenedor Principal */
 .contenido {
-  max-width: 1050px;
-  margin: 3rem auto;
+  max-width: 1100px;
+  margin: 3.5rem auto;
   padding: 0 1.2rem;
   color: var(--black);
 }
 
 .seccion {
-  margin-bottom: 3.5rem;
+  margin-bottom: 4.5rem;
+  animation: fadeUp 0.9s ease-out forwards;
 }
 
 .seccion > h2 {
@@ -53,144 +47,369 @@
   margin-bottom: 1.5rem;
   color: var(--carbonVerdoso);
   font-size: clamp(1.6rem, 4vw, 2.2rem);
+  position: relative;
+  padding-bottom: 0.6rem;
+}
+
+.seccion > h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 4px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--verdeCancha), var(--narajaDeportivo));
 }
 
 /* Misión y Visión */
 #proyecto {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 1.5rem;
+  gap: 1.8rem;
 }
 
 #proyecto article {
   background: var(--verdeNiebla);
   border: 1px solid var(--grisSeparacion);
-  border-top: 4px solid var(--verdeCancha);
-  border-radius: 14px;
-  padding: 2rem;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+  border-radius: 16px;
+  padding: 2.2rem;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+  transition: transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+              box-shadow 0.35s ease,
+              border-color 0.35s ease;
+}
+
+#proyecto article::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--verdeCancha), var(--verdeOsucro));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+
+#proyecto article:hover {
+  transform: translateY(-8px);
+  border-color: var(--verdeCancha);
+  box-shadow: 0 14px 30px -10px rgba(0, 0, 0, 0.12);
+}
+
+#proyecto article:hover::before {
+  transform: scaleX(1);
 }
 
 #proyecto h2 {
   color: var(--verdeOsucro);
   margin-bottom: 0.8rem;
+  font-size: 1.5rem;
 }
 
 #proyecto p {
   color: var(--grisVerdoso);
   font-size: 1rem;
+  line-height: 1.65;
 }
 
-/* Diferenciadores y Equipo */
+/* Diferenciadores */
 #diferenciadores > p {
-  max-width: 800px;
-  margin: 0 auto 2rem;
+  max-width: 780px;
+  margin: 0 auto 2.5rem;
   text-align: center;
   color: var(--grisVerdoso);
   font-size: 1.05rem;
+  line-height: 1.6;
 }
 
-.tarjetas,
-.tarjetas-equipo {
+.tarjetas {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 1.5rem;
+  gap: 1.6rem;
 }
 
-.tarjeta,
-.tarjeta-dev {
-  background: var(--blanco);
+.tarjeta {
+  background: var(--verdeNiebla);
   border: 1px solid var(--grisSeparacion);
-  border-radius: 14px;
-  padding: 1.8rem 1.5rem;
+  border-radius: 16px;
+  padding: 2rem 1.5rem;
   text-align: center;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.04);
-  transition: transform 0.25s ease, border-color 0.25s ease;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04);
+  transition: transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+              box-shadow 0.35s ease,
+              border-color 0.35s ease,
+              background-color 0.35s ease;
 }
 
-.tarjeta:hover,
-.tarjeta-dev:hover {
-  transform: translateY(-4px);
+.tarjeta::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--verdeCancha), var(--narajaDeportivo));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+
+.tarjeta:hover {
+  transform: translateY(-10px);
+  background: var(--blanco);
   border-color: var(--verdeCancha);
+  box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.12);
+}
+
+.tarjeta:hover::before {
+  transform: scaleX(1);
 }
 
 .tarjeta h3 {
   color: var(--verdeOsucro);
-  margin-bottom: 0.6rem;
-  font-size: 1.2rem;
+  margin-bottom: 0.7rem;
+  font-size: 1.25rem;
+  transition: color 0.3s ease;
+}
+
+.tarjeta:hover h3 {
+  color: var(--verdeCancha);
 }
 
 .tarjeta p {
   color: var(--grisVerdoso);
   font-size: 0.95rem;
+  line-height: 1.55;
 }
 
-.tarjeta-dev img {
-  width: 80px;
-  height: 80px;
+/* Sección Equipo - Estilo Circular & Tarjetas Laterales */
+#equipo {
+  position: relative;
+  padding: 1rem 0;
+}
+
+#equipo::before {
+  content: '';
+  position: absolute;
+  top: 15%;
+  right: -3%;
+  width: 220px;
+  height: 220px;
+  background: radial-gradient(circle, rgba(255, 107, 0, 0.16) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.tarjetas-equipo {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2.2rem 2.5rem;
+  align-items: center;
+}
+
+.tarjeta-dev {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+  text-align: left;
+  transition: transform 0.35s ease;
+}
+
+.tarjeta-dev:hover {
+  transform: translateY(-6px);
+}
+
+.avatar-circulo {
+  position: relative;
+  flex-shrink: 0;
+  width: 105px;
+  height: 105px;
+  border-radius: 50%;
+  background: var(--verdeCancha);
+  padding: 5px;
+  box-shadow: 0 10px 25px -5px rgba(0, 150, 64, 0.35);
+  transition: transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+              box-shadow 0.35s ease;
+}
+
+.avatar-circulo::before {
+  content: '';
+  position: absolute;
+  top: -6px;
+  left: -8px;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--verdeOsucro);
+  z-index: -1;
+  transition: transform 0.35s ease;
+}
+
+.tarjeta-dev:hover .avatar-circulo {
+  transform: scale(1.07);
+  box-shadow: 0 14px 30px -5px rgba(0, 150, 64, 0.5);
+}
+
+.tarjeta-dev:hover .avatar-circulo::before {
+  transform: translate(-4px, -4px) scale(1.15);
+}
+
+.avatar-circulo img {
+  width: 100%;
+  height: 100%;
   border-radius: 50%;
   object-fit: cover;
-  margin-bottom: 1rem;
+  background: var(--blanco);
+  display: block;
 }
 
-.tarjeta-dev h3 {
+.info-dev {
+  flex: 1;
+  background: var(--blanco);
+  border: 1px solid var(--grisSeparacion);
+  border-left: 4px solid var(--verdeCancha);
+  border-radius: 16px;
+  padding: 1.3rem 1.5rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.info-dev::after {
+  content: '';
+  position: absolute;
+  top: -30px;
+  right: -30px;
+  width: 80px;
+  height: 80px;
+  background: radial-gradient(circle, rgba(255, 107, 0, 0.18) 0%, transparent 70%);
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+}
+
+.tarjeta-dev:hover .info-dev {
+  border-color: var(--verdeCancha);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.09);
+}
+
+.tarjeta-dev:hover .info-dev::after {
+  opacity: 1;
+}
+
+.info-dev h3 {
   color: var(--carbonVerdoso);
-  margin-bottom: 0.2rem;
+  font-size: 1.15rem;
+  margin-bottom: 0.25rem;
 }
 
-.tarjeta-dev .rol {
-  color: var(--verdeCancha);
-  font-weight: 600;
-  font-size: 0.85rem;
-  margin-bottom: 0.6rem;
+.info-dev .rol {
+  display: inline-block;
+  color: var(--narajaDeportivo);
+  font-weight: 700;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.5rem;
 }
 
-.tarjeta-dev .bio {
+.info-dev .bio {
   color: var(--grisVerdoso);
   font-size: 0.9rem;
+  line-height: 1.45;
+  margin: 0;
 }
 
-.article {
-  background: var(--verdeNiebla);
-  border-top: 4px solid var(--verdeCancha);
-  box-shadow: 0 4px 15px rgba(0,0,0,0.03);
-}
-
-/* Botón */
-#reserva { 
-  text-align: center; 
-  margin-top: 2.5rem;
+/* (Botón dinámico) */
+#reserva {
+  text-align: center;
+  margin-top: 3rem;
 }
 
 .boton-reserva {
   display: inline-block;
-  padding: 0.9rem 2.2rem;
+  padding: 1rem 2.5rem;
   border-radius: 999px;
   background: var(--narajaDeportivo);
   color: var(--blanco);
+  text-decoration: none;
   font-weight: 700;
-  font-size: 1.05rem;
-  box-shadow: 0 4px 15px rgba(255, 135, 55, 0.3);
-  transition: opacity 0.2s, transform 0.2s;
+  font-size: 1.1rem;
+  letter-spacing: 0.3px;
+  box-shadow: 0 8px 20px -5px rgba(255, 107, 0, 0.5);
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+              box-shadow 0.3s ease,
+              filter 0.3s ease;
 }
 
-.boton-reserva:hover { 
-  opacity: 0.9; 
-  transform: scale(1.02);
+.boton-reserva:hover {
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 14px 28px -5px rgba(255, 107, 0, 0.65);
+  filter: brightness(1.06);
 }
 
-/* Responsive */
+.boton-reserva:active {
+  transform: translateY(-1px) scale(0.99);
+}
+
+/* Animación de entrada */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Diseño Responsivo */
+@media (max-width: 860px) {
+  .tarjetas-equipo {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media (max-width: 768px) {
-  #proyecto { 
-    grid-template-columns: 1fr; 
+  #proyecto {
+    grid-template-columns: 1fr;
   }
-  
+
   .contenido {
-    margin: 2rem auto;
+    margin: 2.5rem auto;
   }
-  
-  .hero-nosotros {
-    height: 50vh;
-    min-height: 260px;
+
+  .seccion {
+    margin-bottom: 3.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .tarjeta-dev {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .info-dev {
+    border-left: 1px solid var(--grisSeparacion);
+    border-top: 4px solid var(--verdeCancha);
   }
 }
