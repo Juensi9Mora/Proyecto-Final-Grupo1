@@ -26,7 +26,7 @@
 
             <!-- FORMULARIO DE INICIO DE SESIÓN -->
             <section class="formulario" id="seccion-login">
-                <form id="formulario-login">
+                <form id="formulario-login" novalidate>
                     <div class="encabezado-formulario">
                         <span class="etiqueta-formulario">BIENVENIDO DE NUEVO</span>
                         <h2>Iniciar sesión</h2>
@@ -40,9 +40,11 @@
                         <label for="contrasena-login">Contraseña</label>
                         <input type="password" id="contrasena-login" placeholder="Ingresa tu contraseña">
 
-                        <p class="olvido"><a href="restablece_contrasena.html" id="ir-restablecer">¿Olvidaste tu contraseña?</a></p>
+                        <p class="olvido"><a href="restablece_contrasena.html" id="ir-restablecer">¿Olvidaste tu
+                                contraseña?</a></p>
 
                         <button type="submit">Iniciar sesión</button>
+                        <p id="mensaje-login" class="mensaje" role="alert"></p>
                     </fieldset>
 
                     <div class="enlaces-formulario">
@@ -58,6 +60,7 @@
 
     <!-- main.js controla el menú hamburguesa y el scroll de la navbar -->
     <script type="module" src="../js/main.js"></script>
+    <script type="module" src="../js/usuarios/inicio-sesion.js"></script>
 </body>
 
 </html>
