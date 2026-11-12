@@ -5,14 +5,11 @@ if (carrusel) {
     const contenedorPuntos = carrusel.querySelector('.carrusel-puntos');
     const btnAnterior = carrusel.querySelector('.carrusel-anterior');
     const btnSiguiente = carrusel.querySelector('.carrusel-siguiente');
-    const btnPausa = carrusel.querySelector('.carrusel-pausa');
 
-    const INTERVALO = 6000; // milisegundos entre una cancha y otra
-    const sinMovimiento = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const INTERVALO = 3000; // milisegundos entre una cancha y otra
 
     let actual = 0;
-    let temporizador = null;
-    let pausadoPorUsuario = false;
+    let temporizador = null;    
 
     // ----- Puntos: se crean según la cantidad de slides -----
     const puntos = slides.map((slide, i) => {
@@ -31,6 +28,7 @@ if (carrusel) {
     // ----- Carga diferida: las imágenes con data-src se descargan después -----
     function cargarImagen(slide) {
         const img = slide.querySelector('img');
+        if (!img) return;
         if (img.dataset.srcset) {
             img.srcset = img.dataset.srcset;
             delete img.dataset.srcset;
@@ -50,7 +48,7 @@ if (carrusel) {
             if (activa) cargarImagen(slide);
             slide.classList.toggle('activa', activa);
             slide.setAttribute('aria-hidden', String(!activa));
-            slide.inert = !activa; // los enlaces de slides ocultas no reciben foco
+            slide.inert = !activa;
             puntos[i].classList.toggle('activo', activa);
             puntos[i].setAttribute('aria-current', String(activa));
         });
@@ -66,11 +64,13 @@ if (carrusel) {
     }
 
     function iniciar() {
-        if (sinMovimiento.matches || pausadoPorUsuario || temporizador) return;
-        temporizador = setInterval(() => {
-            if (!document.hidden) irA(actual + 1);
-        }, INTERVALO);
-    }
+    // Quitamos "sinMovimiento.matches ||" para que siempre avance
+    if (temporizador) return; 
+    temporizador = setInterval(() => {
+        if (!document.hidden) irA(actual + 1);
+    }, INTERVALO);
+}
+
 
     function reiniciar() {
         detener();
@@ -78,15 +78,19 @@ if (carrusel) {
     }
 
     // ----- Botones -----
-    btnSiguiente.addEventListener('click', () => {
-        irA(actual + 1);
-        reiniciar();
-    });
+    if (btnSiguiente) {
+        btnSiguiente.addEventListener('click', () => {
+            irA(actual + 1);
+            reiniciar();
+        });
+    }
 
-    btnAnterior.addEventListener('click', () => {
-        irA(actual - 1);
-        reiniciar();
-    });
+    if (btnAnterior) {
+        btnAnterior.addEventListener('click', () => {
+            irA(actual - 1);
+            reiniciar();
+        });
+    }
 
     // Con el mouse encima o con el foco dentro, se pausa para poder leer
     carrusel.addEventListener('mouseenter', detener);
@@ -104,9 +108,6 @@ if (carrusel) {
             reiniciar();
         }
     });
-
-    // Si prefiere menos movimiento no hay cambio automático ni botón de pausa
-    if (sinMovimiento.matches) btnPausa.hidden = true;
 
     // Cuando termina de cargar la página, se descargan las imágenes que faltan
     window.addEventListener('load', () => slides.forEach(cargarImagen));

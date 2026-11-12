@@ -310,44 +310,80 @@ a {
 }
 
 /* Media Queries para Dispositivos Móviles y Tablets */
+/* Media Queries para Dispositivos Móviles y Tablets */
 @media (max-width: 900px) {
   .menu-toggle {
     display: flex;
+    order: 3; /* Coloca el botón hamburguesa al extremo derecho, junto al icono de perfil */
   }
 
-  /* Menú desplegable en pantallas pequeñas */
+  .nav-actions {
+    margin-left: auto;
+    margin-right: 0.75rem;
+  }
+
+  /* Menú flotante compacto y translúcido en pantallas pequeñas */
   .menu {
     position: fixed;
-    top: 0;
-    right: -100%;
-    width: 75%;
-    max-width: 300px;
-    height: 100vh;
-    background-color: var(--verdeOsucro);
+    top: 72px; /* Se despliega justo debajo de la barra superior */
+    right: 4%;
+    left: auto;
+    width: min(250px, 85vw);
+    height: auto; /* Se ajusta solo al contenido, sin tapar toda la pantalla */
+    padding: 0.85rem;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 16px;
+    
+    /* Fondo oscuro elegante con desenfoque que combina con el hero */
+    background: rgba(24, 35, 29, 0.9);
+    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(14px);
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.55);
+
     flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    padding: 2rem;
-    gap: 1.5rem;
-    box-shadow: -5px 0 25px rgba(0,0,0,0.5);
-    transition: right 0.35s ease-in-out;
+    justify-content: flex-start;
+    align-items: stretch;
+    gap: 0.3rem;
+
+    /* Oculto por defecto con animación suave */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px) scale(0.97);
+    transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
     z-index: 1000;
   }
 
+  /* Estado abierto controlado por tu JS actual */
   .menu.activo {
-    right: 0;
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+  }
+
+  /* Asegura que cada <li> ocupe todo el ancho de la tarjeta */
+  .menu li {
+    width: 100%;
   }
 
   .menu a {
-    font-size: 1.1rem;
+    font-size: 0.9rem;
+    font-weight: 500;
     width: 100%;
-    padding: 0.8rem 1rem;
+    padding: 0.65rem 0.95rem;
+    border-radius: 10px;
+    text-shadow: none;
+  }
+
+  .menu a:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--verdeCancha);
   }
 
   .menu a.activo {
-    background: rgba(255, 255, 255, 0.15);
+    background: rgba(0, 166, 80, 0.16);
+    color: var(--verdeCancha);
     border-bottom: none;
-    border-left: 4px solid var(--blanco);
+    border-left: 3px solid var(--narajaDeportivo);
   }
 
   /* Animación cruzada del botón hamburguesa cuando está abierto */
