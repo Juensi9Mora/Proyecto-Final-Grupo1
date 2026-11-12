@@ -9,7 +9,6 @@ body::after {
     position: fixed;
     width: 400px;
     height: 400px;
-    font-family: "Poppins", sans-serif;
     border-radius: 50%;
     z-index: -1;
     filter: blur(150px);
@@ -162,6 +161,10 @@ body::after {
     outline: none;
     border-bottom-color: var(--verdeMarca);
     box-shadow: 0 2px 0 0 var(--verdeMarca);
+}
+
+.mensaje[role = "alert"] {
+    color: var(--narajaDeportivo);
 }
 
 /* ===== Enlaces ===== */
