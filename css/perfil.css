@@ -1,0 +1,384 @@
+﻿/* ==========================================================================
+   MI CANCHA - PERFIL DE USUARIO (perfil.css)
+   ========================================================================== */
+
+body {
+  background: var(--verdeNiebla);
+  color: var(--carbonVerdoso);
+}
+
+/* Barra de navegación verde sólida */
+body .navbar {
+  background-color: var(--verdeOsucro);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.12);
+}
+
+/* Eliminar cualquier capa oscura o pseudo-elemento heredado */
+body::before,
+body::after,
+.page-shell::before,
+.page-shell::after {
+  content: none !important;
+  display: none !important;
+}
+
+/* Contenedor principal con proporción equilibrada */
+body .page-shell {
+  width: min(1040px, 92%);
+  margin: 0 auto 3.5rem;
+  padding-top: 100px;
+  background: transparent;
+}
+
+.hidden { display: none !important; }
+.muted { color: var(--grisVerdoso); margin: 0; }
+
+.eyebrow {
+  color: var(--verdeMarca);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 0.3rem;
+}
+
+/* ===== Cabecera de Bienvenida ===== */
+.welcome {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 1.2rem;
+  margin-bottom: 1.5rem;
+}
+
+.welcome h1 {
+  font-size: clamp(1.8rem, 3.8vw, 2.4rem);
+  font-weight: 800;
+  color: var(--carbonVerdoso);
+  line-height: 1.15;
+  margin-bottom: 0.3rem;
+}
+
+.role-switch {
+  display: grid;
+  gap: 0.35rem;
+  color: var(--grisVerdoso);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.role-switch select,
+.modal input,
+.modal select {
+  padding: 0.6rem 0.9rem;
+  border: 1px solid var(--grisSeparacion);
+  border-radius: 10px;
+  background: var(--blanco);
+  color: var(--carbonVerdoso);
+  font-weight: 600;
+}
+
+/* ===== Tarjeta de Usuario con Imagen de Fondo ===== */
+.profile-card {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 2rem 2.2rem;
+  border-radius: 18px;
+  border-left: 6px solid var(--narajaDeportivo);
+  color: var(--blanco);
+  background:
+    linear-gradient(95deg, rgba(16, 42, 30, 0.94) 40%, rgba(107, 50, 0, 0.362) 100%),
+    url('../img/Fondo6.webp') center/cover no-repeat;
+  box-shadow: 0 14px 30px rgba(24, 55, 40, 0.14);
+}
+
+.profile-main {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  min-width: 0;
+}
+
+.avatar {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: var(--verdeMarca);
+  color: var(--blanco);
+  border: 3px solid var(--narajaDeportivo);
+  font-size: 1.4rem;
+  font-weight: 800;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.name-line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.profile-copy h2 {
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: var(--blanco);
+  margin: 0;
+}
+
+.verified {
+  background: rgba(0, 166, 80, 0.28);
+  color: var(--verdeMenta);
+  border: 1px solid rgba(217, 242, 227, 0.45);
+  border-radius: 999px;
+  padding: 0.22rem 0.7rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.profile-copy .muted {
+  color: var(--verdeMenta);
+  font-size: 0.9rem;
+  margin: 0.35rem 0 0.15rem;
+}
+
+.profile-email {
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 0.84rem;
+  margin: 0;
+}
+
+/* ===== Botones ===== */
+.button {
+  border: none;
+  border-radius: 10px;
+  padding: 0.7rem 1.2rem;
+  font-weight: 700;
+  font-size: 0.88rem;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.button:hover { transform: translateY(-2px); }
+.button-primary { color: var(--blanco); background: var(--verdeMarca); }
+.button-primary:hover { background: var(--verdeOsucro); }
+.button-light { color: var(--verdeOsucro); background: var(--blanco); }
+.button-light:hover { background: var(--verdeMenta); }
+
+/* ===== Tarjetas Base (Métricas, Reservas y Paneles) ===== */
+.stat-card,
+.booking-card,
+.panel {
+  background: var(--blanco);
+  border: 1px solid var(--grisSeparacion);
+  border-radius: 14px;
+  box-shadow: 0 6px 20px rgba(38, 55, 46, 0.04);
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin: 1.35rem 0;
+}
+
+.stat-card { padding: 1.25rem; }
+
+.stat-icon {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  font-size: 1.15rem;
+}
+
+.stat-icon.green { color: var(--verdeMarca); background: var(--verdeMenta); }
+.stat-icon.orange { color: #c85a11; background: #fff0e5; }
+.stat-icon.blue { color: #35689c; background: #eaf2fb; }
+
+.stat-label { color: var(--grisVerdoso); font-size: 0.82rem; font-weight: 600; margin: 0.7rem 0 0.2rem; }
+.stat-number { font-size: 1.75rem; font-weight: 800; }
+.stat-number small { font-size: 0.8rem; color: var(--grisVerdoso); font-weight: 600; }
+
+/* ===== Racha Semanal ===== */
+.streak-card {
+  color: var(--blanco);
+  padding: 1.5rem 1.75rem 1.25rem;
+  border-radius: 16px;
+  background: linear-gradient(95deg, rgba(42, 32, 16, 0.922) 40%, rgba(0, 107, 0, 0.362) 100%), url('../img/Balon-Futbol.webp') center/cover no-repeat;
+  box-shadow: 0 14px 30px rgba(24, 55, 40, 0.14);
+}
+
+.streak-heading,
+.section-heading,
+.modal-heading,
+.details-list div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.light-eyebrow { color: var(--verdeMenta); }
+.streak-card h2 { font-size: 1.35rem; margin: 0 0 0.35rem; }
+.streak-card p { color: rgba(255, 255, 255, 0.88); font-size: 0.85rem; margin: 0; }
+
+.streak-number {
+  min-width: 80px;
+  text-align: center;
+  display: grid;
+  padding: 0.5rem;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.streak-number strong { font-size: 2.1rem; line-height: 1; color: var(--narajaDeportivo); }
+.streak-number span { font-size: 0.75rem; margin-top: 0.25rem; font-weight: 600; }
+
+.week-track {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.65rem;
+  margin-top: 1.2rem;
+}
+
+.week-item {
+  padding: 0.7rem 0.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  text-align: center;
+}
+
+.week-item strong { display: block; font-size: 0.78rem; margin-bottom: 0.25rem; }
+.week-item span { display: block; font-size: 0.72rem; color: rgba(255, 255, 255, 0.8); }
+.week-item.done { background: var(--blanco); color: var(--verdeOsucro); border-color: var(--blanco); }
+.week-item.done span { color: var(--verdeMarca); font-weight: 600; }
+.streak-footnote { margin-top: 0.85rem !important; font-size: 0.72rem !important; opacity: 0.85; }
+
+/* ===== Contenido Principal y Lateral ===== */
+.content-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(270px, 0.9fr);
+  gap: 1.35rem;
+  margin-top: 1.75rem;
+}
+
+.main-column { min-width: 0; }
+.section-heading { margin-bottom: 0.9rem; }
+.section-heading h2 { font-size: 1.25rem; margin: 0; }
+.compact h2 { font-size: 1.05rem; }
+
+.booking-list { display: grid; gap: 0.75rem; }
+
+.booking-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 1.1rem 1.2rem;
+  transition: border-color 0.2s, transform 0.2s;
+}
+
+.booking-card:hover { border-color: var(--verdeCancha); transform: translateY(-2px); }
+.booking-info h3 { font-size: 1rem; margin: 0 0 0.35rem; }
+.booking-meta { display: flex; flex-wrap: wrap; gap: 0.75rem; color: var(--grisVerdoso); font-size: 0.8rem; }
+.booking-actions { display: flex; flex-direction: column; align-items: flex-end; gap: 0.45rem; }
+
+.status {
+  border-radius: 999px;
+  padding: 0.3rem 0.7rem;
+  font-size: 0.72rem;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.status.confirmada { color: var(--verdeOsucro); background: var(--verdeMenta); }
+.status.pendiente { color: #b45309; background: #fef3c7; }
+.status.realizada { color: #1d4ed8; background: #dbeafe; }
+.status.cancelada { color: #b91c1c; background: #fee2e2; }
+
+.small-action,
+.text-button {
+  border: none;
+  background: none;
+  color: var(--verdeMarca);
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.small-action:hover,
+.text-button:hover { text-decoration: underline; }
+
+.panel { padding: 1.25rem; margin-bottom: 1rem; }
+.details-list div { padding: 0.65rem 0; border-bottom: 1px solid var(--grisSeparacion); }
+.details-list div:last-child { border-bottom: none; }
+.details-list dt { color: var(--grisVerdoso); font-size: 0.82rem; }
+.details-list dd { margin: 0; text-align: right; font-size: 0.85rem; font-weight: 700; overflow-wrap: anywhere; }
+
+.quick-item { display: flex; align-items: center; gap: 0.75rem; padding: 0.55rem 0; }
+.quick-thumb {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  color: var(--verdeMarca);
+  background: var(--verdeMenta);
+}
+.quick-item strong { display: block; font-size: 0.88rem; }
+.quick-item span { display: block; color: var(--grisVerdoso); font-size: 0.78rem; }
+
+.owner-panel { margin-top: 1.35rem; }
+.court-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.85rem; }
+.court-item { padding: 1rem; border-radius: 12px; background: var(--verdeNiebla); border: 1px solid var(--grisSeparacion); }
+.court-item strong { display: block; font-size: 0.92rem; margin-bottom: 0.25rem; }
+.court-item span { color: var(--grisVerdoso); font-size: 0.8rem; }
+
+.empty-state {
+  padding: 1.5rem;
+  text-align: center;
+  background: var(--blanco);
+  border: 1px dashed var(--grisSeparacion);
+  border-radius: 12px;
+  color: var(--grisVerdoso);
+  font-size: 0.9rem;
+}
+
+/* ===== Modales ===== */
+.modal {
+  width: min(440px, calc(100% - 28px));
+  margin: auto;
+  padding: 1.6rem;
+  border: 1px solid var(--grisSeparacion);
+  border-top: 4px solid var(--verdeCancha);
+  border-radius: 16px;
+  background: var(--blanco);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.22);
+}
+
+.modal::backdrop { background: rgba(20, 30, 24, 0.55); }
+.modal form { display: grid; gap: 0.85rem; }
+.modal-heading h2 { font-size: 1.25rem; color: var(--verdeOsucro); margin: 0; }
+.close-button { border: none; background: none; color: var(--grisVerdoso); font-size: 1.6rem; cursor: pointer; }
+.modal label { display: grid; gap: 0.35rem; font-size: 0.85rem; font-weight: 600; }
+.modal input, .modal select { width: 100%; background: var(--verdeNiebla); }
+.modal-actions { display: flex; justify-content: flex-end; gap: 0.6rem; margin-top: 0.3rem; }
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+body .page-shell { padding-top: 85px; }
+.welcome, .profile-card { flex-direction: column; align-items: flex-start; }
+.role-switch, .role-switch select, .profile-actions, .profile-actions .button { width: 100%; }
+.stats-grid, .content-grid, .court-list { grid-template-columns: 1fr; }
+}
+@media (max-width: 420px) {
+.week-track { grid-template-columns: repeat(2, 1fr); }
+}
