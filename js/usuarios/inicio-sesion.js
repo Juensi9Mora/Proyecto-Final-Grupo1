@@ -1,5 +1,4 @@
-import { correoYaRegistrado, registrarUsuario, buscarUsuarioPorCorreo, hashearContrasena } from
-  "./validaciones-registro.js";
+import { correoYaRegistrado, registrarUsuario, buscarUsuarioPorCorreo, hashearContrasena } from "./validaciones-registro.js";
 
 // usuarios pre-almacenados
 const usuariosIniciales = [
@@ -44,13 +43,13 @@ function validarLogin(datos) {
 }
 
   // busca el usuario en localStorage y compara la contraseña (funcion de autenticación)
-  async function autenticar(correo, contrasena) {
-      const usuario = buscarUsuarioPorCorreo(correo);
-       if (!usuario) return null;
-       const hash = await hashearContrasena(contrasena, usuario.sal);
-       if (hash !== usuario.contrasenaHash) return null; 
-        return usuario;
-  }
+    async function autenticar(correo, contrasena) {
+        const usuario = buscarUsuarioPorCorreo(correo);
+        if (!usuario) return null;
+        const hash = await hashearContrasena(contrasena, usuario.sal);
+        if (hash !== usuario.contrasenaHash) return null; 
+            return usuario;
+    }
 
 // muestra los errores debajo de cada campo
 function mostrarErroresLogin(errores) {
@@ -67,31 +66,49 @@ function mostrarErroresLogin(errores) {
 }
 
 //esta funcion se usa en el submit
-  const mensajeLogin = document.getElementById("mensaje-login");
+    const mensajeLogin = document.getElementById("mensaje-login");
 
-  formularioLogin.addEventListener("submit", async (evento) => {
-      evento.preventDefault();
-      mensajeLogin.textContent = "";
-      mensajeLogin.className = "mensaje";
+    formularioLogin.addEventListener("submit", async (evento) => {
+        evento.preventDefault();
+        mensajeLogin.textContent = "";
+        mensajeLogin.className = "mensaje";
 
-      const datos = capturarLogin();
-      const errores = validarLogin(datos);
-      mostrarErroresLogin(errores);
+        const datos = capturarLogin();
+        const errores = validarLogin(datos);
+        mostrarErroresLogin(errores);
 
-      if (Object.keys(errores).length > 0) return;  // campos vacíos → se detiene aquí
+        if (Object.keys(errores).length > 0) return;  // campos vacíos → se detiene aquí
 
-      const usuario = await autenticar(datos.correo, datos.contrasena);
+        const usuario = await autenticar(datos.correo, datos.contrasena);
 
-      if (!usuario) {
-          mensajeLogin.textContent = "Usuario o contraseña inválidos.";
-          mensajeLogin.className = "mensaje mensaje-error";
-          return;
-      }
-        // guarda quién inició sesión (sin la contraseña)
-      localStorage.setItem("usuarioActivo", JSON.stringify({ nombre: usuario.nombre, correo:
-  usuario.correo }));
+        if (!usuario) {
+            mensajeLogin.textContent = "Usuario o contraseña inválidos.";
+            mensajeLogin.className = "mensaje mensaje-error";
+            return;
+        }
+            // guarda quién inició sesión (sin la contraseña)
+        localStorage.setItem("usuarioActivo", JSON.stringify({ nombre: usuario.nombre, correo:
+    usuario.correo }));
 
-      mensajeLogin.textContent = `¡Bienvenido, ${usuario.nombre}!`;
-      mensajeLogin.className = "mensaje mensaje-ok";
-      alert(`Inicio de sesión exitoso. ¡Hola, ${usuario.nombre}!`);
-  });
+        mensajeLogin.textContent = `¡Bienvenido, ${usuario.nombre}!`;
+        mensajeLogin.className = "mensaje mensaje-ok";
+        alert(`Inicio de sesión exitoso. ¡Hola, ${usuario.nombre}!`);
+    });
+
+    // Guarda la sesión unificada
+const sesion = {
+    id: usuario.id,
+    nombre: usuario.nombre,
+    correo: usuario.correo,
+    telefono: usuario.telefono || "",
+    ciudad: usuario.ciudad || "Bogotá"
+};
+localStorage.setItem("usuarioActivo", JSON.stringify(sesion));
+localStorage.setItem("usuarioMiCancha", JSON.stringify(sesion)); // Compatibilidad con reservas
+
+mensajeLogin.textContent = `¡Bienvenido, ${usuario.nombre}!`;
+mensajeLogin.className = "mensaje mensaje-ok";
+
+setTimeout(() => {
+    window.location.href = "perfil.html";
+}, 800);

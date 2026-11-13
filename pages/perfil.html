@@ -1,0 +1,191 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Perfil de usuario de Mi Cancha">
+    <title>Mi Cancha | Mi perfil</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/perfil.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+     <!-- Navbar (misma que las demás páginas) -->
+    <div id="navbar-root"></div>
+
+    <main class="page-shell" id="dashboard">
+        <section class="welcome">
+        <div>
+            <p class="eyebrow">TU ESPACIO DEPORTIVO</p>
+            <h1>¡Hola, <span id="welcomeName">Angel</span>! 👋</h1>
+            <p class="muted">Administra tus reservas y disfruta cada partido.</p>
+        </div>
+        <label class="role-switch">
+            <span>Mi modalidad</span>
+            <select id="roleSelect" aria-label="Seleccionar modalidad">
+            <option value="deportista">Deportista</option>
+            <option value="propietario">Propietario</option>
+            <button class="avatar-small" id="topAvatar" aria-label="Ir a mi perfil">AM</button>
+            </select>
+        </label>
+        </section>
+
+        <section class="profile-card">
+        <div class="profile-main">
+            <div class="avatar" id="profileAvatar">AM</div>
+            <div class="profile-copy">
+            <div class="name-line">
+                <h2 id="profileName">Angel Muñoz</h2>
+                <span class="verified">✓ Cuenta activa</span>
+            </div>
+            <p id="profileRole" class="muted">Deportista · Cuenta personal</p>
+            <p class="profile-email" id="profileEmail">munoz98@email.com</p>
+            </div>
+            </div>
+            <div class="profile-actions" style="display: flex; gap: 0.6rem; flex-wrap: wrap;">
+            <button type="button" class="button button-light" id="editProfileBtn">Editar perfil</button>
+            <button type="button" class="button button-primary" id="logoutBtn">Cerrar sesión</button>
+            </div>
+
+        </section>
+
+        <section class="stats-grid" aria-label="Resumen de actividad">
+        <article class="stat-card">
+            <span class="stat-icon green">▣</span>
+            <p class="stat-label" id="statOneLabel">Reservas realizadas</p>
+            <strong class="stat-number" id="statOne">3</strong>
+        </article>
+        <article class="stat-card">
+            <span class="stat-icon orange">🔥</span>
+            <p class="stat-label">Racha actual</p>
+            <strong class="stat-number"><span id="currentStreak">2</span> <small>semanas</small></strong>
+        </article>
+        <article class="stat-card">
+            <span class="stat-icon blue">☆</span>
+            <p class="stat-label" id="statThreeLabel">Canchas favoritas</p>
+            <strong class="stat-number" id="statThree">2</strong>
+        </article>
+        </section>
+
+        <section class="streak-card">
+        <div class="streak-heading">
+            <div>
+            <p class="eyebrow light-eyebrow">CONSTANCIA DEPORTIVA</p>
+            <h2>Tu racha de reservas <span aria-hidden="true">🔥</span></h2>
+            <p id="streakMessage">¡Vas muy bien! Completa una reserva cada semana para mantener tu racha.</p>
+            </div>
+            <div class="streak-number">
+            <strong id="streakBig">2</strong>
+            <span>semanas</span>
+            </div>
+        </div>
+        <div class="week-track" id="weekTrack" aria-label="Actividad de las últimas cuatro semanas"></div>
+        <p class="streak-footnote">Cuenta una semana cuando completas al menos una reserva. Las reservas pendientes o canceladas no suman.</p>
+        </section>
+
+        <section class="content-grid">
+        <div class="main-column">
+            <div class="section-heading">
+            <div>
+                <p class="eyebrow">TU ACTIVIDAD</p>
+                <h2 id="mainSectionTitle">Próximas reservas</h2>
+            </div>
+            <button class="button button-primary" id="addBookingBtn">+ Nueva reserva</button>
+            </div>
+            <div id="bookingList" class="booking-list"></div>
+        </div>
+
+        <aside class="side-column">
+            <section class="panel" id="profile">
+            <div class="section-heading compact">
+                <h2 id="sideTitle">Mis datos</h2>
+                <button class="text-button" id="sideEditBtn">Editar</button>
+            </div>
+            <dl class="details-list">
+                <div><dt>Nombre</dt><dd id="detailName">Angel Muñoz</dd></div>
+                <div><dt>Correo</dt><dd id="detailEmail">munoz98@email.com</dd></div>
+                <div><dt>Ciudad</dt><dd id="detailCity">Bogotá</dd></div>
+            </dl>
+            </section>
+            <section class="panel">
+            <div class="section-heading compact">
+                <h2 id="quickTitle">Mis favoritos</h2>
+            </div>
+            <div id="quickList" class="quick-list"></div>
+            </section>
+        </aside>
+        </section>
+
+        <section class="panel owner-panel hidden" id="ownerPanel">
+        <div class="section-heading">
+            <div>
+            <p class="eyebrow">GESTIÓN DEL NEGOCIO</p>
+            <h2>Mis espacios deportivos</h2>
+            </div>
+            <button class="button button-primary" id="addCourtBtn">+ Registrar cancha</button>
+        </div>
+        <div id="courtList" class="court-list"></div>
+        </section>
+    </main>
+
+    <dialog id="profileDialog" class="modal">
+        <form method="dialog" id="profileForm">
+        <div class="modal-heading">
+            <h2>Editar perfil</h2>
+            <button class="close-button" value="cancel" aria-label="Cerrar">×</button>
+        </div>
+        <label>Nombre completo<input id="nameInput" required maxlength="60"></label>
+        <label>Correo electrónico<input id="emailInput" type="email" required></label>
+        <label>Ciudad<input id="cityInput" required></label>
+        <div class="modal-actions">
+            <button class="button button-light" value="cancel">Cancelar</button>
+            <button class="button button-primary" id="saveProfileBtn" value="default">Guardar cambios</button>
+        </div>
+        </form>
+    </dialog>
+
+    <dialog id="bookingDialog" class="modal">
+        <form method="dialog" id="bookingForm">
+        <div class="modal-heading">
+            <h2>Nueva reserva</h2>
+            <button class="close-button" value="cancel" aria-label="Cerrar">×</button>
+        </div>
+        <label>Nombre de la cancha<input id="courtInput" required placeholder="Ej. Cancha El Campeón"></label>
+        <label>Fecha de reserva<input id="dateInput" type="date" required></label>
+        <label>Hora<input id="timeInput" type="time" required value="16:00"></label>
+        <label>Deporte
+            <select id="sportInput">
+            <option>Fútbol 5</option><option>Fútbol 8</option><option>Fútbol 11</option>
+            <option>Pádel</option><option>Tenis</option><option>Baloncesto</option>
+            </select>
+        </label>
+        <div class="modal-actions">
+            <button class="button button-light" value="cancel">Cancelar</button>
+            <button class="button button-primary" id="saveBookingBtn" value="default">Guardar reserva</button>
+        </div>
+        </form>
+    </dialog>
+
+    <dialog id="courtDialog" class="modal">
+        <form method="dialog" id="courtForm">
+        <div class="modal-heading">
+            <h2>Registrar cancha</h2>
+            <button class="close-button" value="cancel" aria-label="Cerrar">×</button>
+        </div>
+        <label>Nombre del espacio<input id="newCourtName" required placeholder="Ej. Canchas del Parque"></label>
+        <label>Tipo de cancha<input id="newCourtType" required placeholder="Ej. Fútbol 5"></label>
+        <div class="modal-actions">
+            <button class="button button-light" value="cancel">Cancelar</button>
+            <button class="button button-primary" id="saveCourtBtn" value="default">Registrar</button>
+        </div>
+        </form>
+    </dialog>
+
+    <div id="footer-root"></div>
+
+    <script type="module" src="../js/main.js"></script>
+    <script src="../js/perfil.js"></script>
+    </body>
+    </html>
