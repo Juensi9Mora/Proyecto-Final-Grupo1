@@ -588,3 +588,267 @@ body .reservas {
     padding: 1rem 4%;
   }
 }
+
+/* ===== Menú desplegable del usuario (pegar al final de style.css) ===== */
+.nav-actions {
+  position: relative;
+}
+
+.login {
+  position: relative;
+}
+
+button.login {
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+}
+
+/* puntito verde cuando hay sesión iniciada */
+.login.con-sesion::after {
+  content: "";
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  width: 12px;
+  height: 12px;
+  background: var(--verdeCancha);
+  border: 2px solid var(--verdeOsucro);
+  border-radius: 50%;
+}
+
+.menu-usuario {
+  position: absolute;
+  top: calc(100% + 12px);
+  right: 0;
+  z-index: 1100;
+  width: min(280px, calc(100vw - 2rem));
+  padding: 0.5rem;
+  color: var(--carbonVerdoso);
+  background: var(--blanco);
+  border: 1px solid var(--grisSeparacion);
+  border-radius: 16px;
+  box-shadow: 0 18px 40px rgba(20, 30, 24, 0.28);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(-8px) scale(0.98);
+  transform-origin: top right;
+  transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s;
+}
+
+.menu-usuario.abierto {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: none;
+}
+
+/* flechita que apunta al icono */
+.menu-usuario::before {
+  content: "";
+  position: absolute;
+  top: -7px;
+  right: 14px;
+  width: 12px;
+  height: 12px;
+  background: var(--blanco);
+  border-top: 1px solid var(--grisSeparacion);
+  border-left: 1px solid var(--grisSeparacion);
+  transform: rotate(45deg);
+}
+
+/* si la pantalla es baja (celular en horizontal) el contenido hace scroll sin cortar la flecha */
+.menu-usuario-panel {
+  max-height: calc(100vh - 110px);
+  max-height: calc(100dvh - 110px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  border-radius: 12px;
+}
+
+.menu-usuario-cabecera {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  margin-bottom: 0.4rem;
+  background: var(--verdeNiebla);
+  border-radius: 12px;
+}
+
+.menu-usuario-avatar {
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--blanco);
+  background: var(--verdeMarca);
+  border-radius: 50%;
+}
+
+.menu-usuario-avatar svg {
+  width: 22px;
+  height: 22px;
+}
+
+.menu-usuario-datos {
+  min-width: 0;
+  line-height: 1.3;
+}
+
+.menu-usuario-datos strong,
+.menu-usuario-datos span {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.menu-usuario-datos strong {
+  font-size: 0.95rem;
+}
+
+.menu-usuario-datos span {
+  font-size: 0.8rem;
+  color: var(--grisVerdoso);
+}
+
+.menu-usuario-lista {
+  display: grid;
+  gap: 2px;
+  list-style: none;
+}
+
+.menu-usuario-item {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  width: 100%;
+  padding: 0.7rem 0.75rem;
+  font: inherit;
+  font-size: 0.92rem;
+  font-weight: 600;
+  text-align: left;
+  color: var(--carbonVerdoso);
+  background: none;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.menu-usuario-item svg {
+  flex: 0 0 auto;
+  width: 20px;
+  height: 20px;
+  color: var(--verdeMarca);
+}
+
+.menu-usuario-item:hover,
+.menu-usuario-item:focus-visible {
+  color: var(--verdeOsucro);
+  background: var(--verdeNiebla);
+  outline: none;
+}
+
+.menu-usuario-item:focus-visible {
+  box-shadow: inset 0 0 0 2px var(--verdeCancha);
+}
+
+/* botón principal (Iniciar sesión) */
+.menu-usuario-item.principal {
+  justify-content: center;
+  color: var(--blanco);
+  background: var(--verdeMarca);
+}
+
+.menu-usuario-item.principal svg {
+  color: var(--blanco);
+}
+
+.menu-usuario-item.principal:hover,
+.menu-usuario-item.principal:focus-visible {
+  color: var(--blanco);
+  background: var(--verdeOsucro);
+}
+
+.menu-usuario-separador {
+  height: 1px;
+  margin: 0.4rem 0.25rem;
+  background: var(--grisSeparacion);
+}
+
+.menu-usuario-item.peligro,
+.menu-usuario-item.peligro svg {
+  color: #DC3545;
+}
+
+.menu-usuario-item.peligro:hover,
+.menu-usuario-item.peligro:focus-visible {
+  color: #DC3545;
+  background: #FDECEE;
+}
+
+/* ===== Responsive ===== */
+
+/* pantallas táctiles: áreas de toque de 48px */
+@media (pointer: coarse) {
+  .menu-usuario-item {
+    min-height: 48px;
+  }
+}
+
+/* tableta y celular: el menú sube un poco el ancho y respeta los bordes */
+@media (max-width: 900px) {
+  .menu-usuario {
+    width: min(300px, calc(100vw - 1.5rem));
+  }
+}
+
+/* celular */
+@media (max-width: 480px) {
+  .menu-usuario {
+    top: calc(100% + 10px);
+    padding: 0.4rem;
+    border-radius: 14px;
+  }
+
+  .menu-usuario::before {
+    right: 13px;
+  }
+
+  .menu-usuario-cabecera {
+    padding: 0.65rem;
+  }
+
+  .menu-usuario-item {
+    padding: 0.8rem 0.75rem;
+    font-size: 1rem;
+  }
+}
+
+/* celular pequeño (Fold plegado, iPhone SE): casi todo el ancho */
+@media (max-width: 360px) {
+  .menu-usuario {
+    width: calc(100vw - 1rem);
+  }
+}
+
+/* celular en horizontal: menos alto disponible */
+@media (max-height: 480px) {
+  .menu-usuario-panel {
+    max-height: calc(100vh - 80px);
+    max-height: calc(100dvh - 80px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .menu-usuario {
+    transition: none;
+  }
+}
