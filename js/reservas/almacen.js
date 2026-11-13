@@ -2,7 +2,6 @@
 export const CLAVES = {
     reserva: "reservaActual",          // horarios que el usuario está armando
     confirmadas: "reservasConfirmadas",// reservas ya confirmadas (marcan horas ocupadas)
-    usuario: "usuarioMiCancha"         // sesión; cámbiala si tu login usa otra clave
 };
 
 function leer(clave, porDefecto) {
@@ -25,7 +24,8 @@ export const leerReserva = () => leer(CLAVES.reserva, []);
 export const guardarReserva = (items) => guardar(CLAVES.reserva, items);
 export const leerConfirmadas = () => leer(CLAVES.confirmadas, []);
 export const guardarConfirmadas = (lista) => guardar(CLAVES.confirmadas, lista);
-export const leerUsuario = () => leer(CLAVES.usuario, null);
+/* La sesión la maneja el servicio (clave "usuarioActivo") */
+export { obtenerSesion as leerUsuario } from "../services/sesionService.js";
 
 /* Evita que un nombre con símbolos rompa el HTML */
 export const esc = (texto) => String(texto).replace(/[&<>"']/g, (ch) =>

@@ -1,6 +1,7 @@
 import { renderNavbar } from './components/navbar.js';
 import { renderFooter } from './components/footer.js';
 import { iniciarNavbar } from './ui/navbar-comportamiento.js';
+import { iniciarMenuUsuario } from './ui/menu-usuario.js';
 
 // Cerrar menú móvil al tocar fuera de la tarjeta flotante movil
 document.addEventListener('click', (evento) => {
@@ -18,4 +19,5 @@ document.addEventListener('click', (evento) => {
 
 renderNavbar();
 renderFooter();
-iniciarNavbar();  
+iniciarNavbar();
+iniciarMenuUsuario();
