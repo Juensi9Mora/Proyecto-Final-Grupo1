@@ -1,16 +1,20 @@
 const formulario = document.getElementById("formulario-detalles");
 
-//datos formulario
+// Capturar datos del formulario
 export function capturarDatos() {
+  const campoImagen = document.getElementById("imagen");
+
   return {
     nombre: document.getElementById("nombre-cancha").value.trim(),
     categoria: document.getElementById("categoria").value,
     subcategoria: document.getElementById("subcategoria").value,
     pais: document.getElementById("pais").value,
     ciudad: document.getElementById("ciudad").value,
+    direccion: document.getElementById("direccion").value.trim(),
+    detalle: document.getElementById("detalle").value.trim(),
+    moneda: document.getElementById("moneda").value,
     valor: Number(document.getElementById("valor").value),
     imagen: document.getElementById("imagen").files[0],
-    balon: document.getElementById("balon").files[0]
   };
 }
 
@@ -33,6 +37,12 @@ export function validarCancha(cancha) {
   if (cancha.ciudad === "") {
     errores.ciudad = "Selecciona una ciudad.";
   }
+  if (!cancha.direccion || cancha.direccion.length < 8) {
+    errores.direccion = "Ingresa una dirección completa de la cancha.";
+  }
+  if (cancha.moneda === "") {
+    errores.moneda = "Selecciona una moneda.";
+  }
   if (isNaN(cancha.valor) || cancha.valor <= 0) {
     errores.valor = "El valor por hora debe ser un número mayor que 0.";
   }
@@ -41,17 +51,17 @@ export function validarCancha(cancha) {
   } else if (!cancha.imagen.type.startsWith("image/")) {
     errores.imagen = "El archivo debe ser una imagen (.jpg, .png, .webp).";
   }
-  if (cancha.balon && !cancha.balon.type.startsWith("image/")) {
-    errores.balon = "El archivo debe ser una imagen válida.";
-  }
   return errores;
 }
+
 // muestra los errores debajo de cada campo
 export function mostrarErrores(errores) {
   formulario.querySelectorAll("input, select, textarea").forEach((campo) => {
     campo.classList.remove("is-invalid", "is-valid");
     const aviso = campo.nextElementSibling;
-    if (aviso && aviso.classList.contains("invalid-feedback")) aviso.remove();
+    if (aviso && aviso.classList.contains("invalid-feedback")) {
+      aviso.remove();
+    }
 
     if (errores[campo.id]) {
       campo.classList.add("is-invalid");
@@ -65,10 +75,9 @@ export function mostrarErrores(errores) {
   });
 }
 
-// borra los mensajes y colores de error
+// Limpiar los mensajes y colores de error
 export function limpiarErrores() {
-  formulario
-    .querySelectorAll(".invalid-feedback")
+  formulario.querySelectorAll(".invalid-feedback")
     .forEach((aviso) => aviso.remove());
   formulario.querySelectorAll(".is-invalid, .is-valid").forEach((campo) => {
     campo.classList.remove("is-invalid", "is-valid");

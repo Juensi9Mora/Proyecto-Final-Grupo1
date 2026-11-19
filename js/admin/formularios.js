@@ -13,10 +13,11 @@ let nombre = document.getElementById("nombre-cancha");
 let imagen = document.getElementById("imagen");
 let vista = document.getElementById("vista-imagen");
 
-let balon = document.getElementById("balon");
-let vistaBalon = document.getElementById("vista-balon");
-
 let detalle = document.getElementById("detalle");
+let direccion = document.getElementById("direccion");
+let contenedorMapaAdmin = document.getElementById("contenedor-mapa-admin");
+let mapaAdmin = document.getElementById("mapa-admin");
+let estadoMapaAdmin = document.getElementById("estado-mapa-admin");
 
 let pais = document.getElementById("pais");
 let ciudad = document.getElementById("ciudad");
@@ -74,10 +75,10 @@ function actualizarCiudades() {
         ciudad.innerHTML += '<option>Bogotá</option><option>Medellín</option>';
     } else if (pais.value === "Peru") {
         ciudad.innerHTML += '<option>Lima</option><option>Arequipa</option>';
-    } 
+    }
 
     moneda.value = MONEDAS[pais.value] || "";
-        
+
 }
 
 function limpiar() {
@@ -85,8 +86,7 @@ function limpiar() {
 
     vista.hidden = true;
     vista.removeAttribute("src");
-    vistaBalon.hidden = true;
-    vistaBalon.removeAttribute("src");
+    ocultarMapaAdmin();
     seccion.hidden = true;
     imagen.required = true;
     edicion = -1;
@@ -97,30 +97,139 @@ export function cargarCancha(cancha, indice) {
     edicion = indice;
     nombre.value = cancha.nombre;
     detalle.value = cancha.detalle || "";
+    direccion.value = cancha.direccion || "";
     pais.value = cancha.pais;
     actualizarCiudades();
     ciudad.value = cancha.ciudad;
     categoria.value = cancha.categoria;
+    actualizarSubcategorias();
+    subcategoria.value = cancha.subcategoria || "";
     valor.value = cancha.valor;
+    if (direccion.value) actualizarMapaAdmin();
+    else ocultarMapaAdmin();
     imagen.required = false;
     vista.src = cancha.imagen;
     vista.hidden = false;
     titulo.textContent = "Actualizar cancha";
     guardar.textContent = "Guardar cambios";
     seccion.hidden = false;
+}
 
-    if (cancha.balon) {
-        vistaBalon.src = cancha.balon;
-        vistaBalon.hidden = false;
+function mostrarMapaAdmin(textoUbicacion) {
+    if (!textoUbicacion) return;
+    const consulta = encodeURIComponent(textoUbicacion);
+    mapaAdmin.src = `https://www.google.com/maps?q=${consulta}&output=embed`;
+    contenedorMapaAdmin.hidden = false;
+    estadoMapaAdmin.textContent = "Mapa de la ubicación encontrada para esta dirección.";
+}
+
+function ocultarMapaAdmin() {
+    contenedorMapaAdmin.hidden = true;
+    mapaAdmin.removeAttribute("src");
+    estadoMapaAdmin.textContent = "La ubicación se actualizará con la dirección ingresada.";
+}
+
+async function actualizarMapaAdmin() {
+    const texto = direccion.value.trim();
+
+    if (texto.length < 8 || !ciudad.value || !pais.value) {
+        ocultarMapaAdmin();
+        return;
     }
 
-    titulo.textContent = "Actualizar cancha";
-    guardar.textContent = "Guardar cambios";
-    seccion.hidden = false;
+    estadoMapaAdmin.textContent = "Buscando la ubicación...";
+    contenedorMapaAdmin.hidden = false;
+
+    try {
+        const resultado = await geocodificarDireccion(
+            texto,
+            ciudad.value,
+            pais.value
+        );
+
+        if (!resultado) {
+            mapaAdmin.removeAttribute("src");
+            estadoMapaAdmin.textContent =
+                "No se encontró la dirección. Verifica los datos ingresados.";
+            return;
+        }
+
+        mostrarMapaAdmin(resultado.display_name);
+
+    } catch (error) {
+        console.error("Error al buscar la dirección:", error);
+
+        mapaAdmin.removeAttribute("src");
+        estadoMapaAdmin.textContent =
+            "No fue posible consultar el mapa. Verifica tu conexión.";
+    }
+}
+
+async function geocodificarDireccion(direccion, ciudad, pais) {
+    const codigosPais = {
+        Colombia: "co",
+        Peru: "pe"
+    };
+
+    const nombrePais = pais === "Peru" ? "Perú" : pais;
+    const consulta = `${direccion}, ${ciudad}, ${nombrePais}`;
+
+    const url = `https://nominatim.openstreetmap.org/search?format=jsonv2&addressdetails=1&limit=5&countrycodes=${codigosPais[pais]}&q=${encodeURIComponent(consulta)}`;
+    const respuesta = await fetch(url, {
+        headers: {
+            "Accept-Language": "es"
+        }
+    });
+
+    if (!respuesta.ok) {
+        throw new Error(`Error HTTP ${respuesta.status}`);
+    }
+
+    const resultados = await respuesta.json();
+
+    const normalizar = (texto) =>
+        String(texto || "")
+            .normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "")
+            .toLowerCase()
+            .trim();
+
+    const ciudadBuscada = normalizar(ciudad);
+    const paisBuscado = normalizar(nombrePais);
+
+    return resultados.find((resultado) => {
+        const a = resultado.address || {};
+
+        const datosUbicacion = normalizar([
+            a.city,
+            a.town,
+            a.village,
+            a.municipality,
+            a.county,
+            a.state_district,
+            a.state,
+            resultado.display_name
+        ].join(" "));
+
+        const paisEncontrado = normalizar(a.country);
+
+        return (
+            paisEncontrado === paisBuscado &&
+            datosUbicacion.includes(ciudadBuscada)
+        );
+    }) || null;
 }
 
 export function iniciarFormularios(administrador) {
-    pais.addEventListener("change", actualizarCiudades);
+    pais.addEventListener("change", () => {
+        actualizarCiudades();
+        ocultarMapaAdmin();
+    });
+
+    // La vista previa del mapa se actualiza al salir del campo de dirección.
+    direccion.addEventListener("blur", actualizarMapaAdmin);
+    direccion.addEventListener("change", actualizarMapaAdmin);
+    ciudad.addEventListener("change", actualizarMapaAdmin);
 
     categoria.addEventListener("change", () => {
         actualizarSubcategorias();
@@ -149,7 +258,7 @@ export function iniciarFormularios(administrador) {
         }
 
         let lector = new FileReader();
-        lector.onload = function() {
+        lector.onload = function () {
 
             previsualizacion.src = lector.result;
             previsualizacion.hidden = false;
@@ -162,79 +271,131 @@ export function iniciarFormularios(administrador) {
         previsualizarImagen(imagen, vista)
     );
 
-    balon.addEventListener("change", () =>
-        previsualizarImagen(balon, vistaBalon)
-    );
-
-    formulario.addEventListener("submit", (evento) => {
+    formulario.addEventListener("submit", async (evento) => {
         evento.preventDefault();
 
-        // validaciones
-        let errores = validarCancha(capturarDatos());
-        if (edicion !== -1) delete errores.imagen;
+        // Validaciones locales antes de consultar el servicio de geocodificación.
+        let datos = capturarDatos();
+        let errores = validarCancha(datos);
+        if (edicion !== -1 && !datos.imagen) delete errores.imagen;
         mostrarErrores(errores);
         if (Object.keys(errores).length > 0) return;
 
-        let archivo = imagen.files[0];
-        let archivoBalon = balon.files[0];
+        guardar.disabled = true;
 
-        function guardarDatos(foto, fotoBalon) {
-            let canchaAnterior = edicion === -1 ? null : administrador.canchas[edicion];
-            let activa = canchaAnterior ? canchaAnterior.activa: true;
-
-            let cancha = new Cancha(
-            nombre.value.trim(),
-            pais.value,
-            ciudad.value,
-            categoria.value,
-            MONEDAS[pais.value],
-            Number(valor.value),
-            foto,
-            fotoBalon,
-            detalle.value.trim(),
-            activa,
-            categoria.value === "Fútbol" ? subcategoria.value : ""
-        );
-
-            administrador.guardarCancha(cancha, edicion);
-            console.log(JSON.stringify(administrador.canchas.map(({ imagen, ...datos }) => datos), null, 2));
-            nombreInicial.value = cancha.nombre;
-            limpiar();
-        }
-
-         let fotoActual = edicion === -1
-            ? "../img/Cancha-Futbol.webp"
-            : administrador.canchas[edicion].imagen;
-
-        let balonActual = edicion === -1
-            ? "../img/Balon-2.webp"
-            : (
-                administrador.canchas[edicion].balon ||
-                "../img/Balon-2.webp"
+        // Geocodifica la dirección y comprueba que pertenezca a la ciudad y país seleccionados.
+        try {
+            const resultado = await geocodificarDireccion(
+                datos.direccion,
+                datos.ciudad,
+                datos.pais
             );
 
-        function guardarConImagenes(foto, fotoDeporte) {
+            if (!resultado) {
+                mostrarErrores({
+                    direccion:
+                        `La dirección no coincide con ${datos.ciudad}, ${datos.pais}. Verifica la dirección ingresada.`
+                });
+                return;
 
-            if (archivoBalon) {
-                let lectorBalon = new FileReader();
-                lectorBalon.onload = () =>
-                    guardarDatos(foto, lectorBalon.result);
-                lectorBalon.readAsDataURL(archivoBalon);
-            } else {
-                guardarDatos(foto, fotoDeporte);
             }
-        }
+            // Mostrar ubicación encontrada.
+            mostrarMapaAdmin(
+                resultado.display_name || datos.direccion
+            );
 
-        if (archivo) {
-            let lector = new FileReader();
-            lector.onload = () =>
-                guardarConImagenes(lector.result, balonActual);
-            lector.readAsDataURL(archivo);
-        } else {
-            guardarConImagenes(fotoActual, balonActual);
+            // Guardar los datos.
+            await procesarGuardado(datos, resultado);
+
+        } catch (error) {
+            console.error(
+                "Error al guardar la cancha:",
+                error
+            );
+
+            mostrarErrores({
+                direccion:
+                    "No fue posible validar la dirección. Comprueba tu conexión e inténtalo nuevamente."
+            });
+
+        } finally {
+            guardar.disabled = false;
         }
 
     });
+
+    async function procesarGuardado(datos, ubicacionEncontrada) {
+
+        const canchaAnterior =
+            edicion === -1
+                ? null
+                : administrador.canchas[edicion];
+
+        const activa = canchaAnterior
+            ? canchaAnterior.activa
+            : true;
+
+        // Mantener la imagen anterior cuando se edita.
+        const imagenActual = canchaAnterior
+            ? canchaAnterior.imagen
+            : "../img/Cancha-Futbol.webp";
+
+        let imagenGuardada = imagenActual;
+
+        // Si se seleccionó una imagen nueva, leerla.
+        if (datos.imagen) {
+
+            imagenGuardada = await new Promise((resolve, reject) => {
+
+                const lector = new FileReader();
+                lector.onload = () => resolve(lector.result);
+                lector.onerror = () =>
+                    reject(new Error("No se pudo leer la imagen."));
+                lector.readAsDataURL(datos.imagen);
+            });
+
+        }
+
+        // Conservar la imagen de deporte anterior.
+        const balonGuardado =
+            canchaAnterior?.balon || "../img/Balon-2.webp";
+
+        // Crear el objeto de la cancha con todos los datos.
+        const cancha = new Cancha(
+            datos.nombre,
+            datos.pais,
+            datos.ciudad,
+            datos.categoria,
+            MONEDAS[datos.pais],
+            datos.valor,
+            imagenGuardada,
+            balonGuardado,
+            datos.detalle,
+            activa,
+            datos.categoria === "Fútbol"
+                ? datos.subcategoria
+                : "",
+            datos.direccion
+        );
+
+        // Guardar o actualizar.
+        administrador.guardarCancha(cancha, edicion);
+
+        console.log(
+            "Cancha guardada:",
+            JSON.stringify(
+                administrador.canchas.map(
+                    ({ imagen, ...datos }) => datos
+                ),
+                null,
+                2
+            )
+        );
+
+        nombreInicial.value = cancha.nombre;
+        limpiar();
+
+    }
 
     cancelar.addEventListener("click", limpiar);
 

@@ -45,7 +45,7 @@ const categoriasFutbol = [
 // Se visualizo 4 tarjetas por página (2 x 2, como en el boceto de figma)
 // pero el resultado final no queda bien revisar que cubra 3 por linea o revisar desde otro dispositivo
 // la vista desde el celular se sigue viendo muy grande :/
-const POR_PAGINA = 4;
+const POR_PAGINA = 6;
 let paginaActual = 1;
 
 // Para los filtros y funcion de pasar de pagina se ejecuta con get desde elementos del HTML
@@ -127,7 +127,8 @@ function obtenerTodasLasCanchas() {
         ...cancha,
         pais: cancha.ciudad.includes("Perú") ? "Perú" : "Colombia",
         subcategoria: cancha.subcategoria || "",
-        detalle: cancha.detalle || `Cancha deportiva para practicar ${cancha.deporte} en ${cancha.ciudad}`
+        detalle: cancha.detalle || `Cancha deportiva para practicar ${cancha.deporte} en ${cancha.ciudad}`,
+        direccion: cancha.direccion || ""
     }));
 
     // Obtener registros del administrador
@@ -145,7 +146,8 @@ function obtenerTodasLasCanchas() {
         balon: cancha.balon || "../img/Balon-2.webp",
         deporte: cancha.categoria,
         subcategoria: cancha.subcategoria || "",
-        detalle: (cancha.detalle && cancha.detalle !== "undefined") ? cancha.detalle : `Cancha deportiva ubicada en ${cancha.ciudad}`
+        detalle: (cancha.detalle && cancha.detalle !== "undefined") ? cancha.detalle : `Cancha deportiva ubicada en ${cancha.ciudad}`,
+        direccion: cancha.direccion || `${cancha.ciudad}, ${cancha.pais === "Peru" ? "Perú" : cancha.pais}`
     }));
 
     return [...canchasRegistradas, ...canchasOriginales];
@@ -168,18 +170,24 @@ function filtrarCanchas() {
 
 // Se crea cada tarjeta con HTML yJS
 function crearTarjeta(cancha) {
-
     let categoriaCompleta = cancha.deporte;
     if (cancha.deporte === "Fútbol" && cancha.subcategoria) {
         categoriaCompleta += ` - ${cancha.subcategoria}`;
     }
+
+    const ciudadNombre = String(cancha.ciudad || "").split(",")[0].trim();
+    const direccion = String(cancha.direccion || "").trim() || "Dirección no registrada";
+    // Se agrega ciudad y país a la búsqueda para evitar ubicaciones ambiguas.
+    const ubicacionCompleta = `${direccion}, ${cancha.ciudad}, ${cancha.pais}`;
+    const mapa = `https://www.google.com/maps?q=${encodeURIComponent(ubicacionCompleta)}&output=embed`;
+    const idCancha = crearId(cancha.nombre, cancha.ciudad.split(",")[0]);
+
     return `
         <div class="letter-card">
             <div class="card-inner">
-
                 <div class="card-front">
                     <div class="card-foto-caja">
-                        <img src="${cancha.imagen}" alt="Cancha de ${cancha.deporte}" class="card-foto">
+                        <img src="${cancha.imagen}" alt="Cancha de ${cancha.deporte}" class="card-foto" loading="lazy">
                         <span class="etiqueta">${categoriaCompleta}</span>
                     </div>
                     <div class="card-datos">
@@ -192,13 +200,18 @@ function crearTarjeta(cancha) {
                 </div>
 
                 <div class="card-back">
-                    <img src="${cancha.balon}" alt="Balón de ${cancha.deporte}" class="img-balon">
-                    <h3>${cancha.nombre}</h3>
-                    <p class="detalle">${cancha.detalle}</p>
-                    <p>${cancha.precio}</p>
-                    <button class="boton boton-naranja btn-reservar" data-id="${crearId(cancha.nombre, cancha.ciudad.split(",")[0])}" data-nombre="${cancha.nombre}">Reservar ahora</button>
+                    <h3 class="back-nombre">${cancha.nombre}</h3>
+                    <p class="detalle">${cancha.detalle || "Cancha deportiva disponible para reservar."}</p>
+                    <iframe class="mapa-cancha" title="Mapa de ubicación de ${cancha.nombre}"
+                        src="${mapa}" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+                        allowfullscreen></iframe>
+                    <div class="direccion-cancha">
+                        <p class="direccion-cancha">${direccion}</p>
+                        <p><strong>Ciudad:</strong> ${ciudadNombre}</p>
+                        <p><strong>País:</strong> ${cancha.pais}</p>
+                    </div>
+                    <button class="boton boton-naranja btn-reservar" data-id="${idCancha}" data-nombre="${cancha.nombre}">Reservar ahora</button>
                 </div>
-
             </div>
         </div>
     `;
