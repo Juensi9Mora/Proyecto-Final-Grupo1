@@ -152,19 +152,21 @@ if (formulario) {
 
         if (Object.keys(errores).length > 0) return;
 
-        try {
-            const usuario = await registrarUsuario(datos);
-            console.log(JSON.stringify(usuario, null, 2));
+      try {
+              const usuario = await registrarUsuario(datos);
+              console.log(JSON.stringify(usuario, null, 2));
 
-            // cuando exista el backend, aquí se envía el usuario al servidor en lugar de localStorage
+              // cuando exista el backend, aquí se envía el usuario al servidor en lugar de localStorage
 
-            formulario.reset();
-            limpiarEstado();
-            mensajeRegistro.textContent = "Registro completado. Ya puedes iniciar sesión.";
-            mensajeRegistro.className = "mensaje mensaje-ok";
-        } catch (error) {
-            mensajeRegistro.textContent = error.message;
-            mensajeRegistro.className = "mensaje mensaje-error";
-        }
-    });
-}
+              formulario.reset();
+              limpiarEstado();
+              mensajeRegistro.textContent = "Registro completado. Te llevamos a iniciar sesión...";
+              mensajeRegistro.className = "mensaje mensaje-ok";
+
+              setTimeout(() => {
+                  window.location.href = "inicio_sesion.html";
+              }, 1500);
+          } catch (error) {
+              mensajeRegistro.textContent = error.message;
+              mensajeRegistro.className = "mensaje mensaje-error";
+          } });}
