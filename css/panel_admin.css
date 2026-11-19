@@ -1,40 +1,40 @@
 /* COLORES */
 :root {
- --verdeMarca: #00843D;
-  --verdeOsucro: #006B32;
-  --verdeCancha: #00A650;
-  --verdeMenta: #D9F2E3;
-  --verdeNiebla: #F1F8F3;
-  --narajaDeportivo: #FF8737;
-  --carbonVerdoso: #26372E;
-  --blanco: #ffffff;
-  --grisVerdoso: #64736A;
-  --grisSeparacion: #E5E9E6;
-  --black: #1a1a1a;
+    --verdeMarca: #00843D;
+    --verdeOsucro: #006B32;
+    --verdeCancha: #00A650;
+    --verdeMenta: #D9F2E3;
+    --verdeNiebla: #F1F8F3;
+    --narajaDeportivo: #FF8737;
+    --carbonVerdoso: #26372E;
+    --blanco: #ffffff;
+    --grisVerdoso: #64736A;
+    --grisSeparacion: #E5E9E6;
+    --black: #1a1a1a;
 }
 
 .hero-nosotros-admin {
-  position: relative;
-  width: 100%;
-  height: 50vh;
-  min-height: 320px;
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-  url('../img/fondoDeport1.webp') center/cover no-repeat;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
+    position: relative;
+    width: 100%;
+    height: 50vh;
+    min-height: 320px;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+        url('../img/fondoDeport1.webp') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
 .hero-titulo-admin {
-  position: relative;
-  z-index: 2;
-  color: var(--blanco);
-  font-size: clamp(2rem, 5vw, 3rem);
-  font-weight: 400;
-  padding: 0 1rem;
-  text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-  
+    position: relative;
+    z-index: 2;
+    color: var(--blanco);
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 400;
+    padding: 0 1rem;
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+
 }
 
 .hero-titulo-admin span {
@@ -43,7 +43,7 @@
 
 /* CONTENEDOR */
 main.contenedor {
-    width: 100%;  
+    width: 100%;
     max-width: 1200px;
     margin: 10px auto;
     padding: 10px;
@@ -109,8 +109,7 @@ main.contenedor input[type="file"] {
 }
 
 /* IMÁGENES */
-#vista-imagen,
-#vista-balon {
+#vista-imagen {
     max-width: 100%;
     max-height: 180px;
     object-fit: cover;
@@ -310,20 +309,289 @@ main.contenedor button[data-accion="estado"] {
     main.contenedor input,
     main.contenedor select,
     main.contenedor textarea {
-        font-size: 16px;  
+        font-size: 16px;
     }
 }
- /* VALIDACIONES */
-  main.contenedor .is-invalid {
-      border: 2px solid #dc3545;
-  }
 
-  main.contenedor .is-valid {
-      border: 2px solid #198754;
-  }
+/* VALIDACIONES */
+main.contenedor .is-invalid {
+    border: 2px solid #dc3545;
+}
 
-  .invalid-feedback {
-      color: #dc3545;
-      font-size: 0.875rem;
-      margin-top: 4px;
-  }
+main.contenedor .is-valid {
+    border: 2px solid #198754;
+}
+
+.invalid-feedback {
+    color: #dc3545;
+    font-size: 0.875rem;
+    margin-top: 4px;
+}
+
+/* Ajustes para dirección y tabla administrativa */
+.ayuda-campo {
+    color: var(--grisVerdoso);
+    font-size: .85rem;
+    margin-top: -8px;
+}
+
+main.contenedor {
+    max-width: 1500px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+#registrar_cancha {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+}
+
+main.contenedor table.tabla-canchas-admin {
+    width: max-content;
+    min-width: 100%;
+    table-layout: auto;
+}
+
+main.contenedor table.tabla-canchas-admin th,
+main.contenedor table.tabla-canchas-admin td {
+    white-space: normal;
+    vertical-align: middle;
+}
+
+main.contenedor table.tabla-canchas-admin td:nth-child(8) {
+    min-width: 220px;
+    max-width: 320px;
+    overflow-wrap: anywhere;
+}
+
+main.contenedor table.tabla-canchas-admin td:last-child {
+    min-width: 220px;
+}
+
+@media (max-width: 768px) {
+    main.contenedor {
+        max-width: 100%;
+    }
+
+    #registrar_cancha {
+        overflow-x: auto;
+    }
+
+    main.contenedor table.tabla-canchas-admin {
+        display: table;
+        min-width: 1050px;
+        width: max-content;
+    }
+
+    main.contenedor table.tabla-canchas-admin thead {
+        display: table-header-group;
+    }
+
+    main.contenedor table.tabla-canchas-admin tbody {
+        display: table-row-group;
+    }
+
+    main.contenedor table.tabla-canchas-admin tr {
+        display: table-row;
+    }
+
+    main.contenedor table.tabla-canchas-admin td,
+    main.contenedor table.tabla-canchas-admin th {
+        display: table-cell;
+        text-align: left;
+    }
+
+    main.contenedor table.tabla-canchas-admin td::before {
+        content: none;
+    }
+}
+
+
+/* Vista previa del mapa según la dirección ingresada en el panel admin */
+.contenedor-mapa-admin {
+    width: 100%;
+    margin: 8px 0 18px;
+    padding: 12px;
+    border: 1px solid var(--grisSeparacion);
+    border-radius: 12px;
+    background: var(--blanco);
+    box-sizing: border-box;
+}
+
+.contenedor-mapa-admin[hidden] {
+    display: none !important;
+}
+
+.titulo-mapa-admin {
+    margin: 0 0 9px;
+    color: var(--verdeOsucro);
+    font-weight: 700;
+}
+
+#mapa-admin {
+    display: block;
+    width: 100%;
+    height: 260px;
+    border: 0;
+    border-radius: 9px;
+    background: #eef2ef;
+}
+
+.estado-mapa-admin {
+    display: block;
+    margin-top: 8px;
+    color: var(--grisVerdoso);
+    font-size: .85rem;
+}
+
+/* ===== TABLA ADMINISTRATIVA SIN SCROLL HORIZONTAL ===== */
+#registrar_cancha {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+main.contenedor table.tabla-canchas-admin {
+    width: 100%;
+    min-width: 0;
+    table-layout: fixed;
+    white-space: normal;
+    border-collapse: collapse;
+}
+
+.tabla-canchas-admin th,
+.tabla-canchas-admin td {
+    padding: 9px 5px;
+    text-align: center;
+    vertical-align: middle;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    word-break: normal;
+    font-size: 12px;
+}
+
+.tabla-canchas-admin th:nth-child(1) {
+    width: 4%;
+}
+
+.tabla-canchas-admin th:nth-child(2) {
+    width: 8%;
+}
+
+.tabla-canchas-admin th:nth-child(3) {
+    width: 9%;
+}
+
+.tabla-canchas-admin th:nth-child(4) {
+    width: 7%;
+}
+
+.tabla-canchas-admin th:nth-child(5) {
+    width: 8%;
+}
+
+.tabla-canchas-admin th:nth-child(6) {
+    width: 12%;
+}
+
+.tabla-canchas-admin th:nth-child(7) {
+    width: 9%;
+}
+
+.tabla-canchas-admin th:nth-child(8) {
+    width: 15%;
+}
+
+.tabla-canchas-admin th:nth-child(9) {
+    width: 9%;
+}
+
+.tabla-canchas-admin th:nth-child(10) {
+    width: 19%;
+}
+
+.tabla-canchas-admin .imagen-cancha {
+    width: 100%;
+    max-width: 68px;
+    height: 48px;
+    object-fit: cover;
+}
+
+.tabla-canchas-admin .acciones-tabla {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.tabla-canchas-admin .acciones-tabla button {
+    width: 100%;
+    margin: 0;
+    padding: 6px 3px;
+    font-size: 11px;
+}
+
+@media (max-width: 900px) {
+    #registrar_cancha {
+        overflow: visible;
+        border: 0;
+    }
+
+    main.contenedor table.tabla-canchas-admin,
+    main.contenedor table.tabla-canchas-admin tbody {
+        display: block;
+        width: 100%;
+    }
+
+    main.contenedor table.tabla-canchas-admin thead {
+        display: none;
+    }
+
+    main.contenedor table.tabla-canchas-admin tr {
+        display: block;
+        width: 100%;
+        margin-bottom: 14px;
+        padding: 8px;
+        box-sizing: border-box;
+        border: 1px solid var(--grisSeparacion);
+        border-radius: 10px;
+        background: var(--blanco);
+    }
+
+    main.contenedor table.tabla-canchas-admin td {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 10px;
+        width: 100%;
+        padding: 8px 4px;
+        text-align: right;
+        box-sizing: border-box;
+    }
+
+    main.contenedor table.tabla-canchas-admin td::before {
+        content: attr(data-label);
+        flex: 0 0 35%;
+        font-weight: 700;
+        color: var(--verdeOsucro);
+        text-align: left;
+    }
+
+    main.contenedor table.tabla-canchas-admin td.acciones {
+        display: block;
+    }
+
+    main.contenedor table.tabla-canchas-admin td.acciones::before {
+        display: none;
+    }
+
+    .tabla-canchas-admin .acciones-tabla {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .tabla-canchas-admin .acciones-tabla button {
+        flex: 1 1 30%;
+    }
+}

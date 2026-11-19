@@ -15,10 +15,10 @@
     <!-- Navbar Principal Fijo -->
     <div id="navbar-root"></div>
 
-        <div class="hero-nosotros-admin">
-    <section class="hero-titulo-admin">
-        <h1>Panel <span>administrador</span></h1>
-    </section>
+    <div class="hero-nosotros-admin">
+        <section class="hero-titulo-admin">
+            <h1>Panel <span>administrador</span></h1>
+        </section>
     </div>
 
     <main class="contenedor">
@@ -40,13 +40,19 @@
                 <input type="file" id="imagen" name="imagen" accept="image/*" required>
                 <img id="vista-imagen" alt="Vista previa de la cancha" hidden>
 
-                <label for="balon">Imagen del deporte (reverso de la tarjeta)</label>
-                <input type="file" id="balon" name="balon" accept="image/*">
-                <img id="vista-balon" alt="Vista previa de la imagen del deporte" hidden>
-
                 <label for="detalle">Descripción (reverso de la tarjeta)</label>
                 <textarea id="detalle" name="detalle" rows="3" maxlength="250"
                     placeholder="Describe la cancha y sus características"></textarea>
+
+                <label for="direccion">Dirección exacta de la cancha</label>
+                <input type="text" id="direccion" name="direccion" required placeholder="Ej. Calle 26 # ..., Bogotá, Colombia">
+                <small class="ayuda-campo">La dirección debe corresponder al país y ciudad seleccionados. Al salir del campo se mostrará su ubicación en el mapa.</small>
+                <div id="contenedor-mapa-admin" class="contenedor-mapa-admin" hidden>
+                    <p class="titulo-mapa-admin">Vista previa de la ubicación</p>
+                    <iframe id="mapa-admin" title="Vista previa del mapa de la cancha" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+                    <small id="estado-mapa-admin" class="estado-mapa-admin" aria-live="polite">La ubicación se actualizará con la dirección ingresada.</small>
+                </div>
 
                 <label for="pais">País</label>
                 <select id="pais" name="pais" required>

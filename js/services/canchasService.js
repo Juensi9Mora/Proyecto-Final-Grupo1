@@ -75,6 +75,7 @@ function desdeBase(c) {
         ...leerPrecio(c.precio),
         imagen: c.imagen,
         balon: c.balon,
+        direccion: c.direccion || `${ciudad}, ${pais}`,
         detalle: c.detalle ?? `Cancha deportiva para practicar ${c.deporte} en ${ciudad}`,
         origen: "base"
     };
@@ -94,6 +95,7 @@ function desdeAdmin(c) {
         valor: Number(c.valor),
         imagen: c.imagen,
         balon: c.balon,
+        direccion: c.direccion || `${c.ciudad}, ${pais}`,
         detalle: c.detalle && c.detalle !== "undefined" ? c.detalle : `Cancha deportiva ubicada en ${c.ciudad}`,
         origen: "admin"
     };
