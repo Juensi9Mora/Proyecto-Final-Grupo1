@@ -12,12 +12,15 @@ function normalizar(crudo) {
     try {
         datos = JSON.parse(crudo);
     } catch {
-        datos = crudo;   // no era JSON: es texto simple
+        datos = crudo; // no era JSON: es texto simple
     }
 
     if (datos && typeof datos === "object") {
         const correo = datos.correo || datos.email || "";
-        return { nombre: datos.nombre || datos.name || correo || "Usuario", correo };
+        return {
+            nombre: datos.nombre || datos.name || correo || "Usuario",
+            correo,
+        };
     }
 
     const texto = String(datos).trim();
@@ -26,6 +29,20 @@ function normalizar(crudo) {
     return { nombre: texto, correo: texto.includes("@") ? texto : "" };
 }
 
-export const obtenerSesion = () => normalizar(localStorage.getItem(CLAVE_SESION));
+export const obtenerSesion = () =>
+    normalizar(localStorage.getItem(CLAVE_SESION));
 
 export const cerrarSesion = () => localStorage.removeItem(CLAVE_SESION);
+
+// Guarda en la caja "usuarioActivo" quién está usando la página (sin la contraseña).
+// La usan el login y el registro.
+export function iniciarSesion(usuario) {
+    const sesion = {
+        id: usuario.id,
+        nombre: usuario.nombre,
+        correo: usuario.correo,
+        telefono: usuario.telefono || "",
+        ciudad: usuario.ciudad || "Bogotá",
+    };
+    localStorage.setItem(CLAVE_SESION, JSON.stringify(sesion));
+}
